@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PowderWraps Rate Designs — 20260929pm See-Thru</title>
+<style>
+  :root { --bg:#f4f4f2; --card:#fff; --ink:#111; --muted:#555; --line:#ddd; --keep:#0a7a3e; --maybe:#a15c00; --bad:#9b1c1c; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+  header { position:sticky; top:0; z-index:10; background:#111; color:#fff; padding:14px 18px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; }
+  header h1 { margin:0; font-size:16px; font-weight:700; }
+  header p { margin:0; font-size:12px; opacity:.85; max-width:620px; }
+  .actions { display:flex; gap:8px; flex-wrap:wrap; }
+  button { cursor:pointer; border:none; border-radius:8px; padding:10px 16px; font-weight:700; font-size:14px; }
+  #submitBtn { background:#fff; color:#111; }
+  #submitBtn:hover { background:#e8e8e8; }
+  #copyBtn { background:#333; color:#fff; }
+  main { max-width:880px; margin:0 auto; padding:16px; }
+  .legend { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:14px; font-size:13px; color:var(--muted); }
+  .legend strong { color:var(--ink); }
+  .section-h { margin:18px 0 10px; font-size:14px; font-weight:700; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:12px; display:grid; grid-template-columns: 88px 1fr; gap:14px; }
+  .card img { width:72px; height:auto; max-height:300px; object-fit:contain; background:#f0f0f0; border-radius:6px; }
+  .meta h2 { margin:0 0 4px; font-size:15px; }
+  .meta .motif { margin:0 0 6px; font-size:12px; color:var(--muted); }
+  .meta .hint { margin:0 0 10px; font-size:11px; color:#7a4a10; }
+  .rates { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .rates label { display:flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:13px; cursor:pointer; user-select:none; }
+  .rates input { accent-color:#111; }
+  .rates label.sel-0 { border-color:var(--bad); background:#fdecec; }
+  .rates label.sel-1 { border-color:var(--maybe); background:#fff4e5; }
+  .rates label.sel-2 { border-color:var(--keep); background:#e8f7ee; }
+  textarea { width:100%; min-height:64px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:inherit; font-size:13px; resize:vertical; }
+  #toast { display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#111; color:#fff; padding:12px 18px; border-radius:10px; font-size:13px; max-width:90vw; z-index:20; }
+  footer { text-align:center; color:var(--muted); font-size:12px; padding:20px; }
+
+  main { max-width:1100px; margin:0 auto; padding:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:16px; display:grid; grid-template-columns: minmax(220px, 320px) 1fr; gap:18px; align-items:start; }
+  .card .thumb-wrap { cursor:zoom-in; }
+  .card img { width:100%; height:auto; max-height:720px; object-fit:contain; background:#111; border-radius:8px; display:block; }
+  @media (max-width:720px){ .card { grid-template-columns: 1fr; } .card img { max-height:520px; } }
+  #lightbox { display:none; position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.92); align-items:center; justify-content:center; padding:24px; cursor:zoom-out; }
+  #lightbox.open { display:flex; }
+  #lightbox img { max-width:min(96vw, 900px); max-height:94vh; object-fit:contain; border-radius:8px; }
+  #lightbox .hint { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); color:#ccc; font-size:12px; }
+
+
+  /* 20260929pm see-thru: BIG horizontal thumbs, full card width, meta below */
+  main { max-width:1500px; }
+  .card { display:block; padding:18px; }
+  .card .views { display:grid; gap:14px; margin-bottom:14px; }
+  .card .thumb-wrap { cursor:zoom-in; position:relative; }
+  .card .thumb-wrap .vlabel { position:absolute; left:10px; bottom:10px; background:rgba(0,0,0,.72); color:#fff; font-size:12px; padding:4px 9px; border-radius:6px; }
+  .card img { width:100%; height:auto; max-height:none; object-fit:contain; background:#18191c; border-radius:8px; display:block; }
+  .meta h2 { font-size:18px; }
+  .meta .motif { font-size:13px; }
+  #lightbox { padding:10px; }
+  #lightbox img { max-width:99vw; max-height:97vh; width:auto; height:auto; }
+  #payloadBox { display:none; background:#fff; border:2px solid #111; border-radius:12px; padding:12px 14px; margin:16px 0; }
+  #payloadBox h3 { margin:0 0 8px; font-size:14px; }
+  #payloadBox pre { margin:0; white-space:pre-wrap; word-break:break-word; font-size:13px; background:#f4f4f2; padding:10px; border-radius:8px; user-select:all; }
+</style>
+</head>
+<body>
+<a href="../../" style="position:fixed;left:10px;bottom:10px;z-index:30;background:#111;color:#fff;padding:8px 12px;border-radius:999px;font:600 12px -apple-system,Segoe UI,Arial,sans-serif;text-decoration:none;opacity:.85">← All packs</a>
+<header>
+  <div>
+    <h1>PowderWraps — Rate designs (20260929pm · See-Thru illusion)</h1>
+    <p>0 Bad · 1 Maybe · 2 Keep. Pure-white (#FFFFFF) areas blend into snow so the ski/board looks see-thru. Each design shown as ski PAIR + snowboard on snow. Click any image to enlarge. Submit downloads ratings JSON.</p>
+  </div>
+  <div class="actions">
+    <button type="button" id="copyBtn">Copy payload</button>
+    <button type="button" id="submitBtn">Submit ratings</button>
+  </div>
+</header>
+<main>
+  <div class="legend">
+    <strong>How Submit works:</strong> click <strong>Submit ratings</strong> → browser downloads <code>PowderWraps-ratings-20260929pm-seethru.json</code>.
+    Attach that file in PowderWraps Intel chat (or paste the copied payload). Optional webhook POST when configured.
+  </div>
+  <div id="list"></div>
+  <div id="payloadBox"><h3>Ratings payload (also downloaded as JSON; copied to clipboard if allowed)</h3><pre id="payloadText"></pre></div>
+</main>
+<footer>PowderWraps Intel · single-file rater · 20260929pm see-thru · 2 designs</footer>
+<div id="lightbox" onclick="this.classList.remove('open')"><img id="lightboxImg" alt=""/><div class="hint">Click anywhere to close</div></div>
+<div id="toast"></div>
+<script>
+const BATCH = "20260929";
+const WEBHOOK_URL = "";
+const DESIGNS = [{"id": "d6-12", "name": "Bridge Out", "motif": "SEE-THRU: a collapsed wooden rope suspension bridge. Intact plank-and-rope sections at tip and tail, then the bridge is 'out' underfoot \u2014 only splintered plank fragments floating over pure #FFFFFF gaps, so on snow the rider seems to be riding loose boards over nothing. Ski pair: one bridge spans both skis (planks cross both). Canva art on production masks.", "kind": "ski+board", "section": "seethru", "suggestion_applied": "Dan 29 Sep: 'add one for tonight that has some white so it looks like it's see-thru\u2026 riding on something small or huge or broken'", "views": [{"label": "Ski PAIR \u00b7 Bin 3 Standard 168\u2013188 cm", "img": "img/1ff211cf3b775b.jpg", "full": "img/24f032ce824c90.jpg"}, {"label": "Snowboard \u00b7 Bin 3 Standard 150\u2013164 cm", "img": "img/d029528581648b.jpg", "full": "img/236682de746b3e.jpg"}], "img": "img/1ff211cf3b775b.jpg"}, {"id": "d6-13", "name": "Shatterboard", "motif": "SEE-THRU: shattered glacier-ice / glass. Solid midnight-blue ice at the tip cracks into a mosaic, then a big impact star under the boots (between the bindings on the board) blows the ice apart; the pure #FFFFFF gaps between shards read as holes straight through to the snow. Canva art on production masks.", "kind": "ski+board", "section": "seethru", "suggestion_applied": "Dan 29 Sep: 'add one for tonight that has some white so it looks like it's see-thru\u2026 riding on something small or huge or broken'", "views": [{"label": "Ski PAIR \u00b7 Bin 3 Standard 168\u2013188 cm", "img": "img/555f8fa3ee695e.jpg", "full": "img/43e70a7e07b657.jpg"}, {"label": "Snowboard \u00b7 Bin 3 Standard 150\u2013164 cm", "img": "img/e24514ff9c0f05.jpg", "full": "img/c7a273353e53c7.jpg"}], "img": "img/555f8fa3ee695e.jpg"}];
+;
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 4500);
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function sectionTitle(sec) {
+  if (sec === 'seethru') return '20260929pm — See-Thru illusion (new)';
+  return 'Designs';
+}
+
+
+function openLb(src) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  lb.classList.add('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'); });
+
+function render() {
+  const root = document.getElementById('list');
+  root.innerHTML = '';
+  let lastSection = '';
+  DESIGNS.forEach((d, i) => {
+    if (d.section !== lastSection) {
+      lastSection = d.section;
+      const h = document.createElement('div');
+      h.className = 'section-h';
+      h.textContent = sectionTitle(d.section);
+      root.appendChild(h);
+    }
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.id = d.id;
+    const rates = [0,1,2].map(v => {
+      const labels = {0:'0 Bad', 1:'1 Maybe', 2:'2 Keep'};
+      return `<label class="rate"><input type="radio" name="rate_${d.id}" value="${v}"/> ${labels[v]}</label>`;
+    }).join('');
+    const hint = d.suggestion_applied ? `<p class="hint">Applied: ${escapeHtml(d.suggestion_applied)}</p>` : '';
+    card.innerHTML = `
+      <div class="views">${(d.views||[]).map((v, j) => `<div class="thumb-wrap" onclick="openLb(DESIGNS[${i}].views[${j}].full)"><img src="${v.img}" alt="${d.id} ${escapeHtml(v.label)}"/><span class="vlabel">${escapeHtml(v.label)} · click to enlarge</span></div>`).join('')}</div>
+      <div class="meta">
+        <h2>${d.id} · ${escapeHtml(d.name)}</h2>
+        <p class="motif">${escapeHtml(d.motif)}</p>
+        ${hint}
+        <div class="rates" data-id="${d.id}">${rates}</div>
+        <textarea placeholder="Suggestion (optional)" data-suggestion="${d.id}"></textarea>
+      </div>`;
+    root.appendChild(card);
+    card.querySelectorAll('input[type=radio]').forEach(inp => {
+      inp.addEventListener('change', () => {
+        card.querySelectorAll('.rates label').forEach(l => l.className = 'rate');
+        inp.closest('label').classList.add('rate', 'sel-' + inp.value);
+      });
+    });
+  });
+}
+
+function collect() {
+  const items = [];
+  DESIGNS.forEach(d => {
+    const checked = document.querySelector(`input[name="rate_${d.id}"]:checked`);
+    const noteEl = document.querySelector(`textarea[data-suggestion="${d.id}"]`);
+    items.push({
+      id: d.id,
+      kind: d.kind,
+      name: d.name,
+      rating: checked ? Number(checked.value) : null,
+      suggestion: noteEl ? noteEl.value.trim() : ''
+    });
+  });
+  return {
+    type: 'POWDERWRAPS_RATINGS',
+    version: '0-1-2',
+    batch: BATCH,
+    submitted_at: new Date().toISOString(),
+    items
+  };
+}
+
+function payloadText(data) {
+  const lines = [`POWDERWRAPS_RATINGS version=0-1-2 date=${data.batch}`];
+  data.items.forEach(it => {
+    const v = it.rating === null ? '' : String(it.rating);
+    const note = (it.suggestion || '').replace(/\r?\n/g, ' ').replace(/\|/g, '/');
+    lines.push(`${it.id}|${v}|${note}`);
+  });
+  return lines.join('\n');
+}
+
+async function doSubmit() {
+  const data = collect();
+  const missing = data.items.filter(i => i.rating === null);
+  if (missing.length) {
+    if (!confirm(`${missing.length} designs still unrated. Submit anyway?`)) return;
+  }
+  const text = payloadText(data);
+  const jsonStr = JSON.stringify(data, null, 2);
+  const blob = new Blob([jsonStr], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `PowderWraps-ratings-20260929pm-seethru.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  try { await navigator.clipboard.writeText(text); } catch (e) {}
+
+  let webhookMsg = '';
+  if (WEBHOOK_URL) {
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: jsonStr,
+        mode: 'cors'
+      });
+      webhookMsg = res.ok ? ' Webhook delivered.' : ` Webhook status ${res.status}.`;
+    } catch (e) {
+      webhookMsg = ' Webhook blocked by browser — attach the downloaded JSON in chat.';
+    }
+  } else {
+    webhookMsg = ' Attach the downloaded JSON in PowderWraps Intel chat (webhook URL not set yet).';
+  }
+  const pb = document.getElementById('payloadBox');
+  document.getElementById('payloadText').textContent = text;
+  pb.style.display = 'block';
+  pb.scrollIntoView({behavior: 'smooth', block: 'center'});
+  toast('Downloaded ratings file.' + webhookMsg);
+}
+
+document.getElementById('submitBtn').addEventListener('click', doSubmit);
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const text = payloadText(collect());
+  try {
+    await navigator.clipboard.writeText(text);
+    toast('Payload copied — paste into PowderWraps Intel chat.');
+  } catch (e) {
+    prompt('Copy this payload:', text);
+  }
+});
+
+render();
+</script>
+</body>
+</html>

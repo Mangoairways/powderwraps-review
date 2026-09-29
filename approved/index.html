@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="robots" content="noindex,nofollow,noarchive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#111111"/>
+<title>PowderWraps — Approved Gallery</title>
+<style>
+  :root { --bg:#f4f4f2; --card:#fff; --ink:#111; --muted:#555; --line:#ddd; --up:#0a7a3e; --down:#9b1c1c; --ski:#1d4ed8; --board:#7c3aed; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; background:var(--bg); color:var(--ink); padding-bottom:88px; }
+  header { background:#111; color:#fff; padding:14px 16px 12px; }
+  header h1 { margin:0; font-size:18px; }
+  header p { margin:4px 0 0; font-size:12px; opacity:.8; }
+  header a { color:#9ad; }
+  .filters { display:flex; gap:6px; flex-wrap:wrap; padding:10px 12px 0; max-width:900px; margin:0 auto; }
+  .filters button { border:1px solid var(--line); background:#fff; border-radius:999px; padding:7px 12px; font-size:13px; font-weight:600; }
+  .filters button.on { background:#111; color:#fff; border-color:#111; }
+  main { max-width:900px; margin:0 auto; padding:12px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; margin:0 0 16px; overflow:hidden; }
+  .card .pic { position:relative; background:#18191c; cursor:zoom-in; }
+  .card .pic img { display:block; width:100%; height:auto; min-height:120px; object-fit:contain; }
+  .card .pic .tap { position:absolute; right:8px; bottom:8px; background:rgba(0,0,0,.7); color:#fff; font-size:12px; padding:4px 9px; border-radius:6px; }
+  .card .body { padding:12px 14px 14px; }
+  .card h2 { margin:0; font-size:18px; }
+  .tags { display:flex; gap:6px; flex-wrap:wrap; margin:6px 0; }
+  .tag { font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px; background:#eee; color:#333; }
+  .tag.ski { background:#e0e8ff; color:var(--ski); } .tag.board { background:#efe5ff; color:var(--board); }
+  .tag.staged { background:#fff4e5; color:#a15c00; } .tag.lowres { background:#fdecec; color:var(--down); }
+  .motif { font-size:13px; color:var(--muted); margin:4px 0; }
+  .prev { font-size:12px; color:#7a4a10; margin:4px 0 8px; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:10px 0 8px; }
+  .row button { min-height:48px; border-radius:12px; border:2px solid var(--line); background:#fff; font-size:16px; font-weight:700; color:#222; }
+  .vote.up.on { background:#e8f7ee; border-color:var(--up); color:var(--up); }
+  .vote.down.on { background:#fdecec; border-color:var(--down); color:var(--down); }
+  .flag { font-size:14px !important; }
+  .flag.skis.on { background:#e0e8ff; border-color:var(--ski); color:var(--ski); }
+  .flag.board.on { background:#efe5ff; border-color:var(--board); color:var(--board); }
+  textarea { width:100%; min-height:70px; border:1px solid var(--line); border-radius:10px; padding:10px; font:inherit; font-size:16px; resize:vertical; }
+  .bar { position:fixed; left:0; right:0; bottom:0; z-index:20; background:rgba(17,17,17,.96); color:#fff; padding:10px 12px calc(10px + env(safe-area-inset-bottom)); display:flex; gap:8px; align-items:center; justify-content:center; }
+  .bar .count { font-size:12px; opacity:.85; margin-right:auto; max-width:40%; }
+  .bar button { border:none; border-radius:10px; padding:12px 16px; font-size:15px; font-weight:800; }
+  #submitBtn { background:#fff; color:#111; } #copyBtn { background:#333; color:#fff; }
+  #payloadBox { display:none; background:#fff; border:2px solid #111; border-radius:14px; padding:12px; margin:8px 0 16px; }
+  #payloadBox h3 { margin:0 0 8px; font-size:15px; }
+  #payloadBox pre { margin:0 0 8px; white-space:pre-wrap; word-break:break-word; font-size:13px; background:#f4f4f2; padding:10px; border-radius:8px; user-select:all; -webkit-user-select:all; }
+  #payloadBox button { border:none; border-radius:10px; padding:10px 14px; font-weight:700; background:#111; color:#fff; }
+  #lb { display:none; position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.95); overflow:auto; -webkit-overflow-scrolling:touch; }
+  #lb.open { display:block; }
+  #lb .x { position:fixed; top:calc(10px + env(safe-area-inset-top)); right:10px; z-index:51; background:#fff; color:#111; border:none; border-radius:999px; width:44px; height:44px; font-size:22px; font-weight:800; }
+  #lb .inner { padding:60px 8px 30px; display:flex; flex-direction:column; align-items:center; gap:18px; }
+  #lb figure { margin:0; text-align:center; }
+  #lb img { display:block; max-width:100%; height:auto; margin:0 auto; border-radius:6px; }
+  #lb img.fit { max-height:88vh; }
+  #lb img.tall { width:min(94vw, 520px); }
+  #lb figcaption { color:#bbb; font-size:12px; margin-top:6px; }
+  #toast { display:none; position:fixed; bottom:84px; left:50%; transform:translateX(-50%); background:#111; color:#fff; padding:12px 16px; border-radius:10px; font-size:13px; max-width:92vw; z-index:60; box-shadow:0 4px 16px rgba(0,0,0,.3); }
+  footer { text-align:center; color:var(--muted); font-size:12px; padding:10px 16px 20px; }
+  @media (min-width:760px) { .row { grid-template-columns:repeat(4,1fr); } }
+</style>
+</head>
+<body>
+<header>
+  <h1>PowderWraps — Approved Gallery</h1>
+  <p><span id="n"></span> approved designs · 👍/👎 each, add fine-tune notes, flag for skis / snowboard, then <b>Submit</b>. Your picks are saved on this phone until you submit. <a href="../">All packs</a></p>
+</header>
+<div class="filters" id="filters">
+  <button data-f="all" class="on">All</button><button data-f="ski">Skis</button><button data-f="board">Snowboards</button><button data-f="todo">Not voted</button>
+</div>
+<main>
+  <div id="payloadBox"><h3>Paste this into chat (copied to clipboard if allowed)</h3><pre id="payloadText"></pre><button type="button" id="copyAgain">Copy again</button></div>
+  <div id="list"></div>
+</main>
+<footer>PowderWraps review · gallery built 2026-09-29 13:27 CT · noindex</footer>
+<div class="bar"><span class="count" id="count"></span><button type="button" id="copyBtn">Copy</button><button type="button" id="submitBtn">Submit</button></div>
+<div id="lb"><button class="x" type="button" aria-label="Close" onclick="closeLb()">✕</button><div class="inner" id="lbInner"></div></div>
+<div id="toast"></div>
+<script>
+const WEBHOOK_URL = "";   // public, key-less URL only (never a secret key)
+const CARDS = [{"id": "d7-09r2", "kind": "board", "name": "Ink Peak Night", "motif": "Milky-way nose, ringed planet over ink peaks, vintage jeep with headlights on ridge road (Canva + Real-ESRGAN 4x)", "date": "2026-09-30", "batch": "20260930", "rating": 2, "suggestion": "my 13 year old son would love this", "staged": false, "card": "img/d7-09r2-card.jpg", "views": [{"src": "img/d7-09r2-mockup.jpg", "label": "Mockup"}, {"src": "img/d7-09r2-art.jpg", "label": "Full topsheet art (scroll)", "tall": true}], "lowres": false}, {"id": "d7-14", "kind": "board", "name": "Neon Divide", "motif": "Neon color-block ringed planet + Milky Way over the Continental Divide, faceted neon fourteeners (Canva + Real-ESRGAN)", "date": "2026-09-30", "batch": "20260930", "rating": 2, "suggestion": "Likes the galaxy, the colors and the blend.", "staged": false, "card": "img/d7-14-card.jpg", "views": [{"src": "img/d7-14-mockup.jpg", "label": "Mockup"}, {"src": "img/d7-14-art.jpg", "label": "Full topsheet art (scroll)", "tall": true}], "lowres": false}, {"id": "d6-03r2", "kind": "ski", "name": "Orbit Lattice", "motif": "Starfield, constellation lines, ringed hero planet split across both skis (Canva)", "date": "2026-09-29", "batch": "20260929", "rating": 2, "suggestion": null, "staged": false, "card": "img/d6-03r2-card.jpg", "views": [{"src": "img/d6-03r2-mockup.jpg", "label": "Mockup"}, {"src": "img/d6-03r2-art.jpg", "label": "Full topsheet art (scroll)", "tall": true}], "lowres": false}, {"id": "d6-06r", "kind": "ski", "name": "Contour Ridgeline", "motif": "Dense charcoal/ice-cyan topo contours with glowing summit marker (Canva)", "date": "2026-09-29", "batch": "20260929", "rating": 2, "suggestion": "New variant: white background, Colorado summit-area topo features, small orange jeep for bold contrast, tiny cabin, hidden words like 'locals only' and 'no rules'.", "staged": false, "card": "img/d6-06r-card.jpg", "views": [{"src": "img/d6-06r-mockup.jpg", "label": "Mockup"}, {"src": "img/d6-06r-art.jpg", "label": "Full topsheet art (scroll)", "tall": true}], "lowres": false}, {"id": "d6-11", "kind": "board", "name": "Tiles Hop", "motif": "Neon 3D platform tiles in space with hopping ball (Canva)", "date": "2026-09-29", "batch": "20260929", "rating": 2, "suggestion": null, "staged": false, "card": "img/d6-11-card.jpg", "views": [{"src": "img/d6-11-mockup.jpg", "label": "Mockup"}, {"src": "img/d6-11-art.jpg", "label": "Full topsheet art (scroll)", "tall": true}], "lowres": false}, {"id": "d5-07", "kind": "ski", "name": "Neon Night Run", "motif": "Electric cyan/magenta light trails + HUD grid on black (Canva)", "date": "2026-09-28", "batch": "20260928pm", "rating": 2, "suggestion": "nice job but low res image. keep.", "staged": false, "card": "img/d5-07-card.jpg", "views": [{"src": "img/d5-07-art.jpg", "label": "Full topsheet art (scroll)", "tall": false}], "lowres": true}, {"id": "d5-08", "kind": "board", "name": "Prism Fracture Ice", "motif": "Cut-gem crystal facets aqua/violet color blocks (Canva)", "date": "2026-09-28", "batch": "20260928pm", "rating": 2, "suggestion": "love. many different colors, color block, famous art.", "staged": false, "card": "img/d5-08-card.jpg", "views": [{"src": "img/d5-08-art.jpg", "label": "Full topsheet art (scroll)", "tall": true}], "lowres": true}, {"id": "board-01", "kind": "board", "name": "Quiet Peak", "motif": "Muted nature ridge silhouette", "date": "2026-09-15", "batch": "20260915-v2", "rating": 2, "suggestion": null, "staged": false, "card": "img/board-01-card.jpg", "views": [{"src": "img/board-01-art.jpg", "label": "Full topsheet art (scroll)", "tall": true}], "lowres": false}, {"id": "board-05", "kind": "board", "name": "Left-Hand Lines", "motif": "Bold chaotic graffiti linework", "date": "2026-09-15", "batch": "20260915-v2", "rating": 2, "suggestion": null, "staged": false, "card": "img/board-05-card.jpg", "views": [{"src": "img/board-05-art.jpg", "label": "Full topsheet art (scroll)", "tall": true}], "lowres": false}, {"id": "board-08", "kind": "board", "name": "Prism Fracture", "motif": "Psychedelic geometric shards", "date": "2026-09-15", "batch": "20260915-v2", "rating": 2, "suggestion": null, "staged": false, "card": "img/board-08-card.jpg", "views": [{"src": "img/board-08-art.jpg", "label": "Full topsheet art (scroll)", "tall": true}], "lowres": false}, {"id": "ski-01", "kind": "ski", "name": "Alpine Linework", "motif": "Powder mountain contour linework", "date": "2026-09-15", "batch": "20260915-v2", "rating": 2, "suggestion": null, "staged": false, "card": "img/ski-01-card.jpg", "views": [{"src": "img/ski-01-art.jpg", "label": "Full topsheet art (scroll)", "tall": true}], "lowres": false}];
+const KEY = 'pw-approved-v1';
+let state = {}; try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+let filter = 'all';
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const st = id => (state[id] = state[id] || {vote:null, skis:false, board:false, notes:''});
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} updateCount(); };
+function toast(m){ const t=document.getElementById('toast'); t.textContent=m; t.style.display='block'; clearTimeout(t._h); t._h=setTimeout(()=>t.style.display='none',4200); }
+
+function render() {
+  document.getElementById('n').textContent = CARDS.length;
+  const root = document.getElementById('list'); root.innerHTML = '';
+  CARDS.forEach((c, i) => {
+    const s = st(c.id);
+    if (filter === 'ski' && c.kind !== 'ski') return;
+    if (filter === 'board' && c.kind !== 'board') return;
+    if (filter === 'todo' && s.vote) return;
+    const el = document.createElement('article'); el.className = 'card'; el.dataset.id = c.id;
+    el.innerHTML = `
+      <div class="pic" onclick="openLb(${i})"><img loading="${i < 2 ? 'eager' : 'lazy'}" decoding="async" src="${esc(c.card)}" alt="${esc(c.id)} ${esc(c.name)}"/><span class="tap">tap to enlarge</span></div>
+      <div class="body">
+        <h2>${esc(c.name)}</h2>
+        <div class="tags"><span class="tag">${esc(c.id)}</span><span class="tag ${c.kind === 'ski' ? 'ski' : 'board'}">${c.kind === 'ski' ? 'Ski' : 'Snowboard'}</span><span class="tag">${esc(c.date || '')}</span>${c.staged ? '<span class="tag staged">staged</span>' : ''}${c.lowres ? '<span class="tag lowres">low-res art</span>' : ''}</div>
+        <p class="motif">${esc(c.motif)}</p>
+        ${c.suggestion ? `<p class="prev">Your earlier note: “${esc(c.suggestion)}”</p>` : ''}
+        <div class="row">
+          <button type="button" class="vote up ${s.vote === 'up' ? 'on' : ''}" data-v="up" aria-label="Thumbs up">👍 Up</button>
+          <button type="button" class="vote down ${s.vote === 'down' ? 'on' : ''}" data-v="down" aria-label="Thumbs down">👎 Down</button>
+          <button type="button" class="flag skis ${s.skis ? 'on' : ''}" data-f="skis">${s.skis ? '✓ ' : ''}Add graphics to SKIS</button>
+          <button type="button" class="flag board ${s.board ? 'on' : ''}" data-f="board">${s.board ? '✓ ' : ''}Add this to a snowboard</button>
+        </div>
+        <textarea placeholder="Fine-tune notes (colors, crop, add/remove elements…)">${esc(s.notes)}</textarea>
+      </div>`;
+    el.querySelectorAll('.vote').forEach(b => b.onclick = () => { s.vote = (s.vote === b.dataset.v) ? null : b.dataset.v; save(); refreshCard(el, s); });
+    el.querySelectorAll('.flag').forEach(b => b.onclick = () => { s[b.dataset.f] = !s[b.dataset.f]; save(); refreshCard(el, s); });
+    el.querySelector('textarea').oninput = e => { s.notes = e.target.value; save(); };
+    root.appendChild(el);
+  });
+  updateCount();
+}
+function refreshCard(el, s) {
+  el.querySelector('.vote.up').classList.toggle('on', s.vote === 'up');
+  el.querySelector('.vote.down').classList.toggle('on', s.vote === 'down');
+  const k = el.querySelector('.flag.skis'), b = el.querySelector('.flag.board');
+  k.classList.toggle('on', s.skis); k.textContent = (s.skis ? '✓ ' : '') + 'Add graphics to SKIS';
+  b.classList.toggle('on', s.board); b.textContent = (s.board ? '✓ ' : '') + 'Add this to a snowboard';
+}
+function updateCount() {
+  const v = CARDS.filter(c => st(c.id).vote).length;
+  document.getElementById('count').textContent = `${v}/${CARDS.length} voted`;
+}
+document.querySelectorAll('#filters button').forEach(b => b.onclick = () => {
+  filter = b.dataset.f; document.querySelectorAll('#filters button').forEach(x => x.classList.toggle('on', x === b)); render();
+});
+
+function openLb(i) {
+  const c = CARDS[i];
+  const views = (c.views && c.views.length) ? c.views : [{src:c.card, label:'Preview'}];
+  document.getElementById('lbInner').innerHTML = `<figure><img class="fit" src="${esc(c.card)}" alt=""/><figcaption>${esc(c.id)} · ${esc(c.name)}</figcaption></figure>` +
+    views.filter(v => v.src !== c.card).map(v => `<figure><img class="${v.tall ? 'tall' : 'fit'}" loading="lazy" src="${esc(v.src)}" alt=""/><figcaption>${esc(v.label)}</figcaption></figure>`).join('');
+  const lb = document.getElementById('lb'); lb.scrollTop = 0; lb.classList.add('open'); document.body.style.overflow = 'hidden';
+}
+function closeLb() { document.getElementById('lb').classList.remove('open'); document.body.style.overflow = ''; }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+document.getElementById('lb').addEventListener('click', e => { if (e.target.id === 'lb' || e.target.classList.contains('inner')) closeLb(); });
+
+function ymd(d) { return d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0'); }
+function collect() {
+  const date = ymd(new Date());
+  return { type:'POWDERWRAPS_APPROVED', version:1, date, submitted_at:new Date().toISOString(),
+    items: CARDS.map(c => { const s = st(c.id); return { id:c.id, name:c.name, kind:c.kind, vote:s.vote, skis:!!s.skis, board:!!s.board, notes:(s.notes || '').trim() }; }) };
+}
+function payloadText(d) {
+  const lines = [`POWDERWRAPS_APPROVED version=1 date=${d.date}`];
+  d.items.forEach(it => lines.push(`${it.id}|${it.vote || '-'}|skis:${it.skis ? 'y' : 'n'}|board:${it.board ? 'y' : 'n'}|${it.notes.replace(/\r?\n/g, ' ').replace(/\|/g, '/')}`));
+  return lines.join('\n');
+}
+async function copyText(t) {
+  try { await navigator.clipboard.writeText(t); return true; } catch (e) {}
+  try { const ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); const ok = document.execCommand('copy'); ta.remove(); return ok; } catch (e) { return false; }
+}
+function showPayload(text) {
+  document.getElementById('payloadText').textContent = text;
+  const pb = document.getElementById('payloadBox'); pb.style.display = 'block'; pb.scrollIntoView({behavior:'smooth', block:'start'});
+}
+async function doSubmit() {
+  const data = collect(); const text = payloadText(data); const json = JSON.stringify(data, null, 2);
+  const unvoted = data.items.filter(i => !i.vote).length;
+  if (unvoted && !confirm(`${unvoted} designs have no 👍/👎 yet. Submit anyway?`)) return;
+  let hook = '';
+  if (WEBHOOK_URL) {   // (a) optional webhook
+    try { const r = await fetch(WEBHOOK_URL, {method:'POST', headers:{'Content-Type':'application/json'}, body:json}); hook = r.ok ? ' Sent to webhook.' : ` Webhook status ${r.status}.`; }
+    catch (e) { hook = ' Webhook unreachable — paste the text into chat.'; }
+  }
+  const a = document.createElement('a');   // (b) download JSON
+  a.href = URL.createObjectURL(new Blob([json], {type:'application/json'}));
+  a.download = `PowderWraps-approved-${data.date}.json`; document.body.appendChild(a); a.click(); a.remove();
+  const ok = await copyText(text);          // (c) show + copy payload
+  showPayload(text);
+  toast((ok ? 'Copied! Paste into chat.' : 'Select the text below and copy it into chat.') + ' JSON downloaded.' + hook);
+}
+document.getElementById('submitBtn').onclick = doSubmit;
+document.getElementById('copyBtn').onclick = async () => { const t = payloadText(collect()); const ok = await copyText(t); showPayload(t); toast(ok ? 'Copied — paste into chat.' : 'Select the text and copy it.'); };
+document.getElementById('copyAgain').onclick = async () => { const ok = await copyText(document.getElementById('payloadText').textContent); toast(ok ? 'Copied.' : 'Select the text and copy it.'); };
+render();
+</script>
+</body>
+</html>
