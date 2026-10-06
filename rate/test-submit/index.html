@@ -4,7 +4,7 @@
 <meta name="robots" content="noindex,nofollow,noarchive"/>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PowderWraps Rate Designs — 20261005</title>
+<title>TEST — PowderWraps Submit button check</title>
 <style>
   :root { --bg:#f4f4f2; --card:#fff; --ink:#111; --muted:#555; --line:#ddd; --keep:#0a7a3e; --maybe:#a15c00; --bad:#9b1c1c; }
   * { box-sizing: border-box; }
@@ -47,21 +47,22 @@
   #lightbox .hint { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); color:#ccc; font-size:12px; }
 
 
-  /* 20260929: horizontal (rotated) thumbs — image full card width above meta */
   main { max-width:1200px; }
   .card { display:block; padding:16px; }
   .card .thumb-wrap { cursor:zoom-in; margin-bottom:14px; }
   .card img { width:100%; height:auto; max-height:none; object-fit:contain; background:#151515; border-radius:8px; display:block; }
   #lightbox { padding:12px; }
   #lightbox img { max-width:98vw; max-height:96vh; width:auto; height:auto; }
+  header { background:#5a2d82; }
+  .testflag { background:#fff3c4; border:2px dashed #a15c00; border-radius:12px; padding:10px 14px; margin-bottom:14px; font-size:14px; font-weight:600; }
 </style>
 </head>
 <body>
 <a href="../../" style="position:fixed;left:10px;bottom:10px;z-index:30;background:#111;color:#fff;padding:8px 12px;border-radius:999px;font:600 12px -apple-system,Segoe UI,Arial,sans-serif;text-decoration:none;opacity:.85">← All packs</a>
 <header>
   <div>
-    <h1>PowderWraps — Rate designs (20261005)</h1>
-    <p>0 Bad · 1 Maybe · 2 Keep. Click any image to enlarge. 5 new designs (3 ski pairs, 2 boards). Floor RED — rate only; nothing lists until Keep + media green. 20261001 pack is still waiting on your ratings.</p>
+    <h1>TEST PAGE — Submit button check (not a real pack)</h1>
+    <p>This is only a test of the new Submit button, using 3 copies of designs you already rated. Pick any ratings, tap Submit, and look for the big green "Ratings received ✓" banner. These votes are filed as a test, not as real ratings.</p>
   </div>
   <div class="actions">
     <button type="button" id="copyBtn">Copy payload</button>
@@ -69,20 +70,20 @@
   </div>
 </header>
 <main>
+  <div class="testflag">🧪 TEST PAGE — trying out the new Submit button. Nothing here changes any real pack.</div>
   <div class="legend">
-    <strong>How Submit works:</strong> click <strong>Submit ratings</strong> → browser downloads <code>PowderWraps-ratings-20261005.json</code>.
-    Attach that file in PowderWraps Intel chat (or paste the copied payload). Optional webhook POST when configured.
+    <strong>How Submit works:</strong> click <strong>Submit ratings</strong> → ratings are sent straight to PowderWraps and a big green "Ratings received ✓" banner confirms it.
+    Only if sending fails: red banner with Retry + backup copy / download (<code>PowderWraps-ratings-test-submit.json</code>).
   </div>
   <div id="list"></div>
-  <div id="payloadBox" style="display:none;background:#fff;border:2px solid #111;border-radius:12px;padding:12px 14px;margin:16px 0"><h3 style="margin:0 0 8px;font-size:14px">Ratings payload (copied to clipboard if allowed) — paste into chat</h3><pre id="payloadText" style="white-space:pre-wrap;word-break:break-word;font-size:13px;background:#f4f4f2;padding:10px;border-radius:8px;user-select:all"></pre></div>
 </main>
-<footer>PowderWraps Intel · single-file rater · 20261005 · 5 cards</footer>
+<footer>PowderWraps · TEST page for the Submit button · 3 cards</footer>
 <div id="lightbox" onclick="this.classList.remove('open')"><img id="lightboxImg" alt=""/><div class="hint">Click anywhere to close</div></div>
 <div id="toast"></div>
 <script>
-const BATCH = "20261005";
+const BATCH = "test-submit";
 const WEBHOOK_URL = "";
-const DESIGNS = [{"id": "d9-17", "name": "Aurora Glacier", "motif": "Northern-lights aurora over glacier country in emerald, teal and violet, colors blending smoothly (no blocks). Left ski: aurora curtains rising over sharp snowy glacier peaks and blue ice. Right ski: an aurora spiral reflected in a frozen glacier lake with spruce silhouettes.", "kind": "ski", "img": "img/c80a8c70d50dba.jpg", "full": "img/d56e362b72b412.jpg", "rate": "", "note": "", "section": "daily5", "suggestion_applied": ""}, {"id": "d9-18", "name": "Ink Wave Peaks", "motif": "Ukiyo-e woodblock \"great wave\" turned mountain in indigo/Prussian blue ink with cream foam and a small red sun (same bold-ink family as Keep d7-09r2 Ink Peak Night). Left ski: a curling wave whose crest becomes a snowy summit. Right ski: a skier carving down a wave-shaped powder slope.", "kind": "ski", "img": "img/468f904c663e2c.jpg", "full": "img/c8a74a0f82148b.jpg", "rate": "", "note": "", "section": "daily5", "suggestion_applied": ""}, {"id": "d9-19", "name": "Synthwave Summit", "motif": "Retro 80s synthwave: striped neon sunset sun (pink/orange/gold) over a glowing magenta-cyan wireframe peak, neon perspective grid at the tails, smooth purple-to-black sky gradient.", "kind": "ski", "img": "img/86acb051f117f9.jpg", "full": "img/dc9ea7a6bda4a8.jpg", "rate": "", "note": "", "section": "daily5", "suggestion_applied": ""}, {"id": "d9-20", "name": "Galaxy Wolf", "motif": "Howling wolf whose silhouette is filled with a teal/violet/magenta/gold nebula and stardust (galaxy palette like Keep d7-14 Neon Divide), against a giant full moon over jagged snowy peaks.", "kind": "board", "img": "img/402d4c2aacd951.jpg", "full": "img/fc19e031b5de1a.jpg", "rate": "", "note": "", "section": "daily5", "suggestion_applied": ""}, {"id": "d9-21", "name": "Liquid Marble Ridge", "motif": "Alcohol-ink fluid art: turquoise, teal, magenta and violet swirls merging seamlessly in an S-curve like a carved turn, metallic-gold veins, a layered snowy ridgeline emerging from the flow (answers the \"colors need to merge\" note on d7-10r).", "kind": "board", "img": "img/94717690b08099.jpg", "full": "img/22cbbfbc286cc0.jpg", "rate": "", "note": "", "section": "daily5", "suggestion_applied": ""}];
+const DESIGNS = [{"id": "d9-17", "name": "Aurora Glacier (test copy)", "motif": "Northern-lights aurora over glacier country in emerald, teal and violet, colors blending smoothly (no blocks). Left ski: aurora curtains rising over sharp snowy glacier peaks and blue ice. Right ski: an aurora spiral reflected in a frozen glacier lake with spruce silhouettes.", "kind": "ski", "img": "img/c80a8c70d50dba.jpg", "full": "img/d56e362b72b412.jpg", "rate": "", "note": "", "section": "test", "suggestion_applied": ""}, {"id": "d9-18", "name": "Ink Wave Peaks (test copy)", "motif": "Ukiyo-e woodblock \"great wave\" turned mountain in indigo/Prussian blue ink with cream foam and a small red sun (same bold-ink family as Keep d7-09r2 Ink Peak Night). Left ski: a curling wave whose crest becomes a snowy summit. Right ski: a skier carving down a wave-shaped powder slope.", "kind": "ski", "img": "img/468f904c663e2c.jpg", "full": "img/c8a74a0f82148b.jpg", "rate": "", "note": "", "section": "test", "suggestion_applied": ""}, {"id": "d9-19", "name": "Synthwave Summit (test copy)", "motif": "Retro 80s synthwave: striped neon sunset sun (pink/orange/gold) over a glowing magenta-cyan wireframe peak, neon perspective grid at the tails, smooth purple-to-black sky gradient.", "kind": "ski", "img": "img/86acb051f117f9.jpg", "full": "img/dc9ea7a6bda4a8.jpg", "rate": "", "note": "", "section": "test", "suggestion_applied": ""}];
 ;
 
 function toast(msg) {
@@ -97,7 +98,7 @@ function escapeHtml(s) {
 }
 
 function sectionTitle(sec) {
-    if (sec === 'daily5') return '20261005 — New';
+  if (sec === 'test') return 'TEST — 3 sample cards (copies from the 20261005 pack)';
   return 'Designs';
 }
 
@@ -213,7 +214,6 @@ async function doSubmit() {
   } else {
     webhookMsg = ' Attach the downloaded JSON in PowderWraps Intel chat (webhook URL not set yet).';
   }
-  const pb=document.getElementById('payloadBox');document.getElementById('payloadText').textContent=text;pb.style.display='block';pb.scrollIntoView({behavior:'smooth',block:'center'});
   toast('Downloaded ratings file.' + webhookMsg);
 }
 
@@ -231,7 +231,7 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
 render();
 </script>
 <!-- PW_SUBMIT_V2 BEGIN -->
-<script>var PW_PACK_ID = "20261005";</script>
+<script>var PW_PACK_ID = "test-submit";</script>
 <style>
   /* PW_SUBMIT_V2: sends ratings to PowderWraps (public ntfy mailbox, no keys) + big on-page confirmation */
   #copyBtn, #payloadBox { display:none !important; }

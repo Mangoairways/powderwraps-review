@@ -231,5 +231,209 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
 
 render();
 </script>
+<!-- PW_SUBMIT_V2 BEGIN -->
+<script>var PW_PACK_ID = "20261001";</script>
+<style>
+  /* PW_SUBMIT_V2: sends ratings to PowderWraps (public ntfy mailbox, no keys) + big on-page confirmation */
+  #copyBtn, #payloadBox { display:none !important; }
+  #pwNameWrap { display:flex; align-items:center; gap:6px; color:#fff; font-size:13px; font-weight:600; }
+  #pwName { border:1px solid #666; border-radius:8px; padding:9px 10px; font:inherit; font-size:14px; width:150px; background:#222; color:#fff; }
+  #pwName::placeholder { color:#aaa; }
+  #submitBtn { background:#0a7a3e !important; color:#fff !important; min-width:150px; }
+  #submitBtn:hover { background:#086632 !important; }
+  #submitBtn[disabled] { opacity:.85; cursor:default; }
+  #pwOverallWrap { background:#fff; border:1px solid #ddd; border-radius:12px; padding:12px 14px; margin:8px 0 16px; }
+  #pwOverallWrap h3 { margin:0 0 8px; font-size:14px; }
+  #pwBottomBar { display:flex; justify-content:center; margin:6px 0 60px; }
+  #pwBottomBar button { background:#0a7a3e; color:#fff; font-size:16px; padding:14px 26px; border-radius:10px; }
+  #pwBottomBar button[disabled] { opacity:.85; cursor:default; }
+  #pwBanner { display:none; position:fixed; left:50%; top:12px; transform:translateX(-50%); z-index:60; width:min(700px,94vw);
+              border-radius:14px; padding:18px 48px 18px 20px; box-shadow:0 12px 34px rgba(0,0,0,.4); font-size:14px; line-height:1.45; }
+  #pwBanner.show { display:block; }
+  #pwBanner.ok { background:#0a7a3e; color:#fff; }
+  #pwBanner.err { background:#b3261e; color:#fff; }
+  #pwBanner.busy { background:#1f2a44; color:#fff; }
+  #pwBanner.warn { background:#a15c00; color:#fff; }
+  #pwBanner .pw-big { display:block; font-size:22px; font-weight:800; margin-bottom:4px; }
+  #pwBanner .pw-x { position:absolute; right:10px; top:8px; background:transparent; color:#fff; font-size:22px; padding:4px 10px; }
+  #pwBanner .pw-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  #pwBanner .pw-row button { background:#fff; color:#111; }
+  #pwBanner .pw-row button.pw-retry { background:#111; color:#fff; font-size:16px; }
+  #pwBanner pre { white-space:pre-wrap; word-break:break-word; background:rgba(255,255,255,.95); color:#111; border-radius:8px; padding:8px 10px; max-height:30vh; overflow:auto; font-size:12px; user-select:all; margin:10px 0 0; }
+  .pw-spin { display:inline-block; width:15px; height:15px; border:3px solid currentColor; border-right-color:transparent; border-radius:50%; animation:pwspin .7s linear infinite; vertical-align:-2px; margin-right:8px; }
+  @keyframes pwspin { to { transform:rotate(360deg); } }
+</style>
+<script>
+(function () {
+  'use strict';
+  var CFG = { topic: "pw-ratings-71692fd9368a4505f5b6d095", endpoints: ["https://ntfy.sh", "https://ntfy.envs.net"] };
+  var PACK = (typeof PW_PACK_ID !== 'undefined' && PW_PACK_ID) ? PW_PACK_ID : (typeof BATCH !== 'undefined' ? BATCH : 'unknown');
+  var BOT = /[?&]pwbot=1\b/.test(location.search);
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  // ---- UI wiring (replaces the old download-only Submit) ----
+  var old = $('submitBtn');
+  var btn = old.cloneNode(true);           // clone drops the legacy click listener
+  old.parentNode.replaceChild(btn, old);
+  btn.textContent = 'Submit ratings';
+  var nameWrap = document.createElement('label');
+  nameWrap.id = 'pwNameWrap';
+  nameWrap.innerHTML = 'Your name <input id="pwName" type="text" placeholder="Dan" autocomplete="name" maxlength="40"/>';
+  btn.parentNode.insertBefore(nameWrap, btn);
+  try { $('pwName').value = localStorage.getItem('pw_reviewer_name') || ''; } catch (e) {}
+  var list = $('list');
+  var overall = document.createElement('div');
+  overall.id = 'pwOverallWrap';
+  overall.innerHTML = '<h3>Overall notes (optional)</h3><textarea id="pwOverall" placeholder="Anything about this pack as a whole"></textarea>';
+  var bottom = document.createElement('div');
+  bottom.id = 'pwBottomBar';
+  bottom.innerHTML = '<button type="button" id="pwSubmitBottom">Submit ratings</button>';
+  if (list && list.parentNode) { list.parentNode.insertBefore(bottom, list.nextSibling); list.parentNode.insertBefore(overall, bottom); }
+  var banner = document.createElement('div');
+  banner.id = 'pwBanner'; banner.setAttribute('role', 'status'); banner.setAttribute('aria-live', 'assertive');
+  document.body.appendChild(banner);
+  var legend = document.querySelector('.legend');
+  if (legend && /How Submit works/.test(legend.textContent)) {
+    legend.innerHTML = '<strong>How Submit works:</strong> rate the designs, type your name if you are not Dan (blank = Dan), then click <strong>Submit ratings</strong>. ' +
+      'Your ratings go straight to PowderWraps and a big green <strong>&ldquo;Ratings received &check;&rdquo;</strong> banner confirms it. ' +
+      'If sending ever fails you get a red banner with <strong>Retry</strong> plus a backup copy / download.';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('header p'), function (p) {
+    p.innerHTML = p.innerHTML.replace('Submit downloads ratings JSON.', 'Submit sends your ratings to PowderWraps.');
+  });
+  function buttons() { return [btn, $('pwSubmitBottom')].filter(Boolean); }
+  function setButtons(html, disabled) { buttons().forEach(function (b) { b.innerHTML = html; b.disabled = !!disabled; }); }
+
+  function showBanner(kind, html) {
+    banner.className = 'show ' + kind;
+    banner.innerHTML = html + (kind === 'busy' ? '' : '<button type="button" class="pw-x" aria-label="Close">&times;</button>');
+    var x = banner.querySelector('.pw-x'); if (x) x.onclick = function () { banner.className = ''; };
+  }
+
+  // ---- data ----
+  function newSid() {
+    var a = new Uint8Array(8); (window.crypto || window.msCrypto).getRandomValues(a);
+    return Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+  }
+  function gather() {
+    var data = (typeof collect === 'function') ? collect() : { batch: PACK, items: [] };
+    var text = (typeof payloadText === 'function') ? payloadText(data) : '';
+    var entered = (($('pwName') || {}).value || '').trim();
+    var reviewer = entered || 'Dan';
+    var perDesign = {};
+    data.items.forEach(function (i) { if (i.suggestion) perDesign[i.id] = i.suggestion; });
+    return {
+      type: 'POWDERWRAPS_SUBMISSION', schema: 1, sid: newSid(),
+      pack: PACK, batch: data.batch, reviewer: reviewer, reviewer_entered: entered,
+      bot_test: BOT || /^bot-?test$/i.test(entered),
+      submitted_at: new Date().toISOString(),
+      page: location.origin + location.pathname,
+      rated: data.items.filter(function (i) { return i.rating !== null; }).length,
+      total: data.items.length,
+      ratings: data.items.map(function (i) { return { id: i.id, name: i.name, kind: i.kind, rating: i.rating, note: i.suggestion || '' }; }),
+      notes: { overall: (($('pwOverall') || {}).value || '').trim(), per_design: perDesign },
+      payload: text
+    };
+  }
+  function b64utf8(s) {
+    var bytes = new TextEncoder().encode(s), bin = '';
+    for (var i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  function messages(sub) {   // ntfy keeps messages <= 4096 bytes as text; split bigger ones
+    var s = JSON.stringify(sub);
+    if (new TextEncoder().encode(s).length <= 3800) return [s];
+    var b = b64utf8(s), size = 3000, n = Math.ceil(b.length / size), out = [];
+    for (var i = 0; i < n; i++) out.push('PWCHUNK ' + sub.sid + ' ' + (i + 1) + '/' + n + ' ' + b.slice(i * size, (i + 1) * size));
+    return out;
+  }
+  async function postOne(base, msgs, tags) {
+    var last = null;
+    for (var i = 0; i < msgs.length; i++) {
+      var ctl = new AbortController(), t = setTimeout(function () { ctl.abort(); }, 15000);
+      try {
+        var r = await fetch(base + '/' + CFG.topic + '?tags=' + encodeURIComponent(tags), { method: 'POST', body: msgs[i], cache: 'no-store', signal: ctl.signal });
+        if (!r.ok) throw new Error(base.replace('https://', '') + ' answered HTTP ' + r.status);
+        var j = await r.json().catch(function () { return {}; });
+        if (!j.id) throw new Error(base.replace('https://', '') + ' gave no receipt');
+        last = j.id;
+      } catch (e) {
+        var host = base.replace('https://', '');
+        if (e && e.name === 'AbortError') throw new Error(host + ' timed out');
+        if (e && e.name === 'TypeError') throw new Error('could not reach ' + host);
+        throw e;
+      } finally { clearTimeout(t); }
+    }
+    return { base: base, id: last };
+  }
+  function anySuccess(promises) {   // like Promise.any, works on older Safari
+    return new Promise(function (resolve, reject) {
+      var errs = [], left = promises.length;
+      promises.forEach(function (p) { p.then(resolve, function (e) { errs.push(e && e.message ? e.message : String(e)); if (--left === 0) reject(errs); }); });
+    });
+  }
+
+  // ---- backup actions (only offered after a failure) ----
+  function copyText(s) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(s);
+    return new Promise(function (res, rej) {
+      var ta = document.createElement('textarea'); ta.value = s; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy') ? res() : rej(); } catch (e) { rej(e); } ta.remove();
+    });
+  }
+  function download(sub) {
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(sub, null, 2)], { type: 'application/json' }));
+    a.download = 'PowderWraps-ratings-' + sub.pack + '-' + sub.reviewer.replace(/[^A-Za-z0-9_-]+/g, '_') + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  // ---- submit ----
+  var sending = false;
+  async function send(sub) {
+    if (sending) return;
+    sending = true;
+    setButtons('<span class="pw-spin"></span>Sending&hellip;', true);
+    showBanner('busy', '<span class="pw-big"><span class="pw-spin"></span>Sending your ratings&hellip;</span>Please keep this page open for a moment.');
+    var msgs = messages(sub), tags = 'pwratings' + (sub.bot_test ? ',bot-test' : '');
+    try {
+      var res = await anySuccess(CFG.endpoints.map(function (b) { return postOne(b, msgs, tags); }));
+      try { localStorage.setItem('pw_reviewer_name', sub.reviewer_entered); } catch (e) {}
+      var when = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      showBanner('ok', '<span class="pw-big">Ratings received &check; (' + sub.rated + ' design' + (sub.rated === 1 ? '' : 's') + ') &mdash; thank you</span>' +
+        'From <b>' + esc(sub.reviewer) + '</b> &middot; pack ' + esc(sub.pack) + ' &middot; ' + when + ' &middot; receipt ' + esc(res.id) +
+        (sub.total - sub.rated > 0 ? '<br/>' + (sub.total - sub.rated) + ' design(s) left blank.' : '') +
+        '<br/>Nothing else to do. Change anything and you can submit again.');
+      setButtons('Sent &check;', true);
+      document.body.setAttribute('data-pw-submit', 'ok');
+    } catch (errs) {
+      showBanner('err', '<span class="pw-big">Ratings NOT sent &#10007;</span>' +
+        'Your ratings did not reach PowderWraps (' + esc([].concat(errs).join('; ')) + '). Check your connection and tap Retry.' +
+        '<div class="pw-row"><button type="button" class="pw-retry">Retry</button><button type="button" class="pw-copy">Copy ratings (backup)</button><button type="button" class="pw-dl">Download file (backup)</button></div>' +
+        '<pre>' + esc(sub.payload) + '</pre>');
+      banner.querySelector('.pw-retry').onclick = function () { send(sub); };   // same sid -> no duplicates
+      banner.querySelector('.pw-copy').onclick = function (ev) { copyText(sub.payload).then(function () { ev.target.textContent = 'Copied ✓ — paste it to PowderWraps'; }, function () { ev.target.textContent = 'Select the text below and copy it'; }); };
+      banner.querySelector('.pw-dl').onclick = function () { download(sub); };
+      setButtons('Submit ratings', false);
+      document.body.setAttribute('data-pw-submit', 'error');
+    } finally { sending = false; }
+  }
+  function onSubmit() {
+    var sub = gather();
+    if (sub.rated === 0 && !sub.notes.overall && !Object.keys(sub.notes.per_design).length) {
+      showBanner('warn', '<span class="pw-big">Nothing to send yet</span>Pick 0 / 1 / 2 on at least one design, then tap Submit.');
+      return;
+    }
+    send(sub);
+  }
+  buttons().forEach(function (b) { b.addEventListener('click', onSubmit); });
+  window.doSubmit = onSubmit;
+  function rearm() { if (!sending && btn.disabled) setButtons('Submit updated ratings', false); }
+  document.addEventListener('change', rearm, true);
+  document.addEventListener('input', rearm, true);
+})();
+</script>
+<!-- PW_SUBMIT_V2 END -->
 </body>
 </html>
