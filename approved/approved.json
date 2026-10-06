@@ -1,5 +1,155 @@
 [
  {
+  "id": "d10-01",
+  "kind": "ski+board",
+  "name": "Cosmic Jeep Trail",
+  "motif": "Swirling teal/violet/magenta galaxy over a snowy Colorado fourteener; a small orange vintage jeep with glowing headlights climbs the switchback road; spruce forest at the tail. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d10-02",
+  "kind": "ski+board",
+  "name": "Monet Alpenglow",
+  "motif": "Monet-style impressionist Maroon Bells at alpenglow: thick brushstrokes in coral, rose, lavender and turquoise, a reflecting alpine lake below. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d10-03",
+  "kind": "ski+board",
+  "name": "Nebula Topo",
+  "motif": "Luminous cyan and gold Colorado topo contour lines laid over a violet-magenta-teal nebula with stars (topo + galaxy, both things Dan loves). (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d10-04",
+  "kind": "ski+board",
+  "name": "Ringed Planet Rise",
+  "motif": "Giant turquoise/magenta ringed planet at the nose, green-violet aurora ribbons mid-ski, glowing snowy fourteeners at the tail. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d10-05",
+  "kind": "ski+board",
+  "name": "Supernova Divide",
+  "motif": "Exploding supernova with electric-blue, hot-pink and gold shockwave rings; cosmic dust streams down to the snowy Continental Divide. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d10-06",
+  "kind": "ski+board",
+  "name": "Headlamp Couloir",
+  "motif": "Moody night backcountry: steep couloir between black rock walls, a lone ski mountaineer's headlamp cutting through falling snow; steel-blue and charcoal. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": "really like. make a few more like this.",
+  "staged": false
+ },
+ {
+  "id": "d10-08",
+  "kind": "ski+board",
+  "name": "Thunderhead",
+  "motif": "Violent thunderhead with branching electric-blue/violet lightning striking a jagged snowy summit; dark navy storm sky. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d10-09",
+  "kind": "ski+board",
+  "name": "Lava Line",
+  "motif": "Black volcanic basalt split by one long molten lava river (orange/red/gold) running tip to tail, snow and steam along the edges. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d10-10",
+  "kind": "ski+board",
+  "name": "Powder Rig",
+  "motif": "Lifted off-road 4x4 with a blazing roof light bar blasting through deep powder at night under snowy peaks and stars. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d10-11",
+  "kind": "ski+board",
+  "name": "Columbine Meadow",
+  "motif": "Watercolor-gouache alpine meadow of blue columbines (Colorado state flower), purple lupines and pink paintbrush below snowy peaks; periwinkle, lilac, blush and mint. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d10-13",
+  "kind": "ski+board",
+  "name": "Opal Aurora",
+  "motif": "Iridescent opal/holographic aurora ribbons in pearl, seafoam, lilac, rose and pale gold flowing tip to tail, delicate snowy peaks at the tail. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d10-15",
+  "kind": "ski+board",
+  "name": "Rose Ombre Ridges",
+  "motif": "Layered misty mountain ridgelines in an ombre from peach and coral through dusty rose and mauve to lavender and plum, small pale sun at the nose. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d10-16",
+  "kind": "ski+board",
+  "name": "Sakura Peaks",
+  "motif": "Pink cherry blossom branches arching over the nose, petals drifting like snow, soft periwinkle-lavender snowy peaks at the tail; watercolor. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": "love. this is fantastic. more like this.",
+  "staged": false
+ },
+ {
+  "id": "d10-17",
+  "kind": "ski+board",
+  "name": "Rocket Yeti",
+  "motif": "Happy fluffy yeti in ski goggles riding a rocket up through a rainbow nebula (teal, purple, pink, lime) with planets; snowy peaks and exhaust trail at the tail. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d10-12r2",
+  "kind": "ski+board",
+  "name": "Contour Ridgeline Forest",
+  "motif": "Redesign of d8-12r (Maybe): full-color Colorado summit topo with darker forest greens, brown contour linework, blue lakes and creeks, log cabin, orange jeep moved to the tail (clear of the bindings), hidden words \"no rules\" / \"locals only\" along the contours. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-06",
+  "batch": "20261006",
+  "suggestion": null,
+  "staged": false
+ },
+ {
   "id": "d9-17",
   "kind": "ski",
   "name": "Aurora Glacier",
