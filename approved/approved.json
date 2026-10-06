@@ -1,5 +1,45 @@
 [
  {
+  "id": "d8-13",
+  "kind": "ski",
+  "name": "Starry Divide",
+  "motif": "Van Gogh \"Starry Night\" impasto sky over the Colorado Rockies in cobalt, violet, teal and gold (Canva + Real-ESRGAN 4x)",
+  "date": "2026-10-01",
+  "batch": "20261001",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d8-14",
+  "kind": "ski",
+  "name": "Event Horizon",
+  "motif": "Black hole with a glowing lensed accretion disk (cyan / violet / magenta / orange) spanning both skis, star fields and a sliver of snowy peaks at the tails. (Canva + Real-ESRGAN 4x)",
+  "date": "2026-10-01",
+  "batch": "20261001",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d8-15",
+  "kind": "ski",
+  "name": "Nebula Prism",
+  "motif": "Violet-teal nebula seen through blended crystal prism facets (no outlines, not stained glass) (Canva + Real-ESRGAN 4x)",
+  "date": "2026-10-01",
+  "batch": "20261001",
+  "suggestion": null,
+  "staged": false
+ },
+ {
+  "id": "d8-16",
+  "kind": "board",
+  "name": "Moon Jeep",
+  "motif": "Lifted vintage jeep with glowing headlights launching off a lunar crater ridge under a giant ringed planet and magenta spiral galaxy. (Canva + Real-ESRGAN 4x)",
+  "date": "2026-10-01",
+  "batch": "20261001",
+  "suggestion": null,
+  "staged": false
+ },
+ {
   "id": "d7-09r2",
   "kind": "board",
   "name": "Ink Peak Night",
