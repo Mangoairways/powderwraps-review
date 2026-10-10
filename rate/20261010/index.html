@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PowderWraps Rate Designs — 20261010</title>
+<style>
+  :root { --bg:#f4f4f2; --card:#fff; --ink:#111; --muted:#555; --line:#ddd; --keep:#0a7a3e; --maybe:#a15c00; --bad:#9b1c1c; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+  header { position:sticky; top:0; z-index:10; background:#111; color:#fff; padding:14px 18px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; }
+  header h1 { margin:0; font-size:16px; font-weight:700; }
+  header p { margin:0; font-size:12px; opacity:.85; max-width:620px; }
+  .actions { display:flex; gap:8px; flex-wrap:wrap; }
+  button { cursor:pointer; border:none; border-radius:8px; padding:10px 16px; font-weight:700; font-size:14px; }
+  #submitBtn { background:#fff; color:#111; }
+  #submitBtn:hover { background:#e8e8e8; }
+  #copyBtn { background:#333; color:#fff; }
+  main { max-width:880px; margin:0 auto; padding:16px; }
+  .legend { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:14px; font-size:13px; color:var(--muted); }
+  .legend strong { color:var(--ink); }
+  .section-h { margin:18px 0 10px; font-size:14px; font-weight:700; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:12px; display:grid; grid-template-columns: 88px 1fr; gap:14px; }
+  .card img { width:72px; height:auto; max-height:300px; object-fit:contain; background:#f0f0f0; border-radius:6px; }
+  .meta h2 { margin:0 0 4px; font-size:15px; }
+  .meta .motif { margin:0 0 6px; font-size:12px; color:var(--muted); }
+  .meta .hint { margin:0 0 10px; font-size:11px; color:#7a4a10; }
+  .rates { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .rates label { display:flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:13px; cursor:pointer; user-select:none; }
+  .rates input { accent-color:#111; }
+  .rates label.sel-0 { border-color:var(--bad); background:#fdecec; }
+  .rates label.sel-1 { border-color:var(--maybe); background:#fff4e5; }
+  .rates label.sel-2 { border-color:var(--keep); background:#e8f7ee; }
+  textarea { width:100%; min-height:64px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:inherit; font-size:13px; resize:vertical; }
+  #toast { display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#111; color:#fff; padding:12px 18px; border-radius:10px; font-size:13px; max-width:90vw; z-index:20; }
+  footer { text-align:center; color:var(--muted); font-size:12px; padding:20px; }
+
+  main { max-width:1100px; margin:0 auto; padding:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:16px; display:grid; grid-template-columns: minmax(220px, 320px) 1fr; gap:18px; align-items:start; }
+  .card .thumb-wrap { cursor:zoom-in; }
+  .card img { width:100%; height:auto; max-height:720px; object-fit:contain; background:#111; border-radius:8px; display:block; }
+  @media (max-width:720px){ .card { grid-template-columns: 1fr; } .card img { max-height:520px; } }
+  #lightbox { display:none; position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.92); align-items:center; justify-content:center; padding:24px; cursor:zoom-out; }
+  #lightbox.open { display:flex; }
+  #lightbox img { max-width:min(96vw, 900px); max-height:94vh; object-fit:contain; border-radius:8px; }
+  #lightbox .hint { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); color:#ccc; font-size:12px; }
+
+
+  /* 20261010: two products per card — ski pair + board thumbs side by side above the meta */
+  main { max-width:1300px; }
+  .card { display:block; padding:16px; }
+  .card .pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+  .card .thumb-wrap { cursor:zoom-in; }
+  .card .thumb-wrap .cap { font-size:12px; color:var(--muted); margin:0 0 4px; }
+  .card img { width:100%; height:auto; max-height:none; object-fit:contain; background:#151515; border-radius:8px; display:block; }
+  @media (max-width:720px){ .card .pair { grid-template-columns:1fr; } }
+  #lightbox { padding:12px; }
+  #lightbox img { max-width:98vw; max-height:96vh; width:auto; height:auto; }
+</style>
+</head>
+<body>
+<a href="../../" style="position:fixed;left:10px;bottom:10px;z-index:30;background:#111;color:#fff;padding:8px 12px;border-radius:999px;font:600 12px -apple-system,Segoe UI,Arial,sans-serif;text-decoration:none;opacity:.85">← All packs</a>
+<header>
+  <div>
+    <h1>PowderWraps — Rate designs (20261010)</h1>
+    <p>0 Bad · 1 Maybe · 2 Keep. ONE PRINT, TWO PRODUCTS: every card shows the same art as a ski pair (left) and a snowboard (right) — click either image to enlarge. 20 cards: Current style · Men 18–50 · Women 25–40 · Kids under 13 · Redesign. Floor RED — rate only; nothing lists until Keep + media green.</p>
+  </div>
+  <div class="actions">
+    <button type="button" id="copyBtn">Copy payload</button>
+    <button type="button" id="submitBtn">Submit ratings</button>
+  </div>
+</header>
+<main>
+  <div class="legend">
+    <strong>How Submit works:</strong> click <strong>Submit ratings</strong> → ratings are sent straight to PowderWraps and a big green "Ratings received ✓" banner confirms it.
+    Only if sending fails: red banner with Retry + backup copy / download (<code>PowderWraps-ratings-20261010.json</code>).
+  </div>
+  <div id="list"></div>
+</main>
+<footer>PowderWraps Intel · single-file rater · 20261010 · 20 cards (ski pair + board each)</footer>
+<div id="lightbox" onclick="this.classList.remove('open')"><img id="lightboxImg" alt=""/><div class="hint">Click anywhere to close</div></div>
+<div id="toast"></div>
+<script>
+const BATCH = "20261010";
+const WEBHOOK_URL = "";
+const DESIGNS = [{"id": "d12-01", "name": "Geometric Cosmic Mountains", "motif": "Geometric crystalline Colorado peaks under a concentric yellow-magenta cosmic sun; teal/violet/orange color blocks; star field and orbit arcs.", "kind": "ski+board", "img": "img/1214b7f299711d.jpg", "full": "img/1f1a4ba563eb33.jpg", "img2": "img/f62904f0ab0792.jpg", "full2": "img/200fb9328484cb.jpg", "rate": "", "note": "", "section": "current", "suggestion_applied": ""}, {"id": "d12-02", "name": "Meteor Lake Jeep", "motif": "Teal-to-magenta Milky Way and meteor shower over snowy peaks reflected in an alpine lake; spruce silhouette at the tail; vintage orange jeep sticker whole on one ski.", "kind": "ski+board", "img": "img/1cd41d107f4fee.jpg", "full": "img/3266753e314a3a.jpg", "img2": "img/6179db30264bba.jpg", "full2": "img/ef92cd56a68997.jpg", "rate": "", "note": "", "section": "current", "suggestion_applied": ""}, {"id": "d12-03", "name": "Violet Aerial Ridges", "motif": "Top-down cosmic topo of jagged ridges in magenta, violet and electric cyan with hairline striations \u2014 Colorado contours as nebula.", "kind": "ski+board", "img": "img/ff3ff11a0eb693.jpg", "full": "img/df4f6706ab3cb6.jpg", "img2": "img/9582b5ae70d83f.jpg", "full2": "img/337efc8edaa114.jpg", "rate": "", "note": "", "section": "current", "suggestion_applied": ""}, {"id": "d12-04", "name": "Carved Alloy Peaks", "motif": "Palette-knife carved mountain slopes in silver, bronze and sapphire \u2014 flowing geologic grooves tip to tail under muted gold peaks.", "kind": "ski+board", "img": "img/1754eb1ea80674.jpg", "full": "img/aa6ba2c751cd60.jpg", "img2": "img/7922359b454282.jpg", "full2": "img/e8d1e5e22d1797.jpg", "rate": "", "note": "", "section": "current", "suggestion_applied": ""}, {"id": "d12-05", "name": "Night Line Tracks", "motif": "Moody steel-blue night face of a snowy fourteener with a single elegant S-turn ski line tip to tail under a star-dusted twilight sky.", "kind": "ski+board", "img": "img/e6d46d1d2bcb6a.jpg", "full": "img/aaf0d0ad889591.jpg", "img2": "img/b4f6f442978625.jpg", "full2": "img/ad9dc3d9452b5e.jpg", "rate": "", "note": "", "section": "current", "suggestion_applied": ""}, {"id": "d12-06", "name": "Peacock Cascade", "motif": "Famous-art color cascade: iridescent teal/emerald/gold peacock feathers stacked down a charcoal navy ground with oxidized patina sides.", "kind": "ski+board", "img": "img/70d5ae01a352b4.jpg", "full": "img/2b48e4df18cd8a.jpg", "img2": "img/2bfd84e2c764f5.jpg", "full2": "img/83130960ca6e1a.jpg", "rate": "", "note": "", "section": "current", "suggestion_applied": ""}, {"id": "d12-07", "name": "Bighorn Ridge Rebel", "motif": "Redesign of d10-07: high-contrast stencil mountain peaks with cyan/magenta spray-paint slashes (in-your-face rebellious). Engraved bighorn ram sticker whole on ONE ski, clear of bindings.", "kind": "ski+board", "img": "img/16c7f4dd0f5b3f.jpg", "full": "img/e798cf28574720.jpg", "img2": "img/a2cd5e7c4accf0.jpg", "full2": "img/299b213f74e76a.jpg", "rate": "", "note": "", "section": "men", "suggestion_applied": "Dan on d10-07: 'great idea. but lets make this a bit more in your face or rebelious.'"}, {"id": "d12-08", "name": "Moonwalk Ridge", "motif": "Headlamp Couloir vibe: charcoal-blue night ridge crowned by a full moon; lone ski-mountaineer silhouette with headlamp kept whole on the left ski via crop.", "kind": "ski+board", "img": "img/b2c9eafa365c04.jpg", "full": "img/e0892f45dd570a.jpg", "img2": "img/96e36d8ed491fd.jpg", "full2": "img/edd7a104b4f17b.jpg", "rate": "", "note": "", "section": "men", "suggestion_applied": ""}, {"id": "d12-09", "name": "Grizzly Night Forest", "motif": "Woodcut/etching night forest under jagged moonlit peaks (charcoal/ice). Grizzly bear sticker placed whole on one ski, clear of bindings.", "kind": "ski+board", "img": "img/5c315043482306.jpg", "full": "img/0b7b3dfb227e00.jpg", "img2": "img/594ef0fdbd7b29.jpg", "full2": "img/e5bb41ea087a7b.jpg", "rate": "", "note": "", "section": "men", "suggestion_applied": ""}, {"id": "d12-10", "name": "Icefall Beacon", "motif": "Dramatic night ice couloir: luminous cyan frozen waterfall between black rock walls; climber headlamp cropped onto ONE ski.", "kind": "ski+board", "img": "img/bccdc0c2b94706.jpg", "full": "img/bf3494f80bc822.jpg", "img2": "img/39921f8422ae96.jpg", "full2": "img/d1b6bb0ae510ec.jpg", "rate": "", "note": "", "section": "men", "suggestion_applied": ""}, {"id": "d12-11", "name": "Sasquatch Moon Peak", "motif": "Block-print navy night: full moon over a snowy Colorado peak framed by spruce. Sasquatch sticker whole on one ski / board centre.", "kind": "ski+board", "img": "img/db2c038a9bd2de.jpg", "full": "img/f3cb1943152e33.jpg", "img2": "img/be32131a867b23.jpg", "full2": "img/be7b5866f73943.jpg", "rate": "", "note": "", "section": "men", "suggestion_applied": ""}, {"id": "d12-12", "name": "Moon Garden Stagger", "motif": "Redesign of d10-14: midnight navy with gold-line ferns/roses as dual ski borders; moon phases staggered left/right so every phase stays visible on the skis.", "kind": "ski+board", "img": "img/67e62080605606.jpg", "full": "img/8b87a83c9fda15.jpg", "img2": "img/ff47cf40272690.jpg", "full2": "img/d75085646bd6bb.jpg", "rate": "", "note": "", "section": "women", "suggestion_applied": "Dan on d10-14: 'cool but the mons wont be seen on the skis. so that means maybe stagger them? but neat idea.'"}, {"id": "d12-13", "name": "Wisteria Mist Peaks", "motif": "Sakura Peaks vibe: soft watercolor lavender wisteria hanging over periwinkle-lilac snowy peaks in mist.", "kind": "ski+board", "img": "img/23b5b3db325b1f.jpg", "full": "img/7aa8fa6c4eedd4.jpg", "img2": "img/b1223deb383126.jpg", "full2": "img/ddce1981a7e786.jpg", "rate": "", "note": "", "section": "women", "suggestion_applied": ""}, {"id": "d12-14", "name": "Magnolia Alpine Lake", "motif": "Elegant watercolor: pale-pink magnolia branches over lavender snowy peaks reflected in a teal alpine lake; petals drifting.", "kind": "ski+board", "img": "img/430ead60990b16.jpg", "full": "img/203c9a3c34ea22.jpg", "img2": "img/1a3649798be4d1.jpg", "full2": "img/80cec729c3480e.jpg", "rate": "", "note": "", "section": "women", "suggestion_applied": ""}, {"id": "d12-15", "name": "Lavender Crescent Field", "motif": "Twilight lavender field rows leading to a snowy summit under a thin crescent moon; soft pink/gold cloud bands.", "kind": "ski+board", "img": "img/5c8a67e146d689.jpg", "full": "img/ed3db8622d2a47.jpg", "img2": "img/12bd3f72aadc1a.jpg", "full2": "img/c48b14651123b8.jpg", "rate": "", "note": "", "section": "women", "suggestion_applied": ""}, {"id": "d12-16", "name": "Butterfly Spiral Trail", "motif": "Ethereal pastel: cerulean and violet butterflies spiraling tip to tail through soft lilac peaks under a peach dawn sky.", "kind": "ski+board", "img": "img/3847bac1ff0960.jpg", "full": "img/fe7fb5f16be282.jpg", "img2": "img/c00201eeaaa3b9.jpg", "full2": "img/bdfb89316c1b1e.jpg", "rate": "", "note": "", "section": "women", "suggestion_applied": ""}, {"id": "d12-17", "name": "Dino Shred One-Ski", "motif": "Redesign of d10-18: snowy tropical volcano run; cool cartoon T-rex (ski goggles) sticker WHOLE on one ski; board gets snowboarder-dino variant.", "kind": "ski+board", "img": "img/66990c52334935.jpg", "full": "img/0d498823c15dcf.jpg", "img2": "img/5a08e8964898e4.jpg", "full2": "img/da004f657138dd.jpg", "rate": "", "note": "", "section": "kids", "suggestion_applied": "Dan on d10-18: 'Dino face should be focused on one ski so we don't lose it on the edges.'"}, {"id": "d12-18", "name": "Frost Dragon One-Ski", "motif": "Redesign of d10-19: aurora/ice mountain scene; friendly teal-purple frost dragon sticker WHOLE on one ski (and board centre).", "kind": "ski+board", "img": "img/25be77f9817604.jpg", "full": "img/567771a8957392.jpg", "img2": "img/8404b364863a99.jpg", "full2": "img/198a3956c5ba5b.jpg", "rate": "", "note": "", "section": "kids", "suggestion_applied": "Dan on d10-19: 'dragon face should be focused on one ski so we don't lose it.'"}, {"id": "d12-19", "name": "Monster Truck One-Ski", "motif": "Redesign of d10-20: neon fireworks over snowy hills; chunky lego-style monster truck sticker (no logos) WHOLE on one ski.", "kind": "ski+board", "img": "img/e39131aa2df828.jpg", "full": "img/57a1ceda08d8bf.jpg", "img2": "img/8ef37f0627a857.jpg", "full2": "img/87ab15f60edaed.jpg", "rate": "", "note": "", "section": "kids", "suggestion_applied": "Dan on d10-20: 'try and get the monster truck on one ski. maybe a lego? but with no logos?'"}, {"id": "d12-20", "name": "Cosmic Octo One-Ski", "motif": "Redesign of d10-21: glowing galaxy wave scene; cheerful purple octopus sticker face WHOLE on one ski so it never falls off the edge.", "kind": "ski+board", "img": "img/046a6ad18b6533.jpg", "full": "img/18543849d7738d.jpg", "img2": "img/3d7a647deab029.jpg", "full2": "img/7ee2ff7ec455bf.jpg", "rate": "", "note": "", "section": "kids", "suggestion_applied": "Dan on d10-21: 'the faces should be on one ski. don't let the face fall off.'"}];
+;
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 4500);
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function sectionTitle(sec) {
+  if (sec === 'current') return 'Current style — galaxy, blended color, famous art, jeeps, Colorado topo';
+  if (sec === 'men') return 'Men 18–50';
+  if (sec === 'women') return 'Women 25–40';
+  if (sec === 'kids') return 'Kids under 13';
+  if (sec === 'redesign') return 'Redesign — from your Maybes';
+  return 'Designs';
+}
+
+
+function openLb(src) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  lb.classList.add('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'); });
+
+function render() {
+  const root = document.getElementById('list');
+  root.innerHTML = '';
+  let lastSection = '';
+  DESIGNS.forEach((d, i) => {
+    if (d.section !== lastSection) {
+      lastSection = d.section;
+      const h = document.createElement('div');
+      h.className = 'section-h';
+      h.textContent = sectionTitle(d.section);
+      root.appendChild(h);
+    }
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.id = d.id;
+    const rates = [0,1,2].map(v => {
+      const labels = {0:'0 Bad', 1:'1 Maybe', 2:'2 Keep'};
+      return `<label class="rate"><input type="radio" name="rate_${d.id}" value="${v}"/> ${labels[v]}</label>`;
+    }).join('');
+    const hint = d.suggestion_applied ? `<p class="hint">Applied: ${escapeHtml(d.suggestion_applied)}</p>` : '';
+    card.innerHTML = `
+      <div class="pair"><div class="thumb-wrap" onclick="openLb(DESIGNS[${i}].full || DESIGNS[${i}].img)"><p class="cap">Ski pair · tap to enlarge</p><img src="${d.img}" alt="${d.id} ski pair"/></div><div class="thumb-wrap" onclick="openLb(DESIGNS[${i}].full2 || DESIGNS[${i}].img2)"><p class="cap">Snowboard · same art · tap to enlarge</p><img src="${d.img2}" alt="${d.id} snowboard"/></div></div>
+      <div class="meta">
+        <h2>${d.id} · ${escapeHtml(d.name)}</h2>
+        <p class="motif">${escapeHtml(d.motif)}</p>
+        ${hint}
+        <div class="rates" data-id="${d.id}">${rates}</div>
+        <textarea placeholder="Suggestion (optional)" data-suggestion="${d.id}"></textarea>
+      </div>`;
+    root.appendChild(card);
+    card.querySelectorAll('input[type=radio]').forEach(inp => {
+      inp.addEventListener('change', () => {
+        card.querySelectorAll('.rates label').forEach(l => l.className = 'rate');
+        inp.closest('label').classList.add('rate', 'sel-' + inp.value);
+      });
+    });
+  });
+}
+
+function collect() {
+  const items = [];
+  DESIGNS.forEach(d => {
+    const checked = document.querySelector(`input[name="rate_${d.id}"]:checked`);
+    const noteEl = document.querySelector(`textarea[data-suggestion="${d.id}"]`);
+    items.push({
+      id: d.id,
+      kind: d.kind,
+      name: d.name,
+      rating: checked ? Number(checked.value) : null,
+      suggestion: noteEl ? noteEl.value.trim() : ''
+    });
+  });
+  return {
+    type: 'POWDERWRAPS_RATINGS',
+    version: '0-1-2',
+    batch: BATCH,
+    submitted_at: new Date().toISOString(),
+    items
+  };
+}
+
+function payloadText(data) {
+  const lines = [`POWDERWRAPS_RATINGS version=0-1-2 date=${data.batch}`];
+  data.items.forEach(it => {
+    const v = it.rating === null ? '' : String(it.rating);
+    const note = (it.suggestion || '').replace(/\r?\n/g, ' ').replace(/\|/g, '/');
+    lines.push(`${it.id}|${v}|${note}`);
+  });
+  return lines.join('\n');
+}
+
+async function doSubmit() {
+  const data = collect();
+  const missing = data.items.filter(i => i.rating === null);
+  if (missing.length) {
+    if (!confirm(`${missing.length} designs still unrated. Submit anyway?`)) return;
+  }
+  const text = payloadText(data);
+  const jsonStr = JSON.stringify(data, null, 2);
+  const blob = new Blob([jsonStr], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `PowderWraps-ratings-${BATCH}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  try { await navigator.clipboard.writeText(text); } catch (e) {}
+
+  let webhookMsg = '';
+  if (WEBHOOK_URL) {
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: jsonStr,
+        mode: 'cors'
+      });
+      webhookMsg = res.ok ? ' Webhook delivered.' : ` Webhook status ${res.status}.`;
+    } catch (e) {
+      webhookMsg = ' Webhook blocked by browser — attach the downloaded JSON in chat.';
+    }
+  } else {
+    webhookMsg = ' Attach the downloaded JSON in PowderWraps Intel chat (webhook URL not set yet).';
+  }
+  toast('Downloaded ratings file.' + webhookMsg);
+}
+
+document.getElementById('submitBtn').addEventListener('click', doSubmit);
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const text = payloadText(collect());
+  try {
+    await navigator.clipboard.writeText(text);
+    toast('Payload copied — paste into PowderWraps Intel chat.');
+  } catch (e) {
+    prompt('Copy this payload:', text);
+  }
+});
+
+render();
+</script>
+<!-- PW_SUBMIT_V2 BEGIN -->
+<script>var PW_PACK_ID = "20261010";</script>
+<style>
+  /* PW_SUBMIT_V2: sends ratings to PowderWraps (public ntfy mailbox, no keys) + big on-page confirmation */
+  #copyBtn, #payloadBox { display:none !important; }
+  #pwNameWrap { display:flex; align-items:center; gap:6px; color:#fff; font-size:13px; font-weight:600; }
+  #pwName { border:1px solid #666; border-radius:8px; padding:9px 10px; font:inherit; font-size:14px; width:150px; background:#222; color:#fff; }
+  #pwName::placeholder { color:#aaa; }
+  #submitBtn { background:#0a7a3e !important; color:#fff !important; min-width:150px; }
+  #submitBtn:hover { background:#086632 !important; }
+  #submitBtn[disabled] { opacity:.85; cursor:default; }
+  #pwOverallWrap { background:#fff; border:1px solid #ddd; border-radius:12px; padding:12px 14px; margin:8px 0 16px; }
+  #pwOverallWrap h3 { margin:0 0 8px; font-size:14px; }
+  #pwBottomBar { display:flex; justify-content:center; margin:6px 0 60px; }
+  #pwBottomBar button { background:#0a7a3e; color:#fff; font-size:16px; padding:14px 26px; border-radius:10px; }
+  #pwBottomBar button[disabled] { opacity:.85; cursor:default; }
+  #pwBanner { display:none; position:fixed; left:50%; top:12px; transform:translateX(-50%); z-index:60; width:min(700px,94vw);
+              border-radius:14px; padding:18px 48px 18px 20px; box-shadow:0 12px 34px rgba(0,0,0,.4); font-size:14px; line-height:1.45; }
+  #pwBanner.show { display:block; }
+  #pwBanner.ok { background:#0a7a3e; color:#fff; }
+  #pwBanner.err { background:#b3261e; color:#fff; }
+  #pwBanner.busy { background:#1f2a44; color:#fff; }
+  #pwBanner.warn { background:#a15c00; color:#fff; }
+  #pwBanner .pw-big { display:block; font-size:22px; font-weight:800; margin-bottom:4px; }
+  #pwBanner .pw-x { position:absolute; right:10px; top:8px; background:transparent; color:#fff; font-size:22px; padding:4px 10px; }
+  #pwBanner .pw-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  #pwBanner .pw-row button { background:#fff; color:#111; }
+  #pwBanner .pw-row button.pw-retry { background:#111; color:#fff; font-size:16px; }
+  #pwBanner pre { white-space:pre-wrap; word-break:break-word; background:rgba(255,255,255,.95); color:#111; border-radius:8px; padding:8px 10px; max-height:30vh; overflow:auto; font-size:12px; user-select:all; margin:10px 0 0; }
+  .pw-spin { display:inline-block; width:15px; height:15px; border:3px solid currentColor; border-right-color:transparent; border-radius:50%; animation:pwspin .7s linear infinite; vertical-align:-2px; margin-right:8px; }
+  @keyframes pwspin { to { transform:rotate(360deg); } }
+</style>
+<script>
+(function () {
+  'use strict';
+  var CFG = { topic: "pw-ratings-71692fd9368a4505f5b6d095", endpoints: ["https://ntfy.sh", "https://ntfy.envs.net"] };
+  var PACK = (typeof PW_PACK_ID !== 'undefined' && PW_PACK_ID) ? PW_PACK_ID : (typeof BATCH !== 'undefined' ? BATCH : 'unknown');
+  var BOT = /[?&]pwbot=1\b/.test(location.search);
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  // ---- UI wiring (replaces the old download-only Submit) ----
+  var old = $('submitBtn');
+  var btn = old.cloneNode(true);           // clone drops the legacy click listener
+  old.parentNode.replaceChild(btn, old);
+  btn.textContent = 'Submit ratings';
+  var nameWrap = document.createElement('label');
+  nameWrap.id = 'pwNameWrap';
+  nameWrap.innerHTML = 'Your name <input id="pwName" type="text" placeholder="Dan" autocomplete="name" maxlength="40"/>';
+  btn.parentNode.insertBefore(nameWrap, btn);
+  try { $('pwName').value = localStorage.getItem('pw_reviewer_name') || ''; } catch (e) {}
+  var list = $('list');
+  var overall = document.createElement('div');
+  overall.id = 'pwOverallWrap';
+  overall.innerHTML = '<h3>Overall notes (optional)</h3><textarea id="pwOverall" placeholder="Anything about this pack as a whole"></textarea>';
+  var bottom = document.createElement('div');
+  bottom.id = 'pwBottomBar';
+  bottom.innerHTML = '<button type="button" id="pwSubmitBottom">Submit ratings</button>';
+  if (list && list.parentNode) { list.parentNode.insertBefore(bottom, list.nextSibling); list.parentNode.insertBefore(overall, bottom); }
+  var banner = document.createElement('div');
+  banner.id = 'pwBanner'; banner.setAttribute('role', 'status'); banner.setAttribute('aria-live', 'assertive');
+  document.body.appendChild(banner);
+  var legend = document.querySelector('.legend');
+  if (legend && /How Submit works/.test(legend.textContent)) {
+    legend.innerHTML = '<strong>How Submit works:</strong> rate the designs, type your name if you are not Dan (blank = Dan), then click <strong>Submit ratings</strong>. ' +
+      'Your ratings go straight to PowderWraps and a big green <strong>&ldquo;Ratings received &check;&rdquo;</strong> banner confirms it. ' +
+      'If sending ever fails you get a red banner with <strong>Retry</strong> plus a backup copy / download.';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('header p'), function (p) {
+    p.innerHTML = p.innerHTML.replace('Submit downloads ratings JSON.', 'Submit sends your ratings to PowderWraps.');
+  });
+  function buttons() { return [btn, $('pwSubmitBottom')].filter(Boolean); }
+  function setButtons(html, disabled) { buttons().forEach(function (b) { b.innerHTML = html; b.disabled = !!disabled; }); }
+
+  function showBanner(kind, html) {
+    banner.className = 'show ' + kind;
+    banner.innerHTML = html + (kind === 'busy' ? '' : '<button type="button" class="pw-x" aria-label="Close">&times;</button>');
+    var x = banner.querySelector('.pw-x'); if (x) x.onclick = function () { banner.className = ''; };
+  }
+
+  // ---- data ----
+  function newSid() {
+    var a = new Uint8Array(8); (window.crypto || window.msCrypto).getRandomValues(a);
+    return Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+  }
+  function gather() {
+    var data = (typeof collect === 'function') ? collect() : { batch: PACK, items: [] };
+    var text = (typeof payloadText === 'function') ? payloadText(data) : '';
+    var entered = (($('pwName') || {}).value || '').trim();
+    var reviewer = entered || 'Dan';
+    var perDesign = {};
+    data.items.forEach(function (i) { if (i.suggestion) perDesign[i.id] = i.suggestion; });
+    return {
+      type: 'POWDERWRAPS_SUBMISSION', schema: 1, sid: newSid(),
+      pack: PACK, batch: data.batch, reviewer: reviewer, reviewer_entered: entered,
+      bot_test: BOT || /^bot-?test$/i.test(entered),
+      submitted_at: new Date().toISOString(),
+      page: location.origin + location.pathname,
+      rated: data.items.filter(function (i) { return i.rating !== null; }).length,
+      total: data.items.length,
+      ratings: data.items.map(function (i) { return { id: i.id, name: i.name, kind: i.kind, rating: i.rating, note: i.suggestion || '' }; }),
+      notes: { overall: (($('pwOverall') || {}).value || '').trim(), per_design: perDesign },
+      payload: text
+    };
+  }
+  function b64utf8(s) {
+    var bytes = new TextEncoder().encode(s), bin = '';
+    for (var i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  function messages(sub) {   // ntfy keeps messages <= 4096 bytes as text; split bigger ones
+    var s = JSON.stringify(sub);
+    if (new TextEncoder().encode(s).length <= 3800) return [s];
+    var b = b64utf8(s), size = 3000, n = Math.ceil(b.length / size), out = [];
+    for (var i = 0; i < n; i++) out.push('PWCHUNK ' + sub.sid + ' ' + (i + 1) + '/' + n + ' ' + b.slice(i * size, (i + 1) * size));
+    return out;
+  }
+  async function postOne(base, msgs, tags) {
+    var last = null;
+    for (var i = 0; i < msgs.length; i++) {
+      var ctl = new AbortController(), t = setTimeout(function () { ctl.abort(); }, 15000);
+      try {
+        var r = await fetch(base + '/' + CFG.topic + '?tags=' + encodeURIComponent(tags), { method: 'POST', body: msgs[i], cache: 'no-store', signal: ctl.signal });
+        if (!r.ok) throw new Error(base.replace('https://', '') + ' answered HTTP ' + r.status);
+        var j = await r.json().catch(function () { return {}; });
+        if (!j.id) throw new Error(base.replace('https://', '') + ' gave no receipt');
+        last = j.id;
+      } catch (e) {
+        var host = base.replace('https://', '');
+        if (e && e.name === 'AbortError') throw new Error(host + ' timed out');
+        if (e && e.name === 'TypeError') throw new Error('could not reach ' + host);
+        throw e;
+      } finally { clearTimeout(t); }
+    }
+    return { base: base, id: last };
+  }
+  function anySuccess(promises) {   // like Promise.any, works on older Safari
+    return new Promise(function (resolve, reject) {
+      var errs = [], left = promises.length;
+      promises.forEach(function (p) { p.then(resolve, function (e) { errs.push(e && e.message ? e.message : String(e)); if (--left === 0) reject(errs); }); });
+    });
+  }
+
+  // ---- backup actions (only offered after a failure) ----
+  function copyText(s) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(s);
+    return new Promise(function (res, rej) {
+      var ta = document.createElement('textarea'); ta.value = s; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy') ? res() : rej(); } catch (e) { rej(e); } ta.remove();
+    });
+  }
+  function download(sub) {
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(sub, null, 2)], { type: 'application/json' }));
+    a.download = 'PowderWraps-ratings-' + sub.pack + '-' + sub.reviewer.replace(/[^A-Za-z0-9_-]+/g, '_') + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  // ---- submit ----
+  var sending = false;
+  async function send(sub) {
+    if (sending) return;
+    sending = true;
+    setButtons('<span class="pw-spin"></span>Sending&hellip;', true);
+    showBanner('busy', '<span class="pw-big"><span class="pw-spin"></span>Sending your ratings&hellip;</span>Please keep this page open for a moment.');
+    var msgs = messages(sub), tags = 'pwratings' + (sub.bot_test ? ',bot-test' : '');
+    try {
+      var res = await anySuccess(CFG.endpoints.map(function (b) { return postOne(b, msgs, tags); }));
+      try { localStorage.setItem('pw_reviewer_name', sub.reviewer_entered); } catch (e) {}
+      var when = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      showBanner('ok', '<span class="pw-big">Ratings received &check; (' + sub.rated + ' design' + (sub.rated === 1 ? '' : 's') + ') &mdash; thank you</span>' +
+        'From <b>' + esc(sub.reviewer) + '</b> &middot; pack ' + esc(sub.pack) + ' &middot; ' + when + ' &middot; receipt ' + esc(res.id) +
+        (sub.total - sub.rated > 0 ? '<br/>' + (sub.total - sub.rated) + ' design(s) left blank.' : '') +
+        '<br/>Nothing else to do. Change anything and you can submit again.');
+      setButtons('Sent &check;', true);
+      document.body.setAttribute('data-pw-submit', 'ok');
+    } catch (errs) {
+      showBanner('err', '<span class="pw-big">Ratings NOT sent &#10007;</span>' +
+        'Your ratings did not reach PowderWraps (' + esc([].concat(errs).join('; ')) + '). Check your connection and tap Retry.' +
+        '<div class="pw-row"><button type="button" class="pw-retry">Retry</button><button type="button" class="pw-copy">Copy ratings (backup)</button><button type="button" class="pw-dl">Download file (backup)</button></div>' +
+        '<pre>' + esc(sub.payload) + '</pre>');
+      banner.querySelector('.pw-retry').onclick = function () { send(sub); };   // same sid -> no duplicates
+      banner.querySelector('.pw-copy').onclick = function (ev) { copyText(sub.payload).then(function () { ev.target.textContent = 'Copied ✓ — paste it to PowderWraps'; }, function () { ev.target.textContent = 'Select the text below and copy it'; }); };
+      banner.querySelector('.pw-dl').onclick = function () { download(sub); };
+      setButtons('Submit ratings', false);
+      document.body.setAttribute('data-pw-submit', 'error');
+    } finally { sending = false; }
+  }
+  function onSubmit() {
+    var sub = gather();
+    if (sub.rated === 0 && !sub.notes.overall && !Object.keys(sub.notes.per_design).length) {
+      showBanner('warn', '<span class="pw-big">Nothing to send yet</span>Pick 0 / 1 / 2 on at least one design, then tap Submit.');
+      return;
+    }
+    send(sub);
+  }
+  buttons().forEach(function (b) { b.addEventListener('click', onSubmit); });
+  window.doSubmit = onSubmit;
+  function rearm() { if (!sending && btn.disabled) setButtons('Submit updated ratings', false); }
+  document.addEventListener('change', rearm, true);
+  document.addEventListener('input', rearm, true);
+})();
+</script>
+<!-- PW_SUBMIT_V2 END -->
+</body>
+</html>
