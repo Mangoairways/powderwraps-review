@@ -4,7 +4,7 @@
 <meta name="robots" content="noindex,nofollow,noarchive"/>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PowderWraps Rate Designs — 20260929pm See-Thru</title>
+<title>PowderWraps Rate Designs — 20261013</title>
 <style>
   :root { --bg:#f4f4f2; --card:#fff; --ink:#111; --muted:#555; --line:#ddd; --keep:#0a7a3e; --maybe:#a15c00; --bad:#9b1c1c; }
   * { box-sizing: border-box; }
@@ -47,28 +47,24 @@
   #lightbox .hint { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); color:#ccc; font-size:12px; }
 
 
-  /* 20260929pm see-thru: BIG horizontal thumbs, full card width, meta below */
-  main { max-width:1500px; }
-  .card { display:block; padding:18px; }
-  .card .views { display:grid; gap:14px; margin-bottom:14px; }
-  .card .thumb-wrap { cursor:zoom-in; position:relative; }
-  .card .thumb-wrap .vlabel { position:absolute; left:10px; bottom:10px; background:rgba(0,0,0,.72); color:#fff; font-size:12px; padding:4px 9px; border-radius:6px; }
-  .card img { width:100%; height:auto; max-height:none; object-fit:contain; background:#18191c; border-radius:8px; display:block; }
-  .meta h2 { font-size:18px; }
-  .meta .motif { font-size:13px; }
-  #lightbox { padding:10px; }
-  #lightbox img { max-width:99vw; max-height:97vh; width:auto; height:auto; }
-  #payloadBox { display:none; background:#fff; border:2px solid #111; border-radius:12px; padding:12px 14px; margin:16px 0; }
-  #payloadBox h3 { margin:0 0 8px; font-size:14px; }
-  #payloadBox pre { margin:0; white-space:pre-wrap; word-break:break-word; font-size:13px; background:#f4f4f2; padding:10px; border-radius:8px; user-select:all; }
+  /* 20261013: two products per card — ski pair + board thumbs side by side above the meta */
+  main { max-width:1300px; }
+  .card { display:block; padding:16px; }
+  .card .pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+  .card .thumb-wrap { cursor:zoom-in; }
+  .card .thumb-wrap .cap { font-size:12px; color:var(--muted); margin:0 0 4px; }
+  .card img { width:100%; height:auto; max-height:none; object-fit:contain; background:#151515; border-radius:8px; display:block; }
+  @media (max-width:720px){ .card .pair { grid-template-columns:1fr; } }
+  #lightbox { padding:12px; }
+  #lightbox img { max-width:98vw; max-height:96vh; width:auto; height:auto; }
 </style>
 </head>
 <body>
 <a href="../../" style="position:fixed;left:10px;bottom:10px;z-index:30;background:#111;color:#fff;padding:8px 12px;border-radius:999px;font:600 12px -apple-system,Segoe UI,Arial,sans-serif;text-decoration:none;opacity:.85">← All packs</a>
 <header>
   <div>
-    <h1>PowderWraps — Rate designs (20260929pm · See-Thru illusion)</h1>
-    <p>0 Bad · 1 Maybe · 2 Keep. Pure-white (#FFFFFF) areas blend into snow so the ski/board looks see-thru. Each design shown as ski PAIR + snowboard on snow. Click any image to enlarge. Submit downloads ratings JSON.</p>
+    <h1>PowderWraps — Rate designs (20261013)</h1>
+    <p>0 Bad · 1 Maybe · 2 Keep. ONE PRINT, TWO PRODUCTS: every card shows the same art as a ski pair (left) and a snowboard (right) — click either image to enlarge. 7 cards: Current style · Men 18–50 · Women 25–40 · Kids under 13 · Redesign. Floor RED — rate only; nothing lists until Keep + media green.</p>
   </div>
   <div class="actions">
     <button type="button" id="copyBtn">Copy payload</button>
@@ -77,19 +73,18 @@
 </header>
 <main>
   <div class="legend">
-    <strong>How Submit works:</strong> click <strong>Submit ratings</strong> → browser downloads <code>PowderWraps-ratings-20260929pm-seethru.json</code>.
-    Attach that file in PowderWraps Intel chat (or paste the copied payload). Optional webhook POST when configured.
+    <strong>How Submit works:</strong> click <strong>Submit ratings</strong> → ratings are sent straight to PowderWraps and a big green "Ratings received ✓" banner confirms it.
+    Only if sending fails: red banner with Retry + backup copy / download (<code>PowderWraps-ratings-20261013.json</code>).
   </div>
   <div id="list"></div>
-  <div id="payloadBox"><h3>Ratings payload (also downloaded as JSON; copied to clipboard if allowed)</h3><pre id="payloadText"></pre></div>
 </main>
-<footer>PowderWraps Intel · single-file rater · 20260929pm see-thru · 2 designs</footer>
+<footer>PowderWraps Intel · single-file rater · 20261013 · 7 cards (ski pair + board each)</footer>
 <div id="lightbox" onclick="this.classList.remove('open')"><img id="lightboxImg" alt=""/><div class="hint">Click anywhere to close</div></div>
 <div id="toast"></div>
 <script>
-const BATCH = "20260929";
+const BATCH = "20261013";
 const WEBHOOK_URL = "";
-const DESIGNS = [{"id": "d6-12", "name": "Bridge Out", "motif": "SEE-THRU: a collapsed wooden rope suspension bridge. Intact plank-and-rope sections at tip and tail, then the bridge is 'out' underfoot \u2014 only splintered plank fragments floating over pure #FFFFFF gaps, so on snow the rider seems to be riding loose boards over nothing. Ski pair: one bridge spans both skis (planks cross both). Canva art on production masks.", "kind": "ski+board", "section": "seethru", "suggestion_applied": "Dan 29 Sep: 'add one for tonight that has some white so it looks like it's see-thru\u2026 riding on something small or huge or broken'", "views": [{"label": "Ski PAIR \u00b7 Bin 3 Standard 168\u2013188 cm", "img": "img/1ff211cf3b775b.jpg", "full": "img/24f032ce824c90.jpg"}, {"label": "Snowboard \u00b7 Bin 3 Standard 150\u2013164 cm", "img": "img/d029528581648b.jpg", "full": "img/236682de746b3e.jpg"}], "img": "img/1ff211cf3b775b.jpg"}, {"id": "d6-13", "name": "Shatterboard", "motif": "SEE-THRU: shattered glacier-ice / glass. Solid midnight-blue ice at the tip cracks into a mosaic, then a big impact star under the boots (between the bindings on the board) blows the ice apart; the pure #FFFFFF gaps between shards read as holes straight through to the snow. Canva art on production masks.", "kind": "ski+board", "section": "seethru", "suggestion_applied": "Dan 29 Sep: 'add one for tonight that has some white so it looks like it's see-thru\u2026 riding on something small or huge or broken'", "views": [{"label": "Ski PAIR \u00b7 Bin 3 Standard 168\u2013188 cm", "img": "img/555f8fa3ee695e.jpg", "full": "img/43e70a7e07b657.jpg"}, {"label": "Snowboard \u00b7 Bin 3 Standard 150\u2013164 cm", "img": "img/e24514ff9c0f05.jpg", "full": "img/c7a273353e53c7.jpg"}], "img": "img/555f8fa3ee695e.jpg"}];
+const DESIGNS = [{"id": "d15-r01", "name": "Cosmic Switchback Night", "motif": "Deep indigo night alpine switchbacks under a violet-teal Milky Way and meteor streaks; a TINY barely-visible vintage orange jeep WHOLE on the LEFT half far down the trail (not under boot area, small like a speck of light on the road); spruce silhouettes at the tail; rich blended cosmic color; vertical 1:2 commercial ski-topsheet; no text no logos.", "kind": "ski+board", "img": "img/553f863603d267.jpg", "full": "img/d196a219ebffb0.jpg", "img2": "img/f20bd51cc9b760.jpg", "full2": "img/6b05552753d4cd.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": "Dan 12 Oct Maybe d13-01: \"Jeep too big. Make it smaller and just barely visible but not under the boot.\""}, {"id": "d15-r02", "name": "Impressionist Tarn Glow", "motif": "Impressionist palette-knife alpine tarn at golden hour: soft lilac, peach, teal and gold mountains richly reflected in still water; NO figures; tip-to-tail vertical; thick painterly strokes, commercial print quality like a museum poster; rich blended color filling the frame.", "kind": "ski+board", "img": "img/b559ac81a4296c.jpg", "full": "img/3a97c9e8e9a845.jpg", "img2": "img/2c2463c0f77e08.jpg", "full2": "img/f8d3b9bae28368.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": "Dan 12 Oct Maybe d13-02: \"Wrong graphic abut I like\" \u2014 regenerate better Impressionist tarn/peaks vibe, no figures."}, {"id": "d15-r03", "name": "Chromium Ice Spires", "motif": "Tall slender chromium-blue ice spires and seracs stacked tip-to-tail so they read clearly on a narrow ski pair; metallic ice highlights under a cold dawn of slate and pale gold; vertical veins of ice from tip to tail; no figures; commercial print quality; designed to look strong when cropped into two thin ski silhouettes.", "kind": "ski+board", "img": "img/18facd33b10441.jpg", "full": "img/12c20f6429b731.jpg", "img2": "img/14bf249a92a239.jpg", "full2": "img/87597a88ddd7a7.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": "Dan 12 Oct Maybe d13-09: \"Doesn't look good in skis\" \u2014 regenerate chrome/ice spires that read well tip-to-tail on a narrow ski pair."}, {"id": "d15-r04", "name": "Midnight Cirque Line", "motif": "Moonlit cirque bowl in steel-blue and deep indigo; ONE clear elegant S-turn ski track carving straight tip-to-tail down the center axis for strong vertical alignment; cinematic night alpine; no person close-up; commercial illustration; clear tip-to-tail vertical composition.", "kind": "ski+board", "img": "img/ff38f646aef6d0.jpg", "full": "img/9c3c8328e457a6.jpg", "img2": "img/b4310db992e4ad.jpg", "full2": "img/23c2b9144e6c95.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": "Dan 12 Oct Maybe d13-11: \"Image cool but not aligned\" \u2014 regenerate with clear vertical alignment for ski/board."}, {"id": "d15-r05", "name": "Mist Meadow Dawn", "motif": "Dawn mist rolling over a richly colored alpine meadow into distant periwinkle and coral peaks; peach, lavender, sage and deep teal sky \u2014 RICH saturated color with almost no white void; watercolor feel but dense pigment; no figures; vertical tip-to-tail.", "kind": "ski+board", "img": "img/805aefd225eb2e.jpg", "full": "img/b2abbee98fcde6.jpg", "img2": "img/037f392b51f077.jpg", "full2": "img/65ed684ab6e604.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": "Dan 12 Oct Maybe d13-15: \"Love the graphic. Too much white\" \u2014 richer color, less white void."}, {"id": "d15-r06", "name": "Snow Owl Glide", "motif": "Friendly snowy owl with soft wings WHOLE clearly on the LEFT half of the tall portrait (never split across center) gliding over gentle night alpine peaks under stars; indigo and soft gold; kid-friendly commercial illustration; no text; owl must fit entirely on one ski.", "kind": "ski+board", "img": "img/ca8ffd67eabf74.jpg", "full": "img/158225b7b63513.jpg", "img2": "img/938fc1b597d344.jpg", "full2": "img/533ba8ae730cc7.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": "Dan 12 Oct Maybe d13-18: (no note) \u2014 refresh kids owl; owl whole on ONE ski (never split)."}, {"id": "d15-r07", "name": "Puffin Powder Slide", "motif": "Playful Madagascar-movie-style cartoon penguins (black-white tuxedo, expressive eyes) PLUS cheerful Atlantic puffins sliding on powder; characters WHOLE \u2014 cluster them on the LEFT half so each character lands on one ski or board center; soft teal ocean-sky into snowy peaks; kid-friendly; more penguins; no text no logos.", "kind": "ski+board", "img": "img/99babf50cdf5e2.jpg", "full": "img/6c29ee5b1ee940.jpg", "img2": "img/eb0f00115d3e84.jpg", "full2": "img/60a5de623b8fc0.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": "Dan 12 Oct Maybe d13-20: \"Can we have more penguins. Also like the Madagascar penguins\" \u2014 more penguins; whole characters on one ski each or board center."}];
 ;
 
 function toast(msg) {
@@ -104,7 +99,11 @@ function escapeHtml(s) {
 }
 
 function sectionTitle(sec) {
-  if (sec === 'seethru') return '20260929pm — See-Thru illusion (new)';
+  if (sec === 'current') return 'Current style — galaxy, blended color, famous art, jeeps, Colorado topo';
+  if (sec === 'men') return 'Men 18–50';
+  if (sec === 'women') return 'Women 25–40';
+  if (sec === 'kids') return 'Kids under 13';
+  if (sec === 'redesign') return 'Redesign — from your Maybes';
   return 'Designs';
 }
 
@@ -137,7 +136,7 @@ function render() {
     }).join('');
     const hint = d.suggestion_applied ? `<p class="hint">Applied: ${escapeHtml(d.suggestion_applied)}</p>` : '';
     card.innerHTML = `
-      <div class="views">${(d.views||[]).map((v, j) => `<div class="thumb-wrap" onclick="openLb(DESIGNS[${i}].views[${j}].full)"><img src="${v.img}" alt="${d.id} ${escapeHtml(v.label)}"/><span class="vlabel">${escapeHtml(v.label)} · click to enlarge</span></div>`).join('')}</div>
+      <div class="pair"><div class="thumb-wrap" onclick="openLb(DESIGNS[${i}].full || DESIGNS[${i}].img)"><p class="cap">Ski pair · tap to enlarge</p><img src="${d.img}" alt="${d.id} ski pair"/></div><div class="thumb-wrap" onclick="openLb(DESIGNS[${i}].full2 || DESIGNS[${i}].img2)"><p class="cap">Snowboard · same art · tap to enlarge</p><img src="${d.img2}" alt="${d.id} snowboard"/></div></div>
       <div class="meta">
         <h2>${d.id} · ${escapeHtml(d.name)}</h2>
         <p class="motif">${escapeHtml(d.motif)}</p>
@@ -198,7 +197,7 @@ async function doSubmit() {
   const blob = new Blob([jsonStr], {type: 'application/json'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `PowderWraps-ratings-20260929pm-seethru.json`;
+  a.download = `PowderWraps-ratings-${BATCH}.json`;
   document.body.appendChild(a);
   a.click();
   a.remove();
@@ -220,10 +219,6 @@ async function doSubmit() {
   } else {
     webhookMsg = ' Attach the downloaded JSON in PowderWraps Intel chat (webhook URL not set yet).';
   }
-  const pb = document.getElementById('payloadBox');
-  document.getElementById('payloadText').textContent = text;
-  pb.style.display = 'block';
-  pb.scrollIntoView({behavior: 'smooth', block: 'center'});
   toast('Downloaded ratings file.' + webhookMsg);
 }
 
@@ -241,7 +236,7 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
 render();
 </script>
 <!-- PW_SUBMIT_V2 BEGIN -->
-<script>var PW_PACK_ID = "20260929pm-seethru";</script>
+<script>var PW_PACK_ID = "20261013";</script>
 <style>
   /* PW_SUBMIT_V2: sends ratings to PowderWraps (public ntfy mailbox, no keys) + big on-page confirmation */
   #copyBtn, #payloadBox { display:none !important; }
