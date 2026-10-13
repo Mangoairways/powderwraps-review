@@ -1,5 +1,126 @@
 [
  {
+  "id": "d13-03",
+  "kind": "ski+board",
+  "name": "Nebula Contour Range",
+  "motif": "Colorado topographic contour ridges reimagined as a glowing nebula in magenta, electric cyan and deep violet; hairline topo striations tip to tail; no text or logos; abstract cosmic cartography. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-12",
+  "batch": "20261012",
+  "suggestion": null,
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d13-04",
+  "kind": "ski+board",
+  "name": "Fauvist Peak Blocks",
+  "motif": "Famous-art inspired Fauvist color-block mountain range: bold flat planes of vermillion, ultramarine, chartreuse and violet stacked as Colorado peaks; painterly edges; vertical tip-to-tail; no text. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-12",
+  "batch": "20261012",
+  "suggestion": null,
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d13-06",
+  "kind": "ski+board",
+  "name": "Andromeda Ridge Glow",
+  "motif": "Andromeda-like galaxy band arching over a sharp snowy ridge; deep space blues and magenta starfields blended into alpine rock; no figures; commercial cosmic landscape illustration. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-12",
+  "batch": "20261012",
+  "suggestion": null,
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d13-07",
+  "kind": "ski+board",
+  "name": "Lantern Couloir",
+  "motif": "Moody night couloir in steel-blue and charcoal; lone skier with bright headlamp beam placed clearly on the LEFT half of the composition descending a narrow chute; star-dusted sky; cinematic; no logos. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-12",
+  "batch": "20261012",
+  "suggestion": "Love",
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d13-08",
+  "kind": "ski+board",
+  "name": "Gale Face Steel",
+  "motif": "Storm-lashed alpine face in steel grey, ice blue and charcoal; horizontal spindrift streaks; dramatic lighting; no figures; vertical ski-topsheet composition; high detail commercial illustration. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-12",
+  "batch": "20261012",
+  "suggestion": null,
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d13-12",
+  "kind": "ski+board",
+  "name": "Cherry Mist Peaks",
+  "motif": "Soft pink cherry blossoms drifting over periwinkle-lavender alpine peaks; watercolor wash sky; Sakura Peaks vein; delicate petals upper third; no figures; tip-to-tail vertical watercolor commercial art. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-12",
+  "batch": "20261012",
+  "suggestion": null,
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d13-13",
+  "kind": "ski+board",
+  "name": "Watercolor Ridge Haze",
+  "motif": "Soft watercolor ridges in blush, periwinkle, sage and cream with misty atmospheric haze; gentle painterly blooms; no flowers splitting across center; tip-to-tail; commercial watercolor illustration. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-12",
+  "batch": "20261012",
+  "suggestion": null,
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d13-14",
+  "kind": "ski+board",
+  "name": "Columbine Wash Valley",
+  "motif": "Soft watercolor alpine meadow of blue-violet columbine flowers flowing into soft lavender peaks; dreamy pastel; floral subject clustered on LEFT half so one ski holds the blooms; no text. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-12",
+  "batch": "20261012",
+  "suggestion": null,
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d13-17",
+  "kind": "ski+board",
+  "name": "Powder Fox Dash",
+  "motif": "Playful cartoon red fox skiing down a snowy hill, fox WHOLE and clearly on the LEFT half of the tall portrait; soft blue and coral snow hills; kid-friendly commercial illustration; no text no logos; not blocky toddler primaries. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-12",
+  "batch": "20261012",
+  "suggestion": null,
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d13-19",
+  "kind": "ski+board",
+  "name": "Rocket Sled Aurora",
+  "motif": "Kid-friendly rocket sled (not a yeti) racing WHOLE on the LEFT half under a green-violet aurora over snowy hills; playful adventure art; no logos no text; soft rich colors not toddler block primaries. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-12",
+  "batch": "20261012",
+  "suggestion": null,
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d14-r2",
+  "kind": "ski+board",
+  "name": "Grizzly Night Forest",
+  "motif": "Woodcut/etching night forest under moonlit peaks. Redesign of d12-09: one grizzly whole on EACH ski (mirrored pair), clear of bindings; board keeps one bear on the nose. (one print, two products: ski pair + snowboard)",
+  "date": "2026-10-12",
+  "batch": "20261012",
+  "suggestion": null,
+  "staged": false,
+  "print_master_url": null
+ },
+ {
   "id": "d12-01",
   "kind": "ski+board",
   "name": "Geometric Cosmic Mountains",
