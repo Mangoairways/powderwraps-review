@@ -1,5 +1,49 @@
 [
  {
+  "id": "d15-r02",
+  "kind": "ski+board",
+  "name": "Impressionist Tarn Glow",
+  "motif": "Impressionist palette-knife alpine tarn at golden hour: soft lilac, peach, teal and gold mountains richly reflected in still water; NO figures; tip-to-tail vertical; thick painterly strokes, commercial print quality like a museum poster; rich blended color filling the frame.",
+  "date": "2026-10-13",
+  "batch": "20261013",
+  "suggestion": "Bob Fucking Ross ladies and gentlemen! Hell yes.",
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d15-r04",
+  "kind": "ski+board",
+  "name": "Midnight Cirque Line",
+  "motif": "Moonlit cirque bowl in steel-blue and deep indigo; ONE clear elegant S-turn ski track carving straight tip-to-tail down the center axis for strong vertical alignment; cinematic night alpine; no person close-up; commercial illustration; clear tip-to-tail vertical composition.",
+  "date": "2026-10-13",
+  "batch": "20261013",
+  "suggestion": "Trippy. Not bad",
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d15-r06",
+  "kind": "ski+board",
+  "name": "Snow Owl Glide",
+  "motif": "Friendly snowy owl with soft wings WHOLE clearly on the LEFT half of the tall portrait (never split across center) gliding over gentle night alpine peaks under stars; indigo and soft gold; kid-friendly commercial illustration; no text; owl must fit entirely on one ski.",
+  "date": "2026-10-13",
+  "batch": "20261013",
+  "suggestion": "Yes putting myself in a 8-16 year girls snowboard boots.",
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "d15-r07",
+  "kind": "ski+board",
+  "name": "Puffin Powder Slide",
+  "motif": "Playful Madagascar-movie-style cartoon penguins (black-white tuxedo, expressive eyes) PLUS cheerful Atlantic puffins sliding on powder; characters WHOLE \u2014 cluster them on the LEFT half so each character lands on one ski or board center; soft teal ocean-sky into snowy peaks; kid-friendly; more penguins; no text no logos.",
+  "date": "2026-10-13",
+  "batch": "20261013",
+  "suggestion": "Yes, I feel like my mom or dad has a tether tied to me and I\u2019m 3\u2019 tall just learning to snowboard.",
+  "staged": false,
+  "print_master_url": null
+ },
+ {
   "id": "d13-03",
   "kind": "ski+board",
   "name": "Nebula Contour Range",
