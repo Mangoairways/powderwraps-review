@@ -1,5 +1,49 @@
 [
  {
+  "id": "k15-01",
+  "kind": "ski+board",
+  "name": "Kittl 261014-01 (Ski)",
+  "motif": "Katy Kittl design 'Kittl 261014-01' (PWKD261014). Made for Ski. Center 6:1 print strip on ski pair + snowboard.",
+  "date": "2026-10-15",
+  "batch": "20261015",
+  "suggestion": "",
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "k15-02",
+  "kind": "ski+board",
+  "name": "Kittl 261014-02 (Ski)",
+  "motif": "Katy Kittl design 'Kittl 261014-02' (PWKD261014). Made for Ski. Center 6:1 print strip on ski pair + snowboard.",
+  "date": "2026-10-15",
+  "batch": "20261015",
+  "suggestion": "",
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "k15-03",
+  "kind": "ski+board",
+  "name": "Kittl 261014-03 (Ski)",
+  "motif": "Katy Kittl design 'Kittl 261014-03' (PWKD261014). Made for Ski. Center 6:1 print strip on ski pair + snowboard.",
+  "date": "2026-10-15",
+  "batch": "20261015",
+  "suggestion": "",
+  "staged": false,
+  "print_master_url": null
+ },
+ {
+  "id": "k15-11",
+  "kind": "ski+board",
+  "name": "Kittl 261014-11 (Ski)",
+  "motif": "Katy Kittl design 'Kittl 261014-11' (PWKD261014). Made for Ski. Center 6:1 print strip on ski pair + snowboard.",
+  "date": "2026-10-15",
+  "batch": "20261015",
+  "suggestion": "",
+  "staged": false,
+  "print_master_url": null
+ },
+ {
   "id": "d15-r02",
   "kind": "ski+board",
   "name": "Impressionist Tarn Glow",
