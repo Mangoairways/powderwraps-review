@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PowderWraps Rate Designs — 20261026</title>
+<style>
+  :root { --bg:#f4f4f2; --card:#fff; --ink:#111; --muted:#555; --line:#ddd; --keep:#0a7a3e; --maybe:#a15c00; --bad:#9b1c1c; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+  header { position:sticky; top:0; z-index:10; background:#111; color:#fff; padding:14px 18px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; }
+  header h1 { margin:0; font-size:16px; font-weight:700; }
+  header p { margin:0; font-size:12px; opacity:.85; max-width:620px; }
+  .actions { display:flex; gap:8px; flex-wrap:wrap; }
+  button { cursor:pointer; border:none; border-radius:8px; padding:10px 16px; font-weight:700; font-size:14px; }
+  #submitBtn { background:#fff; color:#111; }
+  #submitBtn:hover { background:#e8e8e8; }
+  #copyBtn { background:#333; color:#fff; }
+  main { max-width:880px; margin:0 auto; padding:16px; }
+  .legend { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:14px; font-size:13px; color:var(--muted); }
+  .legend strong { color:var(--ink); }
+  .section-h { margin:18px 0 10px; font-size:14px; font-weight:700; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:12px; display:grid; grid-template-columns: 88px 1fr; gap:14px; }
+  .card img { width:72px; height:auto; max-height:300px; object-fit:contain; background:#f0f0f0; border-radius:6px; }
+  .meta h2 { margin:0 0 4px; font-size:15px; }
+  .meta .motif { margin:0 0 6px; font-size:12px; color:var(--muted); }
+  .meta .hint { margin:0 0 10px; font-size:11px; color:#7a4a10; }
+  .rates { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .rates label { display:flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:13px; cursor:pointer; user-select:none; }
+  .rates input { accent-color:#111; }
+  .rates label.sel-0 { border-color:var(--bad); background:#fdecec; }
+  .rates label.sel-1 { border-color:var(--maybe); background:#fff4e5; }
+  .rates label.sel-2 { border-color:var(--keep); background:#e8f7ee; }
+  textarea { width:100%; min-height:64px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:inherit; font-size:13px; resize:vertical; }
+  #toast { display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#111; color:#fff; padding:12px 18px; border-radius:10px; font-size:13px; max-width:90vw; z-index:20; }
+  footer { text-align:center; color:var(--muted); font-size:12px; padding:20px; }
+
+  main { max-width:1100px; margin:0 auto; padding:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:16px; display:grid; grid-template-columns: minmax(220px, 320px) 1fr; gap:18px; align-items:start; }
+  .card .thumb-wrap { cursor:zoom-in; }
+  .card img { width:100%; height:auto; max-height:720px; object-fit:contain; background:#111; border-radius:8px; display:block; }
+  @media (max-width:720px){ .card { grid-template-columns: 1fr; } .card img { max-height:520px; } }
+  #lightbox { display:none; position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.92); align-items:center; justify-content:center; padding:24px; cursor:zoom-out; }
+  #lightbox.open { display:flex; }
+  #lightbox img { max-width:min(96vw, 900px); max-height:94vh; object-fit:contain; border-radius:8px; }
+  #lightbox .hint { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); color:#ccc; font-size:12px; }
+
+
+  /* 20261026: one card = Graphic + Board + Spread pair + Matching pair (layout base from 20261013) — ski pair + board thumbs side by side above the meta */
+  main { max-width:1300px; }
+  .card { display:block; padding:16px; }
+  .card .pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+  .card .thumb-wrap { cursor:zoom-in; }
+  .card .thumb-wrap .cap { font-size:12px; color:var(--muted); margin:0 0 4px; }
+  .card img { width:100%; height:auto; max-height:none; object-fit:contain; background:#151515; border-radius:8px; display:block; }
+  @media (max-width:720px){ .card .pair { grid-template-columns:1fr; } }
+  #lightbox { padding:12px; }
+  #lightbox img { max-width:98vw; max-height:96vh; width:auto; height:auto; }
+  .card .quad { margin-bottom:14px; max-width:760px; }
+  .pwinfo { margin-top:8px; background:#f6f8fb; border:1px solid #ddd; border-radius:8px; padding:8px 10px; font-size:12px; line-height:1.5; text-align:left; }
+  .pwinfo summary { cursor:pointer; font-weight:700; margin-top:4px; }
+  .pwprompt { margin:4px 0 0; white-space:pre-wrap; word-break:break-word; }
+  .pwmis summary { color:#a3470a; }
+  .pwhint { color:#777; margin-top:4px; }
+  .card .quad img { background:#fff; }
+</style>
+</head>
+<body>
+<a href="../../" style="position:fixed;left:10px;bottom:10px;z-index:30;background:#111;color:#fff;padding:8px 12px;border-radius:999px;font:600 12px -apple-system,Segoe UI,Arial,sans-serif;text-decoration:none;opacity:.85">← All packs</a>
+<header>
+  <div>
+    <h1>PowderWraps — Rate designs (20261026)</h1>
+    <p>0 Bad · 1 Maybe · 2 Keep (Approve). ONE KITTL IMAGE, THREE PRODUCTS: every card shows, left to right, the Graphic as it prints, the Board, the Spread ski pair (one image across both skis) and the Matching ski pair (same art on each ski) — tap to enlarge. 18 cards, all passed the print standard. Keep = Approved, ready to print · Maybe = Bob Ross fixes it next run (notes welcome) · Bad = moved to backup, never deleted.</p>
+  </div>
+  <div class="actions">
+    <button type="button" id="copyBtn">Copy payload</button>
+    <button type="button" id="submitBtn">Submit ratings</button>
+  </div>
+</header>
+<main>
+  <div class="legend">
+    <strong>How Submit works:</strong> click <strong>Submit ratings</strong> → ratings are sent straight to PowderWraps and a big green "Ratings received ✓" banner confirms it.
+    Only if sending fails: red banner with Retry + backup copy / download (<code>PowderWraps-ratings-20261026.json</code>).
+  </div>
+  <div id="list"></div>
+</main>
+<footer>PowderWraps · single-file rater · 20261026 · 18 cards (Graphic · Board · Spread pair · Matching pair)</footer>
+<div id="lightbox" onclick="this.classList.remove('open')"><img id="lightboxImg" alt=""/><div class="hint">Click anywhere to close</div></div>
+<div id="toast"></div>
+<script>
+const BATCH = "20261026";
+const WEBHOOK_URL = "";
+const DESIGNS = [{"id": "PWKD261026-01", "name": "Pwkd261026-01 | Tier: Season | Product:", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "45+ smart-money", "trend": "Nature-led muted tones (Dan fix of PWKD261019-10)", "model": "GPT Image 2.5 Flare", "prompt": "realistic close-up of a single white aspen log surface, smooth chalky white bark with dark charcoal eyes, knots and fine horizontal lenticel marks, the bark running continuously as one log down the full height, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. photo-real texture. Palette: chalk white #F2F0EA, charcoal #2B2B2B, warm gray. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no leaves, no branches, no forest scene, no stacked logs. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Season", "product": "Ski", "intent": "Dan fix: aspen log bark only, no leaves, reads like riding on a log", "sidecar": true, "cost": "5", "size": "2160x3840"}, "kind": "board+spread+matching", "img": "img/PWKD261026-01_card.jpg", "full": "img/PWKD261026-01_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-02", "name": "Pwkd261026-02 | Tier: Weekend | Product: (flat vector)", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Families", "trend": "Bold modern fall color (Dan fix of PWKD261018-37/38)", "model": "GPT Image 2.5 Flare", "prompt": "oversized bold red maple leaves caught in one sweeping vertical gust, sharp graphic leaf shapes overlapping with crisp highlights and deep shadow cutouts, high contrast and energetic, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. flat vector bold shapes with matte look. Palette: maple red #C1272D, burnt orange #E8742A, deep navy #0B2545. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no tidy grid repeat, no small scattered leaves, no tablecloth look. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Weekend", "product": "Board", "intent": "Dan fix: maple leaves re-run full-bleed, bolder and modern, not a 1980s placemat", "sidecar": true, "cost": "5", "size": "2160x3840"}, "kind": "board+spread+matching", "img": "img/PWKD261026-02_card.jpg", "full": "img/PWKD261026-02_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-03", "name": "Pwkd261026-03 | Tier: Season | Product:", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Males 20-30", "trend": "Murdered-out minimal (Dan request from PWKD261022-05)", "model": "GPT Image 2.5 Flare", "prompt": "murdered-out forged carbon texture of chopped black carbon flakes with a subtle marbled sheen, one single thin blaze orange accent line running straight down the vertical center, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. photo-real texture. Palette: matte black #0D0D0D, graphite #2E2E2E, blaze orange #FF5A1F. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no second accent line, no woven carbon grid, no honeycomb. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Season", "product": "Board", "intent": "Dan: more like the forged carbon, new accent color, blaze orange", "sidecar": true, "cost": "5", "size": "2160x3840", "flags": "accent lines very thin"}, "kind": "board+spread+matching", "img": "img/PWKD261026-03_card.jpg", "full": "img/PWKD261026-03_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-04", "name": "Pwkd261026-04 | Tier: Weekend | Product:", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Racers/Club kids", "trend": "Murdered-out tech, race identity (Dan request from PWKD261022-05)", "model": "GPT Image 2.5 Flare", "prompt": "dark forged carbon texture of chopped black carbon flakes with a cold metallic sheen, one single thin ice cyan accent line running straight down the vertical center, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. photo-real texture. Palette: matte black #0D0D0D, gunmetal #3A3F44, ice cyan #3FC1D9. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no second accent line, no woven carbon grid, no stripes. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Weekend", "product": "Ski", "intent": "Dan: more forged carbon, ice cyan accent for a fast race look", "sidecar": true, "cost": "5", "size": "2160x3840", "flags": "accent lines very thin"}, "kind": "board+spread+matching", "img": "img/PWKD261026-04_card.jpg", "full": "img/PWKD261026-04_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-05", "name": "Pwkd261026-05 | Tier: Season | Product:", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "45+ smart-money", "trend": "Quiet premium material (Dan request from PWKD261022-05)", "model": "GPT Image 2.5 Flare", "prompt": "deep forged carbon texture of chopped black carbon flakes with a soft satin luster, one single thin champagne gold accent line running straight down the vertical center, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. photo-real texture. Palette: satin black #111111, smoke gray #4A4A4A, champagne gold #C9A86A. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no second accent line, no woven carbon grid, no bling. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Season", "product": "Board", "intent": "Dan: more forged carbon, a refined gold accent for smart-money buyers", "sidecar": true, "cost": "5", "size": "2160x3840", "flags": "accent lines very thin"}, "kind": "board+spread+matching", "img": "img/PWKD261026-05_card.jpg", "full": "img/PWKD261026-05_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-06", "name": "Pwkd261026-06 | Tier: Weekend | Product: (flat vector)", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Teens 13-18", "trend": "Clashing new-energy color", "model": "GPT Image 2.5 Flare", "prompt": "explosive comic-book halftone burst of jagged speed rays and big dot gradients radiating from a central star flash, loud pop-art energy, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. flat vector bold shapes with matte look. Palette: acid yellow #E5E52B, hot pink #E0307A, black #111111. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no speech bubbles, no characters. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Weekend", "product": "Ski", "intent": "Teens rated 6/6; push a loud halftone comic energy", "sidecar": true, "cost": "5", "size": "2160x3840"}, "kind": "board+spread+matching", "img": "img/PWKD261026-06_card.jpg", "full": "img/PWKD261026-06_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-07", "name": "Pwkd261026-07 | Tier: Season | Product: (painterly)", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Teens 13-18", "trend": "Street and park graphics", "model": "GPT Image 2.5 Flare", "prompt": "wild graffiti paint drips and spray splatter running down from bold abstract tag-style swooshes, layered spray fades and sharp outlines, raw street energy, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. rich painterly detail with gloss look. Palette: electric blue #1F5BFF, orange #F26B1D, chrome gray #A7ADB5. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no letters, no words, no brick wall. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Season", "product": "Board", "intent": "Graffiti energy without letters, street credibility", "sidecar": true, "cost": "5", "size": "2160x3840"}, "kind": "board+spread+matching", "img": "img/PWKD261026-07_card.jpg", "full": "img/PWKD261026-07_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-08", "name": "Pwkd261026-08 | Tier: Weekend | Product: (flat vector)", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Teens 13-18", "trend": "Skate-park throwback twist", "model": "GPT Image 2.5 Flare", "prompt": "warped melting black and white checkerboard bending into a liquid swirl down the center, glossy distortion with one bright color bleed through the cracks, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. flat vector bold shapes with matte look. Palette: black #111111, white #F5F5F5, acid lime #A4D233. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no flat straight checker grid. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Weekend", "product": "Board", "intent": "Modern warped checkerboard, skate culture", "sidecar": true, "cost": "5", "size": "2160x3840"}, "kind": "board+spread+matching", "img": "img/PWKD261026-08_card.jpg", "full": "img/PWKD261026-08_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-09", "name": "Pwkd261026-09 | Tier: Season | Product: (painterly)", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Males 20-30", "trend": "Earth tones with a cubist twist", "model": "GPT Image 2.5 Flare", "prompt": "one massive faceted cubist mountain peak broken into sharp angular planes like shattered stained glass, bold dark lead lines between earth-tone facets, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. rich painterly detail with gloss look. Palette: rust #9C4A2B, olive #6B7A3A, sand #D9C49A, slate. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no stacked peaks, no sky scene repeat. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Season", "product": "Ski", "intent": "Faceted mountain art that feels hand-made and original", "sidecar": true, "cost": "5", "size": "2160x3840", "flags": "reads as repeated triangles"}, "kind": "board+spread+matching", "img": "img/PWKD261026-09_card.jpg", "full": "img/PWKD261026-09_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-10", "name": "Pwkd261026-10 | Tier: Weekend | Product: (flat vector)", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Males 20-30", "trend": "Moody raw mountain art", "model": "GPT Image 2.5 Flare", "prompt": "near-black topographic contour lines rising into one jagged summit, a narrow slit of ember sunrise glowing just behind the tip, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. flat vector bold shapes with matte look. Palette: charcoal #1C1C1C, bone #E6DFD0, ember orange #E0612A. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no multiple summits, no stacked ridges. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Weekend", "product": "Board", "intent": "Dark peak with a warm slit of light, quiet power", "sidecar": true, "cost": "5", "size": "2160x3840", "flags": "multiple summits vs brief"}, "kind": "board+spread+matching", "img": "img/PWKD261026-10_card.jpg", "full": "img/PWKD261026-10_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-11", "name": "Pwkd261026-11 | Tier: Season | Product: (painterly)", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Women ~30", "trend": "Rich blues and purples, technical", "model": "GPT Image 2.5 Flare", "prompt": "precise macro of an ice crystal lattice with sharp hexagonal frost structures and fine fracture lines, one thin gold line threading through the center, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. rich painterly detail with gloss look. Palette: glacier blue #6FA8DC, deep violet #3B2A6B, champagne gold #C9A86A. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no ribbons, no fluff, no soft clouds. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Season", "product": "Board", "intent": "Women ~30 rethink: technical crystal detail, not soft", "sidecar": true, "cost": "5", "size": "2160x3840", "flags": "purple/violet heavy, gold line faint"}, "kind": "board+spread+matching", "img": "img/PWKD261026-11_card.jpg", "full": "img/PWKD261026-11_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-12", "name": "Pwkd261026-12 | Tier: Weekend | Product: (flat vector)", "motif": "strip \u00b7 board crop 715 px \u00b7 board + spread + matching skis", "ctx": {"group": "Women ~30", "trend": "Pastel plus dark anchor", "model": "GPT Image 2.5 Flare", "prompt": "bold modernist overlapping arcs and half circles in crisp interlocking color blocks, architectural and confident, Bauhaus-inspired geometry, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. flat vector bold shapes with matte look. Palette: peach #F4A88A, turquoise #2BB3B1, navy #0B2545. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no florals, no soft gradients. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Weekend", "product": "Ski", "intent": "Women ~30 rethink: bold modernist color-block arcs, graphic and confident", "sidecar": true, "cost": "5", "size": "2160x3840"}, "kind": "board+spread+matching", "img": "img/PWKD261026-12_card.jpg", "full": "img/PWKD261026-12_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-13", "name": "Pwkd261026-13 | Tier: Season | Product:", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Women ~30", "trend": "Fewer gendered looks, technical premium", "model": "GPT Image 2.5 Flare", "prompt": "brushed titanium metal surface with a fine laser-etched hexagon micro-pattern and soft lavender anodized tint, precise machined detail, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. photo-real texture. Palette: titanium gray #8A8D91, lavender #B8A6D9, navy #1B2A4A. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no scratches, no rust. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Season", "product": "Ski", "intent": "Women ~30 rethink: machined metal with laser detail", "sidecar": true, "cost": "5", "size": "2160x3840", "flags": "navy not visible, flat lavender-gray"}, "kind": "board+spread+matching", "img": "img/PWKD261026-13_card.jpg", "full": "img/PWKD261026-13_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-14", "name": "Pwkd261026-14 | Tier: Weekend | Product: (flat vector)", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Families", "trend": "Playful character art", "model": "GPT Image 2.5 Flare", "prompt": "cheerful cartoon foxes and marmots peeking from a snowy pine forest, friendly faces, chunky rounded shapes, bold outlines, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. flat vector bold shapes with matte look. Palette: forest green #2E6B3F, acid yellow #E5D23B, cream #F4EBD9. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no scary faces. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Weekend", "product": "Board", "intent": "Families rated well; new fox and marmot world", "sidecar": true, "cost": "5", "size": "2160x3840"}, "kind": "board+spread+matching", "img": "img/PWKD261026-14_card.jpg", "full": "img/PWKD261026-14_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-15", "name": "Pwkd261026-15 | Tier: Season | Product: (painterly)", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Families", "trend": "Mini-me matching fun", "model": "GPT Image 2.5 Flare", "prompt": "friendly cartoon polar bears sliding on their bellies down a sparkling snowy slope, joyful expressions, bouncy snow sprays, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. rich painterly detail with gloss look. Palette: sky blue #5DADE2, snow white #F7F9FB, cherry red #D7263D. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no ice water, no hunting. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Season", "product": "Ski", "intent": "Big happy critter scene that crops well for parent and kid sets", "sidecar": true, "cost": "5", "size": "2160x3840", "flags": "added berries/branches"}, "kind": "board+spread+matching", "img": "img/PWKD261026-15_card.jpg", "full": "img/PWKD261026-15_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-16", "name": "Pwkd261026-16 | Tier: Weekend | Product: (painterly)", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Families", "trend": "Storybook winter dusk", "model": "GPT Image 2.5 Flare", "prompt": "cheerful cartoon owls perched on snowy pine branches at dusk, big round eyes, soft falling snow, warm glowing lanterns, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. rich painterly detail with gloss look. Palette: dusk indigo #2C3E73, warm amber #F2A541, pine green #2E6B3F. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no spooky mood. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Weekend", "product": "Ski", "intent": "Cozy storybook look for matching family sets", "sidecar": true, "cost": "5", "size": "2160x3840", "flags": "scene not flat repeat"}, "kind": "board+spread+matching", "img": "img/PWKD261026-16_card.jpg", "full": "img/PWKD261026-16_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-17", "name": "Pwkd261026-17 | Tier: Season | Product: (flat vector)", "motif": "full-bleed \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Racers/Club kids", "trend": "Race red and black", "model": "GPT Image 2.5 Flare", "prompt": "diagonal slalom-gate panels slicing down the canvas with streaking motion blur and crisp speed lines, sharp race energy, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. flat vector bold shapes with matte look. Palette: hot red #D7263D, black #111111, white #F5F5F5. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no numbers, no flags with text. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Season", "product": "Board", "intent": "Gate-speed stripes club kids want", "sidecar": true, "cost": "5", "size": "2160x3840"}, "kind": "board+spread+matching", "img": "img/PWKD261026-17_card.jpg", "full": "img/PWKD261026-17_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261026-18", "name": "Pwkd261026-18 | Tier: Weekend | Product: (flat vector)", "motif": "strip \u00b7 board crop 769 px \u00b7 board + spread + matching skis", "ctx": {"group": "Racers/Club kids", "trend": "Teal and grey tech split", "model": "GPT Image 2.5 Flare", "prompt": "wind-tunnel airflow lines bending smoothly around a central teardrop form, fine technical streamlines and pressure gradients, precise engineering look, seamless all-over pattern that fills the entire canvas edge to edge, full bleed, vertical flow from top to bottom, tall portrait composition, key detail in the top third, calm vertical center line, main motifs centered and repeated down the full height, nothing important within 8% of any edge, flat 2D print artwork, no border, no frame, no margins. flat vector bold shapes with matte look. Palette: teal #1B998B, graphite #3A3F44, white #F5F5F5. Avoid: no people, no clothing, no silhouettes, no product, no mockup, no text or logos, no neon or fluorescent, no stopwatch, no numbers. Rich CMYK-printable colors.", "prompt_source": "sidecar", "tier": "Weekend", "product": "Ski", "intent": "Racers rethink: aerodynamic tech, less generic stripes", "sidecar": true, "cost": "5", "size": "2160x3840"}, "kind": "board+spread+matching", "img": "img/PWKD261026-18_card.jpg", "full": "img/PWKD261026-18_card_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}];
+;
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 4500);
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function sectionTitle(sec) {
+  if (sec === 'current') return 'Current style — galaxy, blended color, famous art, jeeps, Colorado topo';
+  if (sec === 'men') return 'Men 18–50';
+  if (sec === 'women') return 'Women 25–40';
+  if (sec === 'kids') return 'Kids under 13';
+  if (sec === 'kittl') return 'Kittl designs — 20261026';
+  if (sec === 'redesign') return 'Redesign — from your Maybes';
+  return 'Designs';
+}
+
+
+function openLb(src) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  lb.classList.add('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'); });
+
+function render() {
+  const root = document.getElementById('list');
+  root.innerHTML = '';
+  let lastSection = '';
+  DESIGNS.forEach((d, i) => {
+    if (d.section !== lastSection) {
+      lastSection = d.section;
+      const h = document.createElement('div');
+      h.className = 'section-h';
+      h.textContent = sectionTitle(d.section);
+      root.appendChild(h);
+    }
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.id = d.id;
+    const rates = [0,1,2].map(v => {
+      const labels = {0:'0 Bad', 1:'1 Maybe', 2:'2 Keep'};
+      return `<label class="rate"><input type="radio" name="rate_${d.id}" value="${v}"/> ${labels[v]}</label>`;
+    }).join('');
+    const hint = d.suggestion_applied ? `<p class="hint">Applied: ${escapeHtml(d.suggestion_applied)}</p>` : '';
+    card.innerHTML = `
+      <div class="quad"><div class="thumb-wrap" onclick="openLb(DESIGNS[${i}].full || DESIGNS[${i}].img)"><p class="cap">Graphic · Board · Spread pair · Matching pair — tap to enlarge</p><img src="${d.img}" alt="${d.id} graphic, board, spread pair, matching pair"/></div>${d.ctx ? `<div class="pwinfo"><div><b>${d.id}</b>${['tier','product'].filter(k => d.ctx[k]).map(k => ` · <b>${k[0].toUpperCase()+k.slice(1)}:</b> ${escapeHtml(d.ctx[k])}`).join('')}</div><div><b>Group:</b> ${escapeHtml(d.ctx.group)} · <b>Trend:</b> ${escapeHtml(d.ctx.trend)} · <b>Model:</b> ${escapeHtml(d.ctx.model)}</div>${d.ctx.intent ? `<div><b>Intent:</b> ${escapeHtml(d.ctx.intent)}</div>` : ''}${!d.ctx.sidecar ? `<div><b>Cost / Size / Flags:</b> no Bob Ross sidecar for this design</div>` : ''}${d.ctx.sidecar ? `<div><b>Cost:</b> ${escapeHtml(d.ctx.cost || 'not recorded')} · <b>Size:</b> ${escapeHtml(d.ctx.size || 'not recorded')} · <b>Flags:</b> ${escapeHtml(d.ctx.flags || 'none')}${d.ctx.sidecar_error ? ' · ' + escapeHtml(d.ctx.sidecar_error) : ''}</div>` : ''}<details open><summary>Exact prompt${d.ctx.prompt_source === 'sidecar' ? ' (as used, from Bob Ross sidecar)' : ''}</summary><p class="pwprompt">${escapeHtml(d.ctx.prompt)}</p></details>${d.ctx.prompt_mismatch ? `<details class="pwmis"><summary>⚠ Prompt used differs from the brief</summary><p class="pwprompt">${escapeHtml(d.ctx.prompt_brief)}</p></details>` : ''}<div class="pwhint">Rate it for its target group.</div></div>` : ''}</div>
+      <div class="meta">
+        <h2>${d.id} · ${escapeHtml(d.name)}</h2>
+        <p class="motif">${escapeHtml(d.motif)}</p>
+        ${hint}
+        <div class="rates" data-id="${d.id}">${rates}</div>
+        <textarea placeholder="Suggestion (optional)" data-suggestion="${d.id}"></textarea>
+      </div>`;
+    root.appendChild(card);
+    card.querySelectorAll('input[type=radio]').forEach(inp => {
+      inp.addEventListener('change', () => {
+        card.querySelectorAll('.rates label').forEach(l => l.className = 'rate');
+        inp.closest('label').classList.add('rate', 'sel-' + inp.value);
+      });
+    });
+  });
+}
+
+function collect() {
+  const items = [];
+  DESIGNS.forEach(d => {
+    const checked = document.querySelector(`input[name="rate_${d.id}"]:checked`);
+    const noteEl = document.querySelector(`textarea[data-suggestion="${d.id}"]`);
+    items.push({
+      id: d.id,
+      kind: d.kind,
+      name: d.name,
+      rating: checked ? Number(checked.value) : null,
+      suggestion: noteEl ? noteEl.value.trim() : ''
+    });
+  });
+  return {
+    type: 'POWDERWRAPS_RATINGS',
+    version: '0-1-2',
+    batch: BATCH,
+    submitted_at: new Date().toISOString(),
+    items
+  };
+}
+
+function payloadText(data) {
+  const lines = [`POWDERWRAPS_RATINGS version=0-1-2 date=${data.batch}`];
+  data.items.forEach(it => {
+    const v = it.rating === null ? '' : String(it.rating);
+    const note = (it.suggestion || '').replace(/\r?\n/g, ' ').replace(/\|/g, '/');
+    lines.push(`${it.id}|${v}|${note}`);
+  });
+  return lines.join('\n');
+}
+
+async function doSubmit() {
+  const data = collect();
+  const missing = data.items.filter(i => i.rating === null);
+  if (missing.length) {
+    if (!confirm(`${missing.length} designs still unrated. Submit anyway?`)) return;
+  }
+  const text = payloadText(data);
+  const jsonStr = JSON.stringify(data, null, 2);
+  const blob = new Blob([jsonStr], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `PowderWraps-ratings-${BATCH}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  try { await navigator.clipboard.writeText(text); } catch (e) {}
+
+  let webhookMsg = '';
+  if (WEBHOOK_URL) {
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: jsonStr,
+        mode: 'cors'
+      });
+      webhookMsg = res.ok ? ' Webhook delivered.' : ` Webhook status ${res.status}.`;
+    } catch (e) {
+      webhookMsg = ' Webhook blocked by browser — attach the downloaded JSON in chat.';
+    }
+  } else {
+    webhookMsg = ' Attach the downloaded JSON in PowderWraps Intel chat (webhook URL not set yet).';
+  }
+  toast('Downloaded ratings file.' + webhookMsg);
+}
+
+document.getElementById('submitBtn').addEventListener('click', doSubmit);
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const text = payloadText(collect());
+  try {
+    await navigator.clipboard.writeText(text);
+    toast('Payload copied — paste into PowderWraps Intel chat.');
+  } catch (e) {
+    prompt('Copy this payload:', text);
+  }
+});
+
+render();
+</script>
+<!-- PW_SUBMIT_V2 BEGIN -->
+<script>var PW_PACK_ID = "20261026";</script>
+<style>
+  /* PW_SUBMIT_V2: sends ratings to PowderWraps (public ntfy mailbox, no keys) + big on-page confirmation */
+  #copyBtn, #payloadBox { display:none !important; }
+  #pwNameWrap { display:flex; align-items:center; gap:6px; color:#fff; font-size:13px; font-weight:600; }
+  #pwName { border:1px solid #666; border-radius:8px; padding:9px 10px; font:inherit; font-size:14px; width:150px; background:#222; color:#fff; }
+  #pwName::placeholder { color:#aaa; }
+  #submitBtn { background:#0a7a3e !important; color:#fff !important; min-width:150px; }
+  #submitBtn:hover { background:#086632 !important; }
+  #submitBtn[disabled] { opacity:.85; cursor:default; }
+  #pwOverallWrap { background:#fff; border:1px solid #ddd; border-radius:12px; padding:12px 14px; margin:8px 0 16px; }
+  #pwOverallWrap h3 { margin:0 0 8px; font-size:14px; }
+  #pwBottomBar { display:flex; justify-content:center; margin:6px 0 60px; }
+  #pwBottomBar button { background:#0a7a3e; color:#fff; font-size:16px; padding:14px 26px; border-radius:10px; }
+  #pwBottomBar button[disabled] { opacity:.85; cursor:default; }
+  #pwBanner { display:none; position:fixed; left:50%; top:12px; transform:translateX(-50%); z-index:60; width:min(700px,94vw);
+              border-radius:14px; padding:18px 48px 18px 20px; box-shadow:0 12px 34px rgba(0,0,0,.4); font-size:14px; line-height:1.45; }
+  #pwBanner.show { display:block; }
+  #pwBanner.ok { background:#0a7a3e; color:#fff; }
+  #pwBanner.err { background:#b3261e; color:#fff; }
+  #pwBanner.busy { background:#1f2a44; color:#fff; }
+  #pwBanner.warn { background:#a15c00; color:#fff; }
+  #pwBanner .pw-big { display:block; font-size:22px; font-weight:800; margin-bottom:4px; }
+  #pwBanner .pw-x { position:absolute; right:10px; top:8px; background:transparent; color:#fff; font-size:22px; padding:4px 10px; }
+  #pwBanner .pw-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  #pwBanner .pw-row button { background:#fff; color:#111; }
+  #pwBanner .pw-row button.pw-retry { background:#111; color:#fff; font-size:16px; }
+  #pwBanner pre { white-space:pre-wrap; word-break:break-word; background:rgba(255,255,255,.95); color:#111; border-radius:8px; padding:8px 10px; max-height:30vh; overflow:auto; font-size:12px; user-select:all; margin:10px 0 0; }
+  .pw-spin { display:inline-block; width:15px; height:15px; border:3px solid currentColor; border-right-color:transparent; border-radius:50%; animation:pwspin .7s linear infinite; vertical-align:-2px; margin-right:8px; }
+  @keyframes pwspin { to { transform:rotate(360deg); } }
+</style>
+<script>
+(function () {
+  'use strict';
+  var CFG = { topic: "pw-ratings-71692fd9368a4505f5b6d095", endpoints: ["https://ntfy.sh", "https://ntfy.envs.net"] };
+  var PACK = (typeof PW_PACK_ID !== 'undefined' && PW_PACK_ID) ? PW_PACK_ID : (typeof BATCH !== 'undefined' ? BATCH : 'unknown');
+  var BOT = /[?&]pwbot=1\b/.test(location.search);
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  // ---- UI wiring (replaces the old download-only Submit) ----
+  var old = $('submitBtn');
+  var btn = old.cloneNode(true);           // clone drops the legacy click listener
+  old.parentNode.replaceChild(btn, old);
+  btn.textContent = 'Submit ratings';
+  var nameWrap = document.createElement('label');
+  nameWrap.id = 'pwNameWrap';
+  nameWrap.innerHTML = 'Your name <input id="pwName" type="text" placeholder="Dan" autocomplete="name" maxlength="40"/>';
+  btn.parentNode.insertBefore(nameWrap, btn);
+  try { $('pwName').value = localStorage.getItem('pw_reviewer_name') || ''; } catch (e) {}
+  var list = $('list');
+  var overall = document.createElement('div');
+  overall.id = 'pwOverallWrap';
+  overall.innerHTML = '<h3>Overall notes (optional)</h3><textarea id="pwOverall" placeholder="Anything about this pack as a whole"></textarea>';
+  var bottom = document.createElement('div');
+  bottom.id = 'pwBottomBar';
+  bottom.innerHTML = '<button type="button" id="pwSubmitBottom">Submit ratings</button>';
+  if (list && list.parentNode) { list.parentNode.insertBefore(bottom, list.nextSibling); list.parentNode.insertBefore(overall, bottom); }
+  var banner = document.createElement('div');
+  banner.id = 'pwBanner'; banner.setAttribute('role', 'status'); banner.setAttribute('aria-live', 'assertive');
+  document.body.appendChild(banner);
+  var legend = document.querySelector('.legend');
+  if (legend && /How Submit works/.test(legend.textContent)) {
+    legend.innerHTML = '<strong>How Submit works:</strong> rate the designs, type your name if you are not Dan (blank = Dan), then click <strong>Submit ratings</strong>. ' +
+      'Your ratings go straight to PowderWraps and a big green <strong>&ldquo;Ratings received &check;&rdquo;</strong> banner confirms it. ' +
+      'If sending ever fails you get a red banner with <strong>Retry</strong> plus a backup copy / download.';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('header p'), function (p) {
+    p.innerHTML = p.innerHTML.replace('Submit downloads ratings JSON.', 'Submit sends your ratings to PowderWraps.');
+  });
+  function buttons() { return [btn, $('pwSubmitBottom')].filter(Boolean); }
+  function setButtons(html, disabled) { buttons().forEach(function (b) { b.innerHTML = html; b.disabled = !!disabled; }); }
+
+  function showBanner(kind, html) {
+    banner.className = 'show ' + kind;
+    banner.innerHTML = html + (kind === 'busy' ? '' : '<button type="button" class="pw-x" aria-label="Close">&times;</button>');
+    var x = banner.querySelector('.pw-x'); if (x) x.onclick = function () { banner.className = ''; };
+  }
+
+  // ---- data ----
+  function newSid() {
+    var a = new Uint8Array(8); (window.crypto || window.msCrypto).getRandomValues(a);
+    return Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+  }
+  function gather() {
+    var data = (typeof collect === 'function') ? collect() : { batch: PACK, items: [] };
+    var text = (typeof payloadText === 'function') ? payloadText(data) : '';
+    var entered = (($('pwName') || {}).value || '').trim();
+    var reviewer = entered || 'Dan';
+    var perDesign = {};
+    data.items.forEach(function (i) { if (i.suggestion) perDesign[i.id] = i.suggestion; });
+    return {
+      type: 'POWDERWRAPS_SUBMISSION', schema: 1, sid: newSid(),
+      pack: PACK, batch: data.batch, reviewer: reviewer, reviewer_entered: entered,
+      bot_test: BOT || /^bot-?test$/i.test(entered),
+      submitted_at: new Date().toISOString(),
+      page: location.origin + location.pathname,
+      rated: data.items.filter(function (i) { return i.rating !== null; }).length,
+      total: data.items.length,
+      ratings: data.items.map(function (i) { return { id: i.id, name: i.name, kind: i.kind, rating: i.rating, note: i.suggestion || '' }; }),
+      notes: { overall: (($('pwOverall') || {}).value || '').trim(), per_design: perDesign },
+      payload: text
+    };
+  }
+  function b64utf8(s) {
+    var bytes = new TextEncoder().encode(s), bin = '';
+    for (var i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  function messages(sub) {   // ntfy keeps messages <= 4096 bytes as text; split bigger ones
+    var s = JSON.stringify(sub);
+    if (new TextEncoder().encode(s).length <= 3800) return [s];
+    var b = b64utf8(s), size = 3000, n = Math.ceil(b.length / size), out = [];
+    for (var i = 0; i < n; i++) out.push('PWCHUNK ' + sub.sid + ' ' + (i + 1) + '/' + n + ' ' + b.slice(i * size, (i + 1) * size));
+    return out;
+  }
+  async function postOne(base, msgs, tags) {
+    var last = null;
+    for (var i = 0; i < msgs.length; i++) {
+      var ctl = new AbortController(), t = setTimeout(function () { ctl.abort(); }, 15000);
+      try {
+        var r = await fetch(base + '/' + CFG.topic + '?tags=' + encodeURIComponent(tags), { method: 'POST', body: msgs[i], cache: 'no-store', signal: ctl.signal });
+        if (!r.ok) throw new Error(base.replace('https://', '') + ' answered HTTP ' + r.status);
+        var j = await r.json().catch(function () { return {}; });
+        if (!j.id) throw new Error(base.replace('https://', '') + ' gave no receipt');
+        last = j.id;
+      } catch (e) {
+        var host = base.replace('https://', '');
+        if (e && e.name === 'AbortError') throw new Error(host + ' timed out');
+        if (e && e.name === 'TypeError') throw new Error('could not reach ' + host);
+        throw e;
+      } finally { clearTimeout(t); }
+    }
+    return { base: base, id: last };
+  }
+  function anySuccess(promises) {   // like Promise.any, works on older Safari
+    return new Promise(function (resolve, reject) {
+      var errs = [], left = promises.length;
+      promises.forEach(function (p) { p.then(resolve, function (e) { errs.push(e && e.message ? e.message : String(e)); if (--left === 0) reject(errs); }); });
+    });
+  }
+
+  // ---- backup actions (only offered after a failure) ----
+  function copyText(s) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(s);
+    return new Promise(function (res, rej) {
+      var ta = document.createElement('textarea'); ta.value = s; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy') ? res() : rej(); } catch (e) { rej(e); } ta.remove();
+    });
+  }
+  function download(sub) {
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(sub, null, 2)], { type: 'application/json' }));
+    a.download = 'PowderWraps-ratings-' + sub.pack + '-' + sub.reviewer.replace(/[^A-Za-z0-9_-]+/g, '_') + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  // ---- submit ----
+  var sending = false;
+  async function send(sub) {
+    if (sending) return;
+    sending = true;
+    setButtons('<span class="pw-spin"></span>Sending&hellip;', true);
+    showBanner('busy', '<span class="pw-big"><span class="pw-spin"></span>Sending your ratings&hellip;</span>Please keep this page open for a moment.');
+    var msgs = messages(sub), tags = 'pwratings' + (sub.bot_test ? ',bot-test' : '');
+    try {
+      var res = await anySuccess(CFG.endpoints.map(function (b) { return postOne(b, msgs, tags); }));
+      try { localStorage.setItem('pw_reviewer_name', sub.reviewer_entered); } catch (e) {}
+      var when = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      showBanner('ok', '<span class="pw-big">Ratings received &check; (' + sub.rated + ' design' + (sub.rated === 1 ? '' : 's') + ') &mdash; thank you</span>' +
+        'From <b>' + esc(sub.reviewer) + '</b> &middot; pack ' + esc(sub.pack) + ' &middot; ' + when + ' &middot; receipt ' + esc(res.id) +
+        (sub.total - sub.rated > 0 ? '<br/>' + (sub.total - sub.rated) + ' design(s) left blank.' : '') +
+        '<br/>Nothing else to do. Change anything and you can submit again.');
+      setButtons('Sent &check;', true);
+      document.body.setAttribute('data-pw-submit', 'ok');
+    } catch (errs) {
+      showBanner('err', '<span class="pw-big">Ratings NOT sent &#10007;</span>' +
+        'Your ratings did not reach PowderWraps (' + esc([].concat(errs).join('; ')) + '). Check your connection and tap Retry.' +
+        '<div class="pw-row"><button type="button" class="pw-retry">Retry</button><button type="button" class="pw-copy">Copy ratings (backup)</button><button type="button" class="pw-dl">Download file (backup)</button></div>' +
+        '<pre>' + esc(sub.payload) + '</pre>');
+      banner.querySelector('.pw-retry').onclick = function () { send(sub); };   // same sid -> no duplicates
+      banner.querySelector('.pw-copy').onclick = function (ev) { copyText(sub.payload).then(function () { ev.target.textContent = 'Copied ✓ — paste it to PowderWraps'; }, function () { ev.target.textContent = 'Select the text below and copy it'; }); };
+      banner.querySelector('.pw-dl').onclick = function () { download(sub); };
+      setButtons('Submit ratings', false);
+      document.body.setAttribute('data-pw-submit', 'error');
+    } finally { sending = false; }
+  }
+  function onSubmit() {
+    var sub = gather();
+    if (sub.rated === 0 && !sub.notes.overall && !Object.keys(sub.notes.per_design).length) {
+      showBanner('warn', '<span class="pw-big">Nothing to send yet</span>Pick 0 / 1 / 2 on at least one design, then tap Submit.');
+      return;
+    }
+    send(sub);
+  }
+  buttons().forEach(function (b) { b.addEventListener('click', onSubmit); });
+  window.doSubmit = onSubmit;
+  function rearm() { if (!sending && btn.disabled) setButtons('Submit updated ratings', false); }
+  document.addEventListener('change', rearm, true);
+  document.addEventListener('input', rearm, true);
+})();
+</script>
+<!-- PW_SUBMIT_V2 END -->
+
+<!-- PW_MAILTO BEGIN: durable record = the email Dan sends -->
+<script>
+(function () {
+  'use strict';
+  var TO = "dan@powderwraps.com";
+  function $(id) { return document.getElementById(id); }
+  function mailBody() {
+    var data = collect();
+    var who = (($('pwName') || {}).value || '').trim() || 'Dan';
+    var groups = {2: [], 1: [], 0: []};
+    data.items.forEach(function (i) { if (i.rating !== null) groups[i.rating].push(i.id.split('-').pop()); });
+    var lines = ['PowderWraps ratings - pack ' + BATCH + ' - from ' + who, '',
+      '2 Approve: ' + (groups[2].join(' ') || '-'),
+      '1 Maybe: ' + (groups[1].join(' ') || '-'),
+      '0 Bad: ' + (groups[0].join(' ') || '-'), '',
+      'Just tap Send. This email is the saved record of your ratings.', '',
+      '--- machine copy (do not edit) ---'];
+    var pt = payloadText(data).split('\n');
+    pt[0] += ' pack=' + BATCH + ' reviewer=' + who.replace(/\s+/g, '_');
+    lines.push(pt.join('\n'));
+    var ov = (($('pwOverall') || {}).value || '').trim().replace(/\r?\n/g, ' ');
+    if (ov) lines.push('OVERALL|' + ov.replace(/\|/g, '/'));
+    lines.push('--- end ---');
+    var rated = data.items.filter(function (i) { return i.rating !== null; }).length;
+    return { subject: 'PowderWraps ratings ' + BATCH + ' (' + rated + ' rated)', body: lines.join('\n'), rated: rated };
+  }
+  function href() {
+    var m = mailBody();
+    return 'mailto:' + TO + '?subject=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(m.body);
+  }
+  window.pwMailHref = href;
+  function openMail() {
+    var a = document.createElement('a'); a.href = href(); a.style.display = 'none';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  // capture phase: runs on the same tap, before the ntfy send, so the browser allows the mail app to open
+  document.addEventListener('click', function (ev) {
+    var t = ev.target && ev.target.closest ? ev.target.closest('#submitBtn, #pwSubmitBottom') : null;
+    if (!t || t.disabled) return;
+    if (mailBody().rated === 0) return;
+    openMail();
+  }, true);
+  // add a permanent "Email my ratings" button + note
+  var bar = $('pwBottomBar');
+  if (bar) {
+    var b = document.createElement('button'); b.type = 'button'; b.id = 'pwMailBtn';
+    b.textContent = 'Email my ratings again'; b.style.cssText = 'margin-left:10px;background:#111;color:#fff';
+    b.onclick = openMail; bar.appendChild(b);
+  }
+  var legend = document.querySelector('.legend');
+  if (legend) legend.innerHTML += '<br/><strong>Saved by email:</strong> Submit also opens an email to ' + TO +
+    ' with your ratings filled in. <strong>Tap Send</strong> &mdash; that email is the permanent record and is what files the designs into Approved / Maybe / Backup.';
+})();
+</script>
+<!-- PW_MAILTO END -->
+</body>
+</html>
