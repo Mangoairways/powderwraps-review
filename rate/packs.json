@@ -6,10 +6,19 @@
   "published": "2026-10-05 21:14"
  },
  {
-  "id": "20261115b",
-  "title": "PowderWraps Rate Designs \u2014 20261115b (round 2: tip-to-tail compositions, 5)",
+  "id": "20261115c",
+  "title": "PowderWraps Rate Designs \u2014 20261115c (round 3: true ski-length tall art, 5)",
   "designs": 5,
-  "published": "2026-11-15 01:00"
+  "published": "2026-11-15 01:15"
+ },
+ {
+  "id": "20261115b",
+  "title": "PowderWraps Rate Designs \u2014 20261115b (SUPERSEDED by 20261115c \u00b7 Dan: much better, needs taller)",
+  "designs": 5,
+  "published": "2026-11-15 01:00",
+  "status": "superseded",
+  "superseded_by": "20261115c",
+  "note": "superseded by 20261115c (Dan: much better, needs taller)"
  },
  {
   "id": "20261115-test",
