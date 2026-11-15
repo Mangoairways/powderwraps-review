@@ -1,6 +1,6 @@
 {
  "design": "PWKD261115D-04 Brushed Tech (per-template master test of C-04 / B-04)",
- "locked": "2026-11-15 (MT). Every master is built from this file by build.py; nothing is hand-placed.",
+ "locked": "LOCKED standard pattern \u2014 approved and locked by Dan (direct chat t361u, 2026-11-15 08:01 MT): \"Looks great. Lock it in.\" C-04 Brushed Tech = Keep. Template: V7 only, no rotation. Scope: mockup/design approval only; not Shopify, print, or posting.",
  "coordinates": "y = percent of length from TIP (0%) to TAIL (100%). x = percent of the sheet width from the left edge. Mark sizes are physical (mm) so they print the same size on every product.",
  "base": {
   "art": "Kittl Nano Banana 2.1 4K clean brushed-aluminium plate (no marks), horizontal brush grain",
@@ -303,7 +303,7 @@
   "nothing vulgar",
   "approved V3 template only"
  ],
- "status": "STANDARD per-template master method (Dan via Jenni, Nov 15 2026). Template: V7 ONLY (Dan, 7:54 AM MT Nov 15). Reuse this file as the pattern: copy it, change base/accent/elements, keep the coordinate system and per_template_masters.",
+ "status": "LOCKED STANDARD per-template master method. Template: V7 ONLY, no rotation. Reuse this file as the pattern: copy it, change base/accent/elements, keep the coordinate system, per_template_masters and mockup_rules.",
  "mockup_rules": {
   "template": "V7 only: V7 Matching Pair, V7 Spread Pair, V7 Board, plus the two V7 scenes (Lodge wall = Matching, Slope ski rack = Spread). No V3, no other sets.",
   "masters": "print files stay straight and square; never altered for a mockup",

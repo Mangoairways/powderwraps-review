@@ -1,0 +1,22 @@
+{
+ "name": "PWKD261115D-04 Brushed Tech (C-04) \u2014 per-template masters + V7 mockups",
+ "locked": "2026-11-15 08:01 MT",
+ "approved_by": "Dan direct chat t361u 2026-11-15 08:01 MT",
+ "approval_text": "Looks great. Lock it in.",
+ "rating": "Keep",
+ "template": "V7 only",
+ "scope": "mockup/design approval only; not Shopify, print, or posting",
+ "page": "https://mangoairways.github.io/powderwraps-review/rate/20261115d/",
+ "files": {
+  "out/PWKD261115D-04-ski-master-7in-x-192cm-150dpi.png": "de829af1538d347595ea917e1a07b528e28fffd643456efd43fb60ffc7922c07",
+  "out/PWKD261115D-04-board-master-14in-x-182cm-150dpi.png": "5ac7a481633ca3ea7c5146c106c2e148dc206fab9da1bbf2aff570d718fa3664",
+  "out/PWKD261115D-04-split-L-7in-x-192cm-150dpi.png": "0cc7f0bd5dfc8299574f8b2980e7f7010e700fd4b55d4d05fa13abfad4f1c406",
+  "out/PWKD261115D-04-split-R-7in-x-192cm-150dpi.png": "6bfb4732f007329a4323122d6da756aad83a79cf53ab9263010c139c06680f7f",
+  "spec.json": "ef4160b06eef0c52ccc05db47c0346e3e8446a69e6a6b52c7f9abc99463597da",
+  "out/v7/v7-matching-pair.png": "3de8d0c5d5317bc44569b430d7dc1112fbea2e69df6e4f18d9e0d3d5c1261e64",
+  "out/v7/v7-spread-pair-split-pair.png": "c248ee0da7fd3f7a7943cbdcb1c679812972c197ba73d9dc6740bdd8d7598118",
+  "out/v7/v7-board.png": "f5753d300496a4754f089dea726de49e567eb251624c9afa5d5080ed275852f6",
+  "out/v7/scene-lodge-wall-matching-pair.png": "cd210daf54bc3ed4ec65507cdf0c519c5570965307fb0590e885320f21ac1295",
+  "out/v7/scene-slope-ski-rack-spread-pair-split-pair.png": "9f0cce9b4051d58bc8fc426f45a797cff31d1c932f0195288f375abfacb39c43"
+ }
+}

@@ -779,5 +779,16 @@
   "suggestion": null,
   "staged": false,
   "print_master_url": null
+ },
+ {
+  "id": "d04",
+  "kind": "ski+board",
+  "name": "Brushed Tech (PWKD261115D-04)",
+  "motif": "Brushed silver fading to matte black, full-length pinstripe, safety-orange block and caps, spec text ALPINE / 180 / ALL-MTN. Per-template true-size masters (ski 7 in \u00d7 192 cm, board 14 in \u00d7 182 cm, split pair 14 in \u00d7 192 cm) on V7 only. Approved and locked by Dan Nov 15 8:01 AM MT.",
+  "date": "2026-11-15",
+  "batch": "20261115d",
+  "suggestion": "",
+  "staged": false,
+  "print_master_url": "https://mangoairways.github.io/powderwraps-review/rate/20261115d/"
  }
 ]

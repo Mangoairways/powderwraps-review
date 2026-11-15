@@ -7,9 +7,14 @@
  },
  {
   "id": "20261115d",
-  "title": "PowderWraps Rate Designs \u2014 20261115d (C-04 Brushed Tech \u00b7 per-template masters on V7 only: matching, split pair, board + 2 scenes)",
+  "title": "PowderWraps Rate Designs \u2014 20261115d (APPROVED & LOCKED \u00b7 C-04 Brushed Tech = Keep \u00b7 per-template masters on V7 only)",
   "designs": 5,
-  "published": "2026-11-15 07:30"
+  "published": "2026-11-15 07:30",
+  "status": "approved",
+  "locked": true,
+  "result": "C-04 Brushed Tech = Keep (Dan, direct, 2026-11-15 08:01 MT)",
+  "approved_by": "Dan direct chat t361u 2026-11-15 08:01 MT",
+  "lock_file": "rate/20261115d/LOCK-SHA256.json"
  },
  {
   "id": "20261115c",
