@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PowderWraps Rate Designs — 20261115d</title>
+<style>
+  :root { --bg:#f4f4f2; --card:#fff; --ink:#111; --muted:#555; --line:#ddd; --keep:#0a7a3e; --maybe:#a15c00; --bad:#9b1c1c; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+  header { position:sticky; top:0; z-index:10; background:#111; color:#fff; padding:14px 18px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; }
+  header h1 { margin:0; font-size:16px; font-weight:700; }
+  header p { margin:0; font-size:12px; opacity:.85; max-width:620px; }
+  .actions { display:flex; gap:8px; flex-wrap:wrap; }
+  button { cursor:pointer; border:none; border-radius:8px; padding:10px 16px; font-weight:700; font-size:14px; }
+  #submitBtn { background:#fff; color:#111; }
+  #submitBtn:hover { background:#e8e8e8; }
+  #copyBtn { background:#333; color:#fff; }
+  main { max-width:880px; margin:0 auto; padding:16px; }
+  .legend { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:14px; font-size:13px; color:var(--muted); }
+  .legend strong { color:var(--ink); }
+  .section-h { margin:18px 0 10px; font-size:14px; font-weight:700; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:12px; display:grid; grid-template-columns: 88px 1fr; gap:14px; }
+  .card img { width:72px; height:auto; max-height:300px; object-fit:contain; background:#f0f0f0; border-radius:6px; }
+  .meta h2 { margin:0 0 4px; font-size:15px; }
+  .meta .motif { margin:0 0 6px; font-size:12px; color:var(--muted); }
+  .meta .hint { margin:0 0 10px; font-size:11px; color:#7a4a10; }
+  .rates { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .rates label { display:flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:13px; cursor:pointer; user-select:none; }
+  .rates input { accent-color:#111; }
+  .rates label.sel-0 { border-color:var(--bad); background:#fdecec; }
+  .rates label.sel-1 { border-color:var(--maybe); background:#fff4e5; }
+  .rates label.sel-2 { border-color:var(--keep); background:#e8f7ee; }
+  textarea { width:100%; min-height:64px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:inherit; font-size:13px; resize:vertical; }
+  #toast { display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#111; color:#fff; padding:12px 18px; border-radius:10px; font-size:13px; max-width:90vw; z-index:20; }
+  footer { text-align:center; color:var(--muted); font-size:12px; padding:20px; }
+
+  main { max-width:1100px; margin:0 auto; padding:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:16px; display:grid; grid-template-columns: minmax(220px, 320px) 1fr; gap:18px; align-items:start; }
+  .card .thumb-wrap { cursor:zoom-in; }
+  .card img { width:100%; height:auto; max-height:720px; object-fit:contain; background:#111; border-radius:8px; display:block; }
+  @media (max-width:720px){ .card { grid-template-columns: 1fr; } .card img { max-height:520px; } }
+  #lightbox { display:none; position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.92); align-items:center; justify-content:center; padding:24px; cursor:zoom-out; }
+  #lightbox.open { display:flex; }
+  #lightbox img { max-width:min(96vw, 900px); max-height:94vh; object-fit:contain; border-radius:8px; }
+  #lightbox .hint { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); color:#ccc; font-size:12px; }
+
+
+  /* 20261115d: one card = Graphic + Board + Spread pair + Matching pair (layout base from 20261013) — ski pair + board thumbs side by side above the meta */
+  main { max-width:1300px; }
+  .card { display:block; padding:16px; }
+  .card .pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+  .card .thumb-wrap { cursor:zoom-in; }
+  .card .thumb-wrap .cap { font-size:12px; color:var(--muted); margin:0 0 4px; }
+  .card img { width:100%; height:auto; max-height:none; object-fit:contain; background:#151515; border-radius:8px; display:block; }
+  @media (max-width:720px){ .card .pair { grid-template-columns:1fr; } }
+  #lightbox { padding:12px; }
+  #lightbox img { max-width:98vw; max-height:96vh; width:auto; height:auto; }
+  .card .quad { margin-bottom:14px; max-width:760px; }
+  .pwinfo { margin-top:8px; background:#f6f8fb; border:1px solid #ddd; border-radius:8px; padding:8px 10px; font-size:12px; line-height:1.5; text-align:left; }
+  .pwinfo summary { cursor:pointer; font-weight:700; margin-top:4px; }
+  .pwprompt { margin:4px 0 0; white-space:pre-wrap; word-break:break-word; }
+  .pwmis summary { color:#a3470a; }
+  .pwhint { color:#777; margin-top:4px; }
+  .card .quad img { background:#fff; }
+</style>
+</head>
+<body>
+<a href="../../" style="position:fixed;left:10px;bottom:10px;z-index:30;background:#111;color:#fff;padding:8px 12px;border-radius:999px;font:600 12px -apple-system,Segoe UI,Arial,sans-serif;text-decoration:none;opacity:.85">← All packs</a>
+<header>
+  <div>
+    <h1>PowderWraps — Rate designs (20261115d)</h1>
+    <p>TEST — C-04 Brushed Tech ONLY, new per-template master method: one locked layout spec → a true-size master for each template (ski 7 in × 192 cm, board 14 in × 182 cm, split pair 14 in × 192 cm cut into L/R). Each mockup is a straight downscale of its master on the approved V3 template — no rotation, no crop. Rate each layout. 2 Keep · 1 Maybe · 0 Bad.</p>
+  </div>
+  <div class="actions">
+    <button type="button" id="copyBtn">Copy payload</button>
+    <button type="button" id="submitBtn">Submit ratings</button>
+  </div>
+</header>
+<main>
+  <div class="legend">
+    <strong>How Submit works:</strong> click <strong>Submit ratings</strong> → ratings are sent straight to PowderWraps and a big green "Ratings received ✓" banner confirms it.
+    Only if sending fails: red banner with Retry + backup copy / download (<code>PowderWraps-ratings-20261115d.json</code>).
+  </div>
+  <div id="list"></div>
+
+  <div class="section-h">Before / after — C-04 round 3 vs D-04 per-template masters</div>
+  <div class="legend" style="padding:8px"><img src="img/before-after.jpg" style="width:100%;cursor:zoom-in;border-radius:8px;background:#151515" onclick="openLb('img/before-after_full.jpg')" alt="before and after"/>
+  <p style="margin:6px 0 0">Before (C-04): one 1107×11712 canvas cropped/scaled into every view; board art rotated 5.717°. After (D-04): each view gets its own true-size master, placed straight. Board now overhangs/gaps against the tilted V3 board — shown, not hidden.</p></div>
+  <div class="section-h">Master files (download)</div>
+  <div class="legend" style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px"><tr style="text-align:left"><th>File</th><th>Pixels</th><th>Physical size</th><th>DPI</th><th>File size</th></tr><tr><td><a href="masters/PWKD261115D-04-ski-master-7in-x-192cm-150dpi.png" download>PWKD261115D-04-ski-master-7in-x-192cm-150dpi.png</a></td><td>1050 × 11339 px</td><td>7 in x 192 cm (17.78 x 192 cm) (17.78 × 192.01 cm)</td><td>150 dpi</td><td>9.3 MB</td></tr><tr><td><a href="masters/PWKD261115D-04-board-master-14in-x-182cm-150dpi.png" download>PWKD261115D-04-board-master-14in-x-182cm-150dpi.png</a></td><td>2100 × 10748 px</td><td>14 in x 182 cm (35.56 x 182 cm) (35.56 × 182.0 cm)</td><td>150 dpi</td><td>18.0 MB</td></tr><tr><td><a href="masters/PWKD261115D-04-split-L-7in-x-192cm-150dpi.png" download>PWKD261115D-04-split-L-7in-x-192cm-150dpi.png</a></td><td>1050 × 11339 px</td><td>7 in x 192 cm (left half of 14 in x 192 cm sheet) (17.78 × 192.01 cm)</td><td>150 dpi</td><td>9.4 MB</td></tr><tr><td><a href="masters/PWKD261115D-04-split-R-7in-x-192cm-150dpi.png" download>PWKD261115D-04-split-R-7in-x-192cm-150dpi.png</a></td><td>1050 × 11339 px</td><td>7 in x 192 cm (right half of 14 in x 192 cm sheet) (17.78 × 192.01 cm)</td><td>150 dpi</td><td>9.1 MB</td></tr></table>
+  <p style="margin:6px 0 0">split-L + split-R are the two halves of one 2100 × 11339 px (14 in × 192 cm) sheet, cut at x = 1050 px. Masters are PNG, sRGB, 150 dpi tagged.</p></div>
+  <div class="section-h">Locked layout spec (<a href="spec.json">spec.json</a>)</div>
+  <div class="legend"><pre style="white-space:pre-wrap;font-size:11px;max-height:420px;overflow:auto;margin:0">{
+ &quot;design&quot;: &quot;PWKD261115D-04 Brushed Tech (per-template master test of C-04 / B-04)&quot;,
+ &quot;locked&quot;: &quot;2026-11-15 (MT). Every master is built from this file by build.py; nothing is hand-placed.&quot;,
+ &quot;coordinates&quot;: &quot;y = percent of length from TIP (0%) to TAIL (100%). x = percent of the sheet width from the left edge. Mark sizes are physical (mm) so they print the same size on every product.&quot;,
+ &quot;base&quot;: {
+  &quot;art&quot;: &quot;Kittl Nano Banana 2.1 4K clean brushed-aluminium plate (no marks), horizontal brush grain&quot;,
+  &quot;color_ramp_by_length&quot;: [
+   {&quot;y&quot;: 3, &quot;rgb&quot;: [205, 205, 207], &quot;name&quot;: &quot;bright satin silver&quot;},
+   {&quot;y&quot;: 30, &quot;rgb&quot;: [156, 153, 158], &quot;name&quot;: &quot;silver-gray&quot;},
+   {&quot;y&quot;: 50, &quot;rgb&quot;: [90, 86, 94], &quot;name&quot;: &quot;gunmetal&quot;},
+   {&quot;y&quot;: 70, &quot;rgb&quot;: [44, 39, 46], &quot;name&quot;: &quot;near-black&quot;},
+   {&quot;y&quot;: 80, &quot;rgb&quot;: [36, 32, 38], &quot;name&quot;: &quot;matte black&quot;},
+   {&quot;y&quot;: 97.5, &quot;rgb&quot;: [44, 40, 47], &quot;name&quot;: &quot;matte black with grain mist&quot;}
+  ],
+  &quot;color_match&quot;: &quot;each row of the plate is gain-matched to the C-04 round-3 row colour at the same % of length, so the gradient lands at identical % on every master&quot;,
+  &quot;grain_mist&quot;: {&quot;y_from&quot;: 86, &quot;y_to&quot;: 97.15, &quot;note&quot;: &quot;fine pale speckle on the black, density rising toward the tail&quot;}
+ },
+ &quot;hot_accent&quot;: {&quot;name&quot;: &quot;safety orange (non-neon, as on B-04/C-04)&quot;, &quot;rgb&quot;: [240, 90, 26], &quot;hex&quot;: &quot;#F05A1A&quot;},
+ &quot;caps&quot;: {
+  &quot;tip_cap&quot;: {&quot;y_from&quot;: 0, &quot;y_to&quot;: 3.0, &quot;rgb&quot;: [240, 90, 26]},
+  &quot;tip_cap_line&quot;: {&quot;y_from&quot;: 3.0, &quot;y_to&quot;: 3.35, &quot;rgb&quot;: [20, 20, 20]},
+  &quot;tail_cap_line&quot;: {&quot;y_from&quot;: 97.15, &quot;y_to&quot;: 97.5, &quot;rgb&quot;: [20, 20, 20]},
+  &quot;tail_cap&quot;: {&quot;y_from&quot;: 97.5, &quot;y_to&quot;: 100, &quot;rgb&quot;: [240, 90, 26]}
+ },
+ &quot;elements&quot;: [
+  {&quot;id&quot;: &quot;pinstripe&quot;, &quot;type&quot;: &quot;pinstripe&quot;, &quot;x&quot;: 31.7, &quot;y_from&quot;: 3.35, &quot;y_to&quot;: 97.15, &quot;width_mm&quot;: 0.8, &quot;color&quot;: &quot;auto-contrast: dark gray on silver, light silver on black&quot;},
+  {&quot;id&quot;: &quot;orange_block&quot;, &quot;type&quot;: &quot;solid block&quot;, &quot;x_from&quot;: 35.2, &quot;x_to&quot;: 86.0, &quot;y_from&quot;: 19.0, &quot;y_to&quot;: 24.5, &quot;rgb&quot;: [240, 90, 26]},
+  {&quot;id&quot;: &quot;crosshair_1&quot;, &quot;type&quot;: &quot;crosshair&quot;, &quot;x&quot;: 70.0, &quot;y&quot;: 8.9, &quot;arm_mm&quot;: 9, &quot;line_mm&quot;: 0.6},
+  {&quot;id&quot;: &quot;crosshair_2&quot;, &quot;type&quot;: &quot;crosshair&quot;, &quot;x&quot;: 21.0, &quot;y&quot;: 13.1, &quot;arm_mm&quot;: 6, &quot;line_mm&quot;: 0.6},
+  {&quot;id&quot;: &quot;crosshair_3&quot;, &quot;type&quot;: &quot;crosshair&quot;, &quot;x&quot;: 27.0, &quot;y&quot;: 13.8, &quot;arm_mm&quot;: 6, &quot;line_mm&quot;: 0.6},
+  {&quot;id&quot;: &quot;chevron_mark_1&quot;, &quot;type&quot;: &quot;chevron row (6 small &lt; marks)&quot;, &quot;x&quot;: 44.0, &quot;y&quot;: 13.3, &quot;width_mm&quot;: 18, &quot;height_mm&quot;: 4},
+  {&quot;id&quot;: &quot;dot_row_1&quot;, &quot;type&quot;: &quot;dot row (4 dots)&quot;, &quot;x&quot;: 92.0, &quot;y&quot;: 13.3, &quot;dot_mm&quot;: 1.6, &quot;pitch_mm&quot;: 4},
+  {&quot;id&quot;: &quot;crosshair_4&quot;, &quot;type&quot;: &quot;crosshair&quot;, &quot;x&quot;: 27.0, &quot;y&quot;: 21.7, &quot;arm_mm&quot;: 6, &quot;line_mm&quot;: 0.6},
+  {&quot;id&quot;: &quot;dot_row_2&quot;, &quot;type&quot;: &quot;dot row (6 dots)&quot;, &quot;x&quot;: 88.0, &quot;y&quot;: 22.3, &quot;dot_mm&quot;: 1.6, &quot;pitch_mm&quot;: 4},
+  {&quot;id&quot;: &quot;dot_row_3&quot;, &quot;type&quot;: &quot;dot row (3 dots)&quot;, &quot;x&quot;: 92.0, &quot;y&quot;: 25.1, &quot;dot_mm&quot;: 1.6, &quot;pitch_mm&quot;: 4},
+  {&quot;id&quot;: &quot;chevron_mark_2&quot;, &quot;type&quot;: &quot;chevron row (6 small &lt; marks)&quot;, &quot;x&quot;: 43.0, &quot;y&quot;: 25.5, &quot;width_mm&quot;: 18, &quot;height_mm&quot;: 4},
+  {&quot;id&quot;: &quot;crosshair_5&quot;, &quot;type&quot;: &quot;crosshair&quot;, &quot;x&quot;: 69.0, &quot;y&quot;: 28.4, &quot;arm_mm&quot;: 9, &quot;line_mm&quot;: 0.6},
+  {&quot;id&quot;: &quot;spec_text&quot;, &quot;type&quot;: &quot;vector text, Barlow Condensed Bold, centred&quot;, &quot;x&quot;: 50.0, &quot;y_top&quot;: 80.0, &quot;lines&quot;: [[&quot;ALPINE&quot;, [225, 225, 225]], [&quot;180&quot;, [240, 90, 26]], [&quot;ALL-MTN&quot;, [225, 225, 225]]], &quot;cap_font_mm&quot;: 28, &quot;line_pitch_mm&quot;: 31, &quot;rule&quot;: {&quot;width_mm&quot;: 50, &quot;line_mm&quot;: 1.0, &quot;rgb&quot;: [240, 90, 26]}},
+  {&quot;id&quot;: &quot;stars&quot;, &quot;type&quot;: &quot;none&quot;, &quot;note&quot;: &quot;B-04/C-04 has no stars; the dot rows above are its small-mark accents&quot;}
+ ],
+ &quot;per_template_masters&quot;: {
+  &quot;ski&quot;: {&quot;physical&quot;: &quot;7 in x 192 cm (17.78 x 192 cm)&quot;, &quot;dpi&quot;: 150, &quot;px&quot;: [1050, 11339]},
+  &quot;board&quot;: {&quot;physical&quot;: &quot;14 in x 182 cm (35.56 x 182 cm)&quot;, &quot;dpi&quot;: 150, &quot;px&quot;: [2100, 10748], &quot;note&quot;: &quot;re-composed at board width from this spec, not a stretch or crop of the ski master&quot;},
+  &quot;split_sheet&quot;: {&quot;physical&quot;: &quot;14 in x 192 cm&quot;, &quot;dpi&quot;: 150, &quot;px&quot;: [2100, 11339], &quot;cut&quot;: &quot;down the centre into split-L and split-R, each 7 in x 192 cm / 1050 x 11339 px&quot;}
+ },
+ &quot;split_pair_seam_rule&quot;: &quot;Continuous elements (gradient, brush grain, orange block, caps) flow across the seam. No small mark or text may sit within 12 mm of the seam; the spec text block moves to the centre of the right ski (x = 75%) on the split sheet only, so no letter is cut.&quot;,
+ &quot;rules&quot;: [&quot;no brand names, logos or marks; no PowderWraps mark&quot;, &quot;topsheet only, nothing on bases&quot;, &quot;reads from 20 ft&quot;, &quot;contrasting orange accent on tip and tail&quot;, &quot;nothing vulgar&quot;, &quot;approved V3 template only&quot;]
+}
+</pre></div>
+</main>
+<footer>PowderWraps · single-file rater · 20261115d · 3 cards (ski pair · board · split pair) + masters + layout spec + before/after · approved V3 template, bindings unchanged</footer>
+<div id="lightbox" onclick="this.classList.remove('open')"><img id="lightboxImg" alt=""/><div class="hint">Click anywhere to close</div></div>
+<div id="toast"></div>
+<script>
+const BATCH = "20261115d";
+const WEBHOOK_URL = "";
+const DESIGNS = [{"id": "PWKD261115D-04-SKI", "name": "Brushed Tech \u2014 Ski master, matching pair", "motif": "V3 Matching pair: same master on both skis, straight uniform downscale to each ski's full length (0 rotation, 0 crop). 100 px (0.05%) of the ski mask at the widest shovel edge is not covered and shows as gray hatch.", "ctx": {"group": "Per-template master test (Dan Nov 15, 7:14 AM MT) \u2014 C-04 Brushed Tech only", "trend": "same B-04/C-04 look, each template gets its own true-size master built from one locked layout spec", "model": "Kittl \u00b7 Nano Banana 2.1 4K (1:4, 2048\u00d78256) clean brushed-metal plate; every mark, pinstripe, block, text and cap is vector-placed from spec.json", "prompt": "Clean full-bleed brushed aluminium plate (C-04 as reference): bright satin silver at top \u2192 gunmetal \u2192 matte black, grain mist at the bottom; no text, lines or marks.", "prompt_source": "summary", "tier": "Season", "sidecar": true, "cost": "40 Kittl tokens (one plate shared by all 4 masters)", "product": "Skis (matching pair)", "size": "ski master 1050\u00d711339 px \u00b7 7 in \u00d7 192 cm (17.78 \u00d7 192 cm) @150 dpi", "flags": "see note above", "intent": "V3 Matching pair: same master on both skis, straight uniform downscale to each ski's full length (0 rotation, 0 crop). 100 px (0.05%) of the ski mask at the widest shovel edge is not covered and shows as gray hatch."}, "kind": "ski", "img": "img/card_ski.jpg", "full": "img/card_ski_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115D-04-BOARD", "name": "Brushed Tech \u2014 Board master (placed straight)", "motif": "V3 Board: master placed STRAIGHT (no rotation) on the tilted board. 10.04% of the board top is NOT covered (gray hatch): up to 49 px (~8.1 cm equiv.) along the LEFT edge of the nose and up to 49 px along the RIGHT edge of the tail; the master hangs off the opposite edges (hidden). The tip and tail caps fall partly off the board. See the fit panel.", "ctx": {"group": "Per-template master test (Dan Nov 15, 7:14 AM MT) \u2014 C-04 Brushed Tech only", "trend": "same B-04/C-04 look, each template gets its own true-size master built from one locked layout spec", "model": "Kittl \u00b7 Nano Banana 2.1 4K (1:4, 2048\u00d78256) clean brushed-metal plate; every mark, pinstripe, block, text and cap is vector-placed from spec.json", "prompt": "Clean full-bleed brushed aluminium plate (C-04 as reference): bright satin silver at top \u2192 gunmetal \u2192 matte black, grain mist at the bottom; no text, lines or marks.", "prompt_source": "summary", "tier": "Season", "sidecar": true, "cost": "40 Kittl tokens (one plate shared by all 4 masters)", "product": "Board", "size": "board master 2100\u00d710748 px \u00b7 14 in \u00d7 182 cm (35.56 \u00d7 182 cm) @150 dpi", "flags": "see note above", "intent": "V3 Board: master placed STRAIGHT (no rotation) on the tilted board. 10.04% of the board top is NOT covered (gray hatch): up to 49 px (~8.1 cm equiv.) along the LEFT edge of the nose and up to 49 px along the RIGHT edge of the tail; the master hangs off the opposite edges (hidden). The tip and tail caps fall partly off the board. See the fit panel."}, "kind": "board", "img": "img/card_board.jpg", "full": "img/card_board_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115D-04-SPLIT", "name": "Brushed Tech \u2014 Split pair (one 14 in sheet cut in two)", "motif": "Mocked on the V3 Spread pair (the approved one-image-across-both-skis layout; no separate 'split-pair' template exists). Gradient, brush grain, caps and the orange block flow across the seam; the spec text sits on the right ski and no mark is within 12 mm of the seam.", "ctx": {"group": "Per-template master test (Dan Nov 15, 7:14 AM MT) \u2014 C-04 Brushed Tech only", "trend": "same B-04/C-04 look, each template gets its own true-size master built from one locked layout spec", "model": "Kittl \u00b7 Nano Banana 2.1 4K (1:4, 2048\u00d78256) clean brushed-metal plate; every mark, pinstripe, block, text and cap is vector-placed from spec.json", "prompt": "Clean full-bleed brushed aluminium plate (C-04 as reference): bright satin silver at top \u2192 gunmetal \u2192 matte black, grain mist at the bottom; no text, lines or marks.", "prompt_source": "summary", "tier": "Season", "sidecar": true, "cost": "40 Kittl tokens (one plate shared by all 4 masters)", "product": "Skis (split pair)", "size": "sheet 2100\u00d711339 px (14 in \u00d7 192 cm) \u2192 split-L and split-R 1050\u00d711339 px each, 7 in \u00d7 192 cm @150 dpi", "flags": "see note above", "intent": "Mocked on the V3 Spread pair (the approved one-image-across-both-skis layout; no separate 'split-pair' template exists). Gradient, brush grain, caps and the orange block flow across the seam; the spec text sits on the right ski and no mark is within 12 mm of the seam."}, "kind": "split", "img": "img/card_split.jpg", "full": "img/card_split_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}];
+;
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 4500);
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function sectionTitle(sec) {
+  if (sec === 'current') return 'Current style — galaxy, blended color, famous art, jeeps, Colorado topo';
+  if (sec === 'men') return 'Men 18–50';
+  if (sec === 'women') return 'Women 25–40';
+  if (sec === 'kids') return 'Kids under 13';
+  if (sec === 'kittl') return 'C-04 Brushed Tech — one master per template (3 mockups)';
+  if (sec === 'redesign') return 'Redesign — from your Maybes';
+  return 'Designs';
+}
+
+
+function openLb(src) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  lb.classList.add('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'); });
+
+function render() {
+  const root = document.getElementById('list');
+  root.innerHTML = '';
+  let lastSection = '';
+  DESIGNS.forEach((d, i) => {
+    if (d.section !== lastSection) {
+      lastSection = d.section;
+      const h = document.createElement('div');
+      h.className = 'section-h';
+      h.textContent = sectionTitle(d.section);
+      root.appendChild(h);
+    }
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.id = d.id;
+    const rates = [0,1,2].map(v => {
+      const labels = {0:'0 Bad', 1:'1 Maybe', 2:'2 Keep'};
+      return `<label class="rate"><input type="radio" name="rate_${d.id}" value="${v}"/> ${labels[v]}</label>`;
+    }).join('');
+    const hint = d.suggestion_applied ? `<p class="hint">Applied: ${escapeHtml(d.suggestion_applied)}</p>` : '';
+    card.innerHTML = `
+      <div class="quad"><div class="thumb-wrap" onclick="openLb(DESIGNS[${i}].full || DESIGNS[${i}].img)"><p class="cap">Master file(s) as printed · V3 mockup — tap to enlarge</p><img src="${d.img}" alt="${d.id} master and V3 mockup"/></div>${d.ctx ? `<div class="pwinfo"><div><b>${d.id}</b>${['tier','product'].filter(k => d.ctx[k]).map(k => ` · <b>${k[0].toUpperCase()+k.slice(1)}:</b> ${escapeHtml(d.ctx[k])}`).join('')}</div><div><b>Group:</b> ${escapeHtml(d.ctx.group)} · <b>Trend:</b> ${escapeHtml(d.ctx.trend)} · <b>Model:</b> ${escapeHtml(d.ctx.model)}</div>${d.ctx.intent ? `<div><b>Intent:</b> ${escapeHtml(d.ctx.intent)}</div>` : ''}${!d.ctx.sidecar ? `<div><b>Cost / Size / Flags:</b> no Bob Ross sidecar for this design</div>` : ''}${d.ctx.sidecar ? `<div><b>Cost:</b> ${escapeHtml(d.ctx.cost || 'not recorded')} · <b>Size:</b> ${escapeHtml(d.ctx.size || 'not recorded')} · <b>Flags:</b> ${escapeHtml(d.ctx.flags || 'none')}${d.ctx.sidecar_error ? ' · ' + escapeHtml(d.ctx.sidecar_error) : ''}</div>` : ''}<details open><summary>Exact prompt${d.ctx.prompt_source === 'sidecar' ? ' (as used, from Bob Ross sidecar)' : ''}</summary><p class="pwprompt">${escapeHtml(d.ctx.prompt)}</p></details>${d.ctx.prompt_mismatch ? `<details class="pwmis"><summary>⚠ Prompt used differs from the brief</summary><p class="pwprompt">${escapeHtml(d.ctx.prompt_brief)}</p></details>` : ''}<div class="pwhint">Rate it for its target group.</div></div>` : ''}</div>
+      <div class="meta">
+        <h2>${d.id} · ${escapeHtml(d.name)}</h2>
+        <p class="motif">${escapeHtml(d.motif)}</p>
+        ${hint}
+        <div class="rates" data-id="${d.id}">${rates}</div>
+        <textarea placeholder="Suggestion (optional)" data-suggestion="${d.id}"></textarea>
+      </div>`;
+    root.appendChild(card);
+    card.querySelectorAll('input[type=radio]').forEach(inp => {
+      inp.addEventListener('change', () => {
+        card.querySelectorAll('.rates label').forEach(l => l.className = 'rate');
+        inp.closest('label').classList.add('rate', 'sel-' + inp.value);
+      });
+    });
+  });
+}
+
+function collect() {
+  const items = [];
+  DESIGNS.forEach(d => {
+    const checked = document.querySelector(`input[name="rate_${d.id}"]:checked`);
+    const noteEl = document.querySelector(`textarea[data-suggestion="${d.id}"]`);
+    items.push({
+      id: d.id,
+      kind: d.kind,
+      name: d.name,
+      rating: checked ? Number(checked.value) : null,
+      suggestion: noteEl ? noteEl.value.trim() : ''
+    });
+  });
+  return {
+    type: 'POWDERWRAPS_RATINGS',
+    version: '0-1-2',
+    batch: BATCH,
+    submitted_at: new Date().toISOString(),
+    items
+  };
+}
+
+function payloadText(data) {
+  const lines = [`POWDERWRAPS_RATINGS version=0-1-2 date=${data.batch}`];
+  data.items.forEach(it => {
+    const v = it.rating === null ? '' : String(it.rating);
+    const note = (it.suggestion || '').replace(/\r?\n/g, ' ').replace(/\|/g, '/');
+    lines.push(`${it.id}|${v}|${note}`);
+  });
+  return lines.join('\n');
+}
+
+async function doSubmit() {
+  const data = collect();
+  const missing = data.items.filter(i => i.rating === null);
+  if (missing.length) {
+    if (!confirm(`${missing.length} designs still unrated. Submit anyway?`)) return;
+  }
+  const text = payloadText(data);
+  const jsonStr = JSON.stringify(data, null, 2);
+  const blob = new Blob([jsonStr], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `PowderWraps-ratings-${BATCH}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  try { await navigator.clipboard.writeText(text); } catch (e) {}
+
+  let webhookMsg = '';
+  if (WEBHOOK_URL) {
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: jsonStr,
+        mode: 'cors'
+      });
+      webhookMsg = res.ok ? ' Webhook delivered.' : ` Webhook status ${res.status}.`;
+    } catch (e) {
+      webhookMsg = ' Webhook blocked by browser — attach the downloaded JSON in chat.';
+    }
+  } else {
+    webhookMsg = ' Attach the downloaded JSON in PowderWraps Intel chat (webhook URL not set yet).';
+  }
+  toast('Downloaded ratings file.' + webhookMsg);
+}
+
+document.getElementById('submitBtn').addEventListener('click', doSubmit);
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const text = payloadText(collect());
+  try {
+    await navigator.clipboard.writeText(text);
+    toast('Payload copied — paste into PowderWraps Intel chat.');
+  } catch (e) {
+    prompt('Copy this payload:', text);
+  }
+});
+
+render();
+</script>
+<!-- PW_SUBMIT_V2 BEGIN -->
+<script>var PW_PACK_ID = "20261115d";</script>
+<style>
+  /* PW_SUBMIT_V2: sends ratings to PowderWraps (public ntfy mailbox, no keys) + big on-page confirmation */
+  #copyBtn, #payloadBox { display:none !important; }
+  #pwNameWrap { display:flex; align-items:center; gap:6px; color:#fff; font-size:13px; font-weight:600; }
+  #pwName { border:1px solid #666; border-radius:8px; padding:9px 10px; font:inherit; font-size:14px; width:150px; background:#222; color:#fff; }
+  #pwName::placeholder { color:#aaa; }
+  #submitBtn { background:#0a7a3e !important; color:#fff !important; min-width:150px; }
+  #submitBtn:hover { background:#086632 !important; }
+  #submitBtn[disabled] { opacity:.85; cursor:default; }
+  #pwOverallWrap { background:#fff; border:1px solid #ddd; border-radius:12px; padding:12px 14px; margin:8px 0 16px; }
+  #pwOverallWrap h3 { margin:0 0 8px; font-size:14px; }
+  #pwBottomBar { display:flex; justify-content:center; margin:6px 0 60px; }
+  #pwBottomBar button { background:#0a7a3e; color:#fff; font-size:16px; padding:14px 26px; border-radius:10px; }
+  #pwBottomBar button[disabled] { opacity:.85; cursor:default; }
+  #pwBanner { display:none; position:fixed; left:50%; top:12px; transform:translateX(-50%); z-index:60; width:min(700px,94vw);
+              border-radius:14px; padding:18px 48px 18px 20px; box-shadow:0 12px 34px rgba(0,0,0,.4); font-size:14px; line-height:1.45; }
+  #pwBanner.show { display:block; }
+  #pwBanner.ok { background:#0a7a3e; color:#fff; }
+  #pwBanner.err { background:#b3261e; color:#fff; }
+  #pwBanner.busy { background:#1f2a44; color:#fff; }
+  #pwBanner.warn { background:#a15c00; color:#fff; }
+  #pwBanner .pw-big { display:block; font-size:22px; font-weight:800; margin-bottom:4px; }
+  #pwBanner .pw-x { position:absolute; right:10px; top:8px; background:transparent; color:#fff; font-size:22px; padding:4px 10px; }
+  #pwBanner .pw-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  #pwBanner .pw-row button { background:#fff; color:#111; }
+  #pwBanner .pw-row button.pw-retry { background:#111; color:#fff; font-size:16px; }
+  #pwBanner pre { white-space:pre-wrap; word-break:break-word; background:rgba(255,255,255,.95); color:#111; border-radius:8px; padding:8px 10px; max-height:30vh; overflow:auto; font-size:12px; user-select:all; margin:10px 0 0; }
+  .pw-spin { display:inline-block; width:15px; height:15px; border:3px solid currentColor; border-right-color:transparent; border-radius:50%; animation:pwspin .7s linear infinite; vertical-align:-2px; margin-right:8px; }
+  @keyframes pwspin { to { transform:rotate(360deg); } }
+</style>
+<script>
+(function () {
+  'use strict';
+  var CFG = { topic: "pw-ratings-71692fd9368a4505f5b6d095", endpoints: ["https://ntfy.sh", "https://ntfy.envs.net"] };
+  var PACK = (typeof PW_PACK_ID !== 'undefined' && PW_PACK_ID) ? PW_PACK_ID : (typeof BATCH !== 'undefined' ? BATCH : 'unknown');
+  var BOT = /[?&]pwbot=1\b/.test(location.search);
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  // ---- UI wiring (replaces the old download-only Submit) ----
+  var old = $('submitBtn');
+  var btn = old.cloneNode(true);           // clone drops the legacy click listener
+  old.parentNode.replaceChild(btn, old);
+  btn.textContent = 'Submit ratings';
+  var nameWrap = document.createElement('label');
+  nameWrap.id = 'pwNameWrap';
+  nameWrap.innerHTML = 'Your name <input id="pwName" type="text" placeholder="Dan" autocomplete="name" maxlength="40"/>';
+  btn.parentNode.insertBefore(nameWrap, btn);
+  try { $('pwName').value = localStorage.getItem('pw_reviewer_name') || ''; } catch (e) {}
+  var list = $('list');
+  var overall = document.createElement('div');
+  overall.id = 'pwOverallWrap';
+  overall.innerHTML = '<h3>Overall notes (optional)</h3><textarea id="pwOverall" placeholder="Anything about this pack as a whole"></textarea>';
+  var bottom = document.createElement('div');
+  bottom.id = 'pwBottomBar';
+  bottom.innerHTML = '<button type="button" id="pwSubmitBottom">Submit ratings</button>';
+  if (list && list.parentNode) { list.parentNode.insertBefore(bottom, list.nextSibling); list.parentNode.insertBefore(overall, bottom); }
+  var banner = document.createElement('div');
+  banner.id = 'pwBanner'; banner.setAttribute('role', 'status'); banner.setAttribute('aria-live', 'assertive');
+  document.body.appendChild(banner);
+  var legend = document.querySelector('.legend');
+  if (legend && /How Submit works/.test(legend.textContent)) {
+    legend.innerHTML = '<strong>How Submit works:</strong> rate the designs, type your name if you are not Dan (blank = Dan), then click <strong>Submit ratings</strong>. ' +
+      'Your ratings go straight to PowderWraps and a big green <strong>&ldquo;Ratings received &check;&rdquo;</strong> banner confirms it. ' +
+      'If sending ever fails you get a red banner with <strong>Retry</strong> plus a backup copy / download.';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('header p'), function (p) {
+    p.innerHTML = p.innerHTML.replace('Submit downloads ratings JSON.', 'Submit sends your ratings to PowderWraps.');
+  });
+  function buttons() { return [btn, $('pwSubmitBottom')].filter(Boolean); }
+  function setButtons(html, disabled) { buttons().forEach(function (b) { b.innerHTML = html; b.disabled = !!disabled; }); }
+
+  function showBanner(kind, html) {
+    banner.className = 'show ' + kind;
+    banner.innerHTML = html + (kind === 'busy' ? '' : '<button type="button" class="pw-x" aria-label="Close">&times;</button>');
+    var x = banner.querySelector('.pw-x'); if (x) x.onclick = function () { banner.className = ''; };
+  }
+
+  // ---- data ----
+  function newSid() {
+    var a = new Uint8Array(8); (window.crypto || window.msCrypto).getRandomValues(a);
+    return Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+  }
+  function gather() {
+    var data = (typeof collect === 'function') ? collect() : { batch: PACK, items: [] };
+    var text = (typeof payloadText === 'function') ? payloadText(data) : '';
+    var entered = (($('pwName') || {}).value || '').trim();
+    var reviewer = entered || 'Dan';
+    var perDesign = {};
+    data.items.forEach(function (i) { if (i.suggestion) perDesign[i.id] = i.suggestion; });
+    return {
+      type: 'POWDERWRAPS_SUBMISSION', schema: 1, sid: newSid(),
+      pack: PACK, batch: data.batch, reviewer: reviewer, reviewer_entered: entered,
+      bot_test: BOT || /^bot-?test$/i.test(entered),
+      submitted_at: new Date().toISOString(),
+      page: location.origin + location.pathname,
+      rated: data.items.filter(function (i) { return i.rating !== null; }).length,
+      total: data.items.length,
+      ratings: data.items.map(function (i) { return { id: i.id, name: i.name, kind: i.kind, rating: i.rating, note: i.suggestion || '' }; }),
+      notes: { overall: (($('pwOverall') || {}).value || '').trim(), per_design: perDesign },
+      payload: text
+    };
+  }
+  function b64utf8(s) {
+    var bytes = new TextEncoder().encode(s), bin = '';
+    for (var i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  function messages(sub) {   // ntfy keeps messages <= 4096 bytes as text; split bigger ones
+    var s = JSON.stringify(sub);
+    if (new TextEncoder().encode(s).length <= 3800) return [s];
+    var b = b64utf8(s), size = 3000, n = Math.ceil(b.length / size), out = [];
+    for (var i = 0; i < n; i++) out.push('PWCHUNK ' + sub.sid + ' ' + (i + 1) + '/' + n + ' ' + b.slice(i * size, (i + 1) * size));
+    return out;
+  }
+  async function postOne(base, msgs, tags) {
+    var last = null;
+    for (var i = 0; i < msgs.length; i++) {
+      var ctl = new AbortController(), t = setTimeout(function () { ctl.abort(); }, 15000);
+      try {
+        var r = await fetch(base + '/' + CFG.topic + '?tags=' + encodeURIComponent(tags), { method: 'POST', body: msgs[i], cache: 'no-store', signal: ctl.signal });
+        if (!r.ok) throw new Error(base.replace('https://', '') + ' answered HTTP ' + r.status);
+        var j = await r.json().catch(function () { return {}; });
+        if (!j.id) throw new Error(base.replace('https://', '') + ' gave no receipt');
+        last = j.id;
+      } catch (e) {
+        var host = base.replace('https://', '');
+        if (e && e.name === 'AbortError') throw new Error(host + ' timed out');
+        if (e && e.name === 'TypeError') throw new Error('could not reach ' + host);
+        throw e;
+      } finally { clearTimeout(t); }
+    }
+    return { base: base, id: last };
+  }
+  function anySuccess(promises) {   // like Promise.any, works on older Safari
+    return new Promise(function (resolve, reject) {
+      var errs = [], left = promises.length;
+      promises.forEach(function (p) { p.then(resolve, function (e) { errs.push(e && e.message ? e.message : String(e)); if (--left === 0) reject(errs); }); });
+    });
+  }
+
+  // ---- backup actions (only offered after a failure) ----
+  function copyText(s) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(s);
+    return new Promise(function (res, rej) {
+      var ta = document.createElement('textarea'); ta.value = s; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy') ? res() : rej(); } catch (e) { rej(e); } ta.remove();
+    });
+  }
+  function download(sub) {
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(sub, null, 2)], { type: 'application/json' }));
+    a.download = 'PowderWraps-ratings-' + sub.pack + '-' + sub.reviewer.replace(/[^A-Za-z0-9_-]+/g, '_') + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  // ---- submit ----
+  var sending = false;
+  async function send(sub) {
+    if (sending) return;
+    sending = true;
+    setButtons('<span class="pw-spin"></span>Sending&hellip;', true);
+    showBanner('busy', '<span class="pw-big"><span class="pw-spin"></span>Sending your ratings&hellip;</span>Please keep this page open for a moment.');
+    var msgs = messages(sub), tags = 'pwratings' + (sub.bot_test ? ',bot-test' : '');
+    try {
+      var res = await anySuccess(CFG.endpoints.map(function (b) { return postOne(b, msgs, tags); }));
+      try { localStorage.setItem('pw_reviewer_name', sub.reviewer_entered); } catch (e) {}
+      var when = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      showBanner('ok', '<span class="pw-big">Ratings received &check; (' + sub.rated + ' design' + (sub.rated === 1 ? '' : 's') + ') &mdash; thank you</span>' +
+        'From <b>' + esc(sub.reviewer) + '</b> &middot; pack ' + esc(sub.pack) + ' &middot; ' + when + ' &middot; receipt ' + esc(res.id) +
+        (sub.total - sub.rated > 0 ? '<br/>' + (sub.total - sub.rated) + ' design(s) left blank.' : '') +
+        '<br/>Nothing else to do. Change anything and you can submit again.');
+      setButtons('Sent &check;', true);
+      document.body.setAttribute('data-pw-submit', 'ok');
+    } catch (errs) {
+      showBanner('err', '<span class="pw-big">Ratings NOT sent &#10007;</span>' +
+        'Your ratings did not reach PowderWraps (' + esc([].concat(errs).join('; ')) + '). Check your connection and tap Retry.' +
+        '<div class="pw-row"><button type="button" class="pw-retry">Retry</button><button type="button" class="pw-copy">Copy ratings (backup)</button><button type="button" class="pw-dl">Download file (backup)</button></div>' +
+        '<pre>' + esc(sub.payload) + '</pre>');
+      banner.querySelector('.pw-retry').onclick = function () { send(sub); };   // same sid -> no duplicates
+      banner.querySelector('.pw-copy').onclick = function (ev) { copyText(sub.payload).then(function () { ev.target.textContent = 'Copied ✓ — paste it to PowderWraps'; }, function () { ev.target.textContent = 'Select the text below and copy it'; }); };
+      banner.querySelector('.pw-dl').onclick = function () { download(sub); };
+      setButtons('Submit ratings', false);
+      document.body.setAttribute('data-pw-submit', 'error');
+    } finally { sending = false; }
+  }
+  function onSubmit() {
+    var sub = gather();
+    if (sub.rated === 0 && !sub.notes.overall && !Object.keys(sub.notes.per_design).length) {
+      showBanner('warn', '<span class="pw-big">Nothing to send yet</span>Pick 0 / 1 / 2 on at least one design, then tap Submit.');
+      return;
+    }
+    send(sub);
+  }
+  buttons().forEach(function (b) { b.addEventListener('click', onSubmit); });
+  window.doSubmit = onSubmit;
+  function rearm() { if (!sending && btn.disabled) setButtons('Submit updated ratings', false); }
+  document.addEventListener('change', rearm, true);
+  document.addEventListener('input', rearm, true);
+})();
+</script>
+<!-- PW_SUBMIT_V2 END -->
+
+<!-- PW_MAILTO BEGIN: durable record = the email Dan sends -->
+<script>
+(function () {
+  'use strict';
+  var TO = "dan@powderwraps.com";
+  function $(id) { return document.getElementById(id); }
+  function mailBody() {
+    var data = collect();
+    var who = (($('pwName') || {}).value || '').trim() || 'Dan';
+    var groups = {2: [], 1: [], 0: []};
+    data.items.forEach(function (i) { if (i.rating !== null) groups[i.rating].push(i.id.split('-').pop()); });
+    var lines = ['PowderWraps ratings - pack ' + BATCH + ' - from ' + who, '',
+      '2 Approve: ' + (groups[2].join(' ') || '-'),
+      '1 Maybe: ' + (groups[1].join(' ') || '-'),
+      '0 Bad: ' + (groups[0].join(' ') || '-'), '',
+      'Just tap Send. This email is the saved record of your ratings.', '',
+      '--- machine copy (do not edit) ---'];
+    var pt = payloadText(data).split('\n');
+    pt[0] += ' pack=' + BATCH + ' reviewer=' + who.replace(/\s+/g, '_');
+    lines.push(pt.join('\n'));
+    var ov = (($('pwOverall') || {}).value || '').trim().replace(/\r?\n/g, ' ');
+    if (ov) lines.push('OVERALL|' + ov.replace(/\|/g, '/'));
+    lines.push('--- end ---');
+    var rated = data.items.filter(function (i) { return i.rating !== null; }).length;
+    return { subject: 'PowderWraps ratings ' + BATCH + ' (' + rated + ' rated)', body: lines.join('\n'), rated: rated };
+  }
+  function href() {
+    var m = mailBody();
+    return 'mailto:' + TO + '?subject=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(m.body);
+  }
+  window.pwMailHref = href;
+  function openMail() {
+    var a = document.createElement('a'); a.href = href(); a.style.display = 'none';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  // capture phase: runs on the same tap, before the ntfy send, so the browser allows the mail app to open
+  document.addEventListener('click', function (ev) {
+    var t = ev.target && ev.target.closest ? ev.target.closest('#submitBtn, #pwSubmitBottom') : null;
+    if (!t || t.disabled) return;
+    if (mailBody().rated === 0) return;
+    openMail();
+  }, true);
+  // add a permanent "Email my ratings" button + note
+  var bar = $('pwBottomBar');
+  if (bar) {
+    var b = document.createElement('button'); b.type = 'button'; b.id = 'pwMailBtn';
+    b.textContent = 'Email my ratings again'; b.style.cssText = 'margin-left:10px;background:#111;color:#fff';
+    b.onclick = openMail; bar.appendChild(b);
+  }
+  var legend = document.querySelector('.legend');
+  if (legend) legend.innerHTML += '<br/><strong>Saved by email:</strong> Submit also opens an email to ' + TO +
+    ' with your ratings filled in. <strong>Tap Send</strong> &mdash; that email is the permanent record and is what files the designs into Approved / Maybe / Backup.';
+})();
+</script>
+<!-- PW_MAILTO END -->
+</body>
+</html>

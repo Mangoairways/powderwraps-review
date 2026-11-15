@@ -1,0 +1,48 @@
+{
+ "design": "PWKD261115D-04 Brushed Tech (per-template master test of C-04 / B-04)",
+ "locked": "2026-11-15 (MT). Every master is built from this file by build.py; nothing is hand-placed.",
+ "coordinates": "y = percent of length from TIP (0%) to TAIL (100%). x = percent of the sheet width from the left edge. Mark sizes are physical (mm) so they print the same size on every product.",
+ "base": {
+  "art": "Kittl Nano Banana 2.1 4K clean brushed-aluminium plate (no marks), horizontal brush grain",
+  "color_ramp_by_length": [
+   {"y": 3, "rgb": [205, 205, 207], "name": "bright satin silver"},
+   {"y": 30, "rgb": [156, 153, 158], "name": "silver-gray"},
+   {"y": 50, "rgb": [90, 86, 94], "name": "gunmetal"},
+   {"y": 70, "rgb": [44, 39, 46], "name": "near-black"},
+   {"y": 80, "rgb": [36, 32, 38], "name": "matte black"},
+   {"y": 97.5, "rgb": [44, 40, 47], "name": "matte black with grain mist"}
+  ],
+  "color_match": "each row of the plate is gain-matched to the C-04 round-3 row colour at the same % of length, so the gradient lands at identical % on every master",
+  "grain_mist": {"y_from": 86, "y_to": 97.15, "note": "fine pale speckle on the black, density rising toward the tail"}
+ },
+ "hot_accent": {"name": "safety orange (non-neon, as on B-04/C-04)", "rgb": [240, 90, 26], "hex": "#F05A1A"},
+ "caps": {
+  "tip_cap": {"y_from": 0, "y_to": 3.0, "rgb": [240, 90, 26]},
+  "tip_cap_line": {"y_from": 3.0, "y_to": 3.35, "rgb": [20, 20, 20]},
+  "tail_cap_line": {"y_from": 97.15, "y_to": 97.5, "rgb": [20, 20, 20]},
+  "tail_cap": {"y_from": 97.5, "y_to": 100, "rgb": [240, 90, 26]}
+ },
+ "elements": [
+  {"id": "pinstripe", "type": "pinstripe", "x": 31.7, "y_from": 3.35, "y_to": 97.15, "width_mm": 0.8, "color": "auto-contrast: dark gray on silver, light silver on black"},
+  {"id": "orange_block", "type": "solid block", "x_from": 35.2, "x_to": 86.0, "y_from": 19.0, "y_to": 24.5, "rgb": [240, 90, 26]},
+  {"id": "crosshair_1", "type": "crosshair", "x": 70.0, "y": 8.9, "arm_mm": 9, "line_mm": 0.6},
+  {"id": "crosshair_2", "type": "crosshair", "x": 21.0, "y": 13.1, "arm_mm": 6, "line_mm": 0.6},
+  {"id": "crosshair_3", "type": "crosshair", "x": 27.0, "y": 13.8, "arm_mm": 6, "line_mm": 0.6},
+  {"id": "chevron_mark_1", "type": "chevron row (6 small < marks)", "x": 44.0, "y": 13.3, "width_mm": 18, "height_mm": 4},
+  {"id": "dot_row_1", "type": "dot row (4 dots)", "x": 92.0, "y": 13.3, "dot_mm": 1.6, "pitch_mm": 4},
+  {"id": "crosshair_4", "type": "crosshair", "x": 27.0, "y": 21.7, "arm_mm": 6, "line_mm": 0.6},
+  {"id": "dot_row_2", "type": "dot row (6 dots)", "x": 88.0, "y": 22.3, "dot_mm": 1.6, "pitch_mm": 4},
+  {"id": "dot_row_3", "type": "dot row (3 dots)", "x": 92.0, "y": 25.1, "dot_mm": 1.6, "pitch_mm": 4},
+  {"id": "chevron_mark_2", "type": "chevron row (6 small < marks)", "x": 43.0, "y": 25.5, "width_mm": 18, "height_mm": 4},
+  {"id": "crosshair_5", "type": "crosshair", "x": 69.0, "y": 28.4, "arm_mm": 9, "line_mm": 0.6},
+  {"id": "spec_text", "type": "vector text, Barlow Condensed Bold, centred", "x": 50.0, "y_top": 80.0, "lines": [["ALPINE", [225, 225, 225]], ["180", [240, 90, 26]], ["ALL-MTN", [225, 225, 225]]], "cap_font_mm": 28, "line_pitch_mm": 31, "rule": {"width_mm": 50, "line_mm": 1.0, "rgb": [240, 90, 26]}},
+  {"id": "stars", "type": "none", "note": "B-04/C-04 has no stars; the dot rows above are its small-mark accents"}
+ ],
+ "per_template_masters": {
+  "ski": {"physical": "7 in x 192 cm (17.78 x 192 cm)", "dpi": 150, "px": [1050, 11339]},
+  "board": {"physical": "14 in x 182 cm (35.56 x 182 cm)", "dpi": 150, "px": [2100, 10748], "note": "re-composed at board width from this spec, not a stretch or crop of the ski master"},
+  "split_sheet": {"physical": "14 in x 192 cm", "dpi": 150, "px": [2100, 11339], "cut": "down the centre into split-L and split-R, each 7 in x 192 cm / 1050 x 11339 px"}
+ },
+ "split_pair_seam_rule": "Continuous elements (gradient, brush grain, orange block, caps) flow across the seam. No small mark or text may sit within 12 mm of the seam; the spec text block moves to the centre of the right ski (x = 75%) on the split sheet only, so no letter is cut.",
+ "rules": ["no brand names, logos or marks; no PowderWraps mark", "topsheet only, nothing on bases", "reads from 20 ft", "contrasting orange accent on tip and tail", "nothing vulgar", "approved V3 template only"]
+}
