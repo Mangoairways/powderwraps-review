@@ -303,12 +303,13 @@
   "nothing vulgar",
   "approved V3 template only"
  ],
- "status": "STANDARD per-template master method (Dan via Jenni, Nov 15 2026 7:39 AM MT). Reuse this file as the pattern: copy it, change base/accent/elements, keep the coordinate system and per_template_masters.",
+ "status": "STANDARD per-template master method (Dan via Jenni, Nov 15 2026). Template: V7 ONLY (Dan, 7:54 AM MT Nov 15). Reuse this file as the pattern: copy it, change base/accent/elements, keep the coordinate system and per_template_masters.",
  "mockup_rules": {
+  "template": "V7 only: V7 Matching Pair, V7 Spread Pair, V7 Board, plus the two V7 scenes (Lodge wall = Matching, Slope ski rack = Spread). No V3, no other sets.",
   "masters": "print files stay straight and square; never altered for a mockup",
-  "V3_board": "mockup only: rotate the board master by the measured V3 board axis angle (5.717 deg, PCA), centre on the board axis, uniform scale up only as needed to cover (C-04: +8.8%)",
-  "skis": "straight uniform downscale of the master to each ski piece length, centred, no rotation, no crop",
-  "split_pair": "split-L on the left ski, split-R on the right ski of a Spread Pair template",
-  "templates": "only Dan-approved locked sets: V3 (Matching/Spread/Board), V7 (Matching/Spread/Board), V7 scene backgrounds (lodge wall = Matching, slope ski rack = Spread)"
+  "placement": "NO rotation, NO extra scale: straight uniform downscale of each master to the piece length (art-mask extent), centred on the piece, no crop. Art layer only; equipment and bindings untouched.",
+  "matching": "ski master on both skis",
+  "spread": "split-L on the left ski, split-R on the right ski",
+  "board": "board master straight on the upright V7 board"
  }
 }
