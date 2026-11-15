@@ -6,10 +6,21 @@
   "published": "2026-10-05 21:14"
  },
  {
-  "id": "20261115-test",
-  "title": "PowderWraps Rate Designs \u2014 20261115-test (whites / vanilla / creme test, 5)",
+  "id": "20261115b",
+  "title": "PowderWraps Rate Designs \u2014 20261115b (round 2: tip-to-tail compositions, 5)",
   "designs": 5,
-  "published": "2026-11-15 00:40"
+  "published": "2026-11-15 01:00"
+ },
+ {
+  "id": "20261115-test",
+  "title": "PowderWraps Rate Designs \u2014 20261115-test (RETIRED \u00b7 Dan rated all 5 Bad \u00b7 cream brief retired)",
+  "designs": 5,
+  "published": "2026-11-15 00:40",
+  "status": "retired",
+  "result": "all 5 rated Bad by Dan (Nov 15)",
+  "ignore_ratings": [
+   "ntfy M0cYrixikjlS \u2014 Don bot test (pwbot=1, bot-test tag), not a real rating"
+  ]
  },
  {
   "id": "20261102B",
