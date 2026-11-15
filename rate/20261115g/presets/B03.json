@@ -1,0 +1,69 @@
+{
+ "scene": "B03",
+ "description": "deep boot room back wall",
+ "background": "/workspace/v7-backgrounds/board/board-bg-03.png",
+ "background_sha256": "a67228035842ff4b2a82de3461855fe16a5a1dd73e930b72a099a0e39e31445c",
+ "derived_from": {
+  "gear_box_xyxy": [
+   309,
+   380,
+   410,
+   900
+  ],
+  "region_xyxy": [
+   209,
+   328,
+   510,
+   952
+  ],
+  "scene_mean_rgb": [
+   107.3,
+   106.7,
+   94.0
+  ],
+  "key_light_rgb_top3pct": [
+   196.9,
+   195.1,
+   193.3
+  ],
+  "side_luma_left_right": [
+   100.1,
+   110.0
+  ],
+  "luma_above_below": [
+   132.1,
+   75.8
+  ],
+  "key_light_warmth_index": 0.019
+ },
+ "levels": {
+  "scene_black": 11.36,
+  "scene_white": 144.63,
+  "strength": 0.5,
+  "max_shift": 22.0,
+  "note": "gear 1st/99th pct luminance (measured at apply time) moved halfway toward the scene black/white, max 22 levels; applied to luminance only (RGB offsets added), so chroma and hue are kept"
+ },
+ "tint": {
+  "light": "neutral white",
+  "gains": [
+   1.0045,
+   0.9996,
+   0.9912
+  ],
+  "cap": 0.05,
+  "note": "per-channel gains = 0.5 x key-light chroma + local wall chroma (0.12 if the key light is warm, else 0.03), luminance-neutral, capped +/-5%"
+ },
+ "gradient": {
+  "amp_x": 0.0282,
+  "amp_y": -0.035,
+  "brighter_side": "right",
+  "cap": 0.07,
+  "note": "multiplicative 1+amp_x*x+amp_y*y across the gear box, x,y in [-1,1]"
+ },
+ "grain": {
+  "sigma": 2.069,
+  "blur": 0.6,
+  "seed": 1062677167,
+  "cap": 3.0
+ }
+}

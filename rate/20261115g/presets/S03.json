@@ -1,0 +1,69 @@
+{
+ "scene": "S03",
+ "description": "deep lodge room, back wall",
+ "background": "/workspace/v7-backgrounds/ski/ski-bg-03.png",
+ "background_sha256": "d0a8795fde5ee7a2c9e486ca2e9b742f8ef1ae5827e6295e8292b03efe057c1b",
+ "derived_from": {
+  "gear_box_xyxy": [
+   322,
+   330,
+   437,
+   850
+  ],
+  "region_xyxy": [
+   213,
+   278,
+   546,
+   902
+  ],
+  "scene_mean_rgb": [
+   182.1,
+   172.3,
+   158.2
+  ],
+  "key_light_rgb_top3pct": [
+   234.7,
+   235.9,
+   236.8
+  ],
+  "side_luma_left_right": [
+   174.0,
+   179.1
+  ],
+  "luma_above_below": [
+   204.6,
+   138.6
+  ],
+  "key_light_warmth_index": -0.009
+ },
+ "levels": {
+  "scene_black": 19.41,
+  "scene_white": 214.41,
+  "strength": 0.5,
+  "max_shift": 22.0,
+  "note": "gear 1st/99th pct luminance (measured at apply time) moved halfway toward the scene black/white, max 22 levels; applied to luminance only (RGB offsets added), so chroma and hue are kept"
+ },
+ "tint": {
+  "light": "cool (snow/window daylight)",
+  "gains": [
+   0.9994,
+   1.0002,
+   0.9996
+  ],
+  "cap": 0.05,
+  "note": "per-channel gains = 0.5 x key-light chroma + local wall chroma (0.12 if the key light is warm, else 0.03), luminance-neutral, capped +/-5%"
+ },
+ "gradient": {
+  "amp_x": 0.0087,
+  "amp_y": -0.035,
+  "brighter_side": "right",
+  "cap": 0.07,
+  "note": "multiplicative 1+amp_x*x+amp_y*y across the gear box, x,y in [-1,1]"
+ },
+ "grain": {
+  "sigma": 1.586,
+  "blur": 0.6,
+  "seed": 561793266,
+  "cap": 3.0
+ }
+}

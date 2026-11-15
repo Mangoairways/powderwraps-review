@@ -1,0 +1,69 @@
+{
+ "scene": "S08",
+ "description": "cabin porch log wall",
+ "background": "/workspace/v7-backgrounds/ski/ski-bg-08.png",
+ "background_sha256": "f37620101566acaf7b4ec3690f38478a327735fa36c555ab6949d0f3ea6d9ad0",
+ "derived_from": {
+  "gear_box_xyxy": [
+   203,
+   300,
+   357,
+   1000
+  ],
+  "region_xyxy": [
+   71,
+   230,
+   489,
+   1070
+  ],
+  "scene_mean_rgb": [
+   76.8,
+   66.4,
+   53.6
+  ],
+  "key_light_rgb_top3pct": [
+   205.2,
+   209.0,
+   216.5
+  ],
+  "side_luma_left_right": [
+   56.1,
+   75.2
+  ],
+  "luma_above_below": [
+   45.1,
+   72.6
+  ],
+  "key_light_warmth_index": -0.054
+ },
+ "levels": {
+  "scene_black": 0.85,
+  "scene_white": 168.8,
+  "strength": 0.5,
+  "max_shift": 22.0,
+  "note": "gear 1st/99th pct luminance (measured at apply time) moved halfway toward the scene black/white, max 22 levels; applied to luminance only (RGB offsets added), so chroma and hue are kept"
+ },
+ "tint": {
+  "light": "cool (snow/window daylight)",
+  "gains": [
+   0.9956,
+   1.0001,
+   1.0121
+  ],
+  "cap": 0.05,
+  "note": "per-channel gains = 0.5 x key-light chroma + local wall chroma (0.12 if the key light is warm, else 0.03), luminance-neutral, capped +/-5%"
+ },
+ "gradient": {
+  "amp_x": 0.07,
+  "amp_y": 0.035,
+  "brighter_side": "right",
+  "cap": 0.07,
+  "note": "multiplicative 1+amp_x*x+amp_y*y across the gear box, x,y in [-1,1]"
+ },
+ "grain": {
+  "sigma": 3.0,
+  "blur": 0.6,
+  "seed": 864197390,
+  "cap": 3.0
+ }
+}

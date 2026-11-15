@@ -1,0 +1,69 @@
+{
+ "scene": "S07",
+ "description": "gear shop back wall",
+ "background": "/workspace/v7-backgrounds/ski/ski-bg-07.png",
+ "background_sha256": "169dce343635099ddb1fdd2564884c117ef9edee054c41326cec24f267a9466a",
+ "derived_from": {
+  "gear_box_xyxy": [
+   318,
+   330,
+   441,
+   890
+  ],
+  "region_xyxy": [
+   205,
+   274,
+   554,
+   946
+  ],
+  "scene_mean_rgb": [
+   170.6,
+   169.3,
+   164.3
+  ],
+  "key_light_rgb_top3pct": [
+   233.2,
+   233.7,
+   233.5
+  ],
+  "side_luma_left_right": [
+   153.2,
+   186.0
+  ],
+  "luma_above_below": [
+   181.0,
+   124.5
+  ],
+  "key_light_warmth_index": -0.001
+ },
+ "levels": {
+  "scene_black": 36.55,
+  "scene_white": 218.08,
+  "strength": 0.5,
+  "max_shift": 22.0,
+  "note": "gear 1st/99th pct luminance (measured at apply time) moved halfway toward the scene black/white, max 22 levels; applied to luminance only (RGB offsets added), so chroma and hue are kept"
+ },
+ "tint": {
+  "light": "neutral white",
+  "gains": [
+   0.9994,
+   1.0003,
+   0.999
+  ],
+  "cap": 0.05,
+  "note": "per-channel gains = 0.5 x key-light chroma + local wall chroma (0.12 if the key light is warm, else 0.03), luminance-neutral, capped +/-5%"
+ },
+ "gradient": {
+  "amp_x": 0.058,
+  "amp_y": -0.035,
+  "brighter_side": "right",
+  "cap": 0.07,
+  "note": "multiplicative 1+amp_x*x+amp_y*y across the gear box, x,y in [-1,1]"
+ },
+ "grain": {
+  "sigma": 1.473,
+  "blur": 0.6,
+  "seed": 1338255225,
+  "cap": 3.0
+ }
+}

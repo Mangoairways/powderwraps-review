@@ -1,0 +1,69 @@
+{
+ "scene": "B07",
+ "description": "repair shop white block wall",
+ "background": "/workspace/v7-backgrounds/board/board-bg-07.png",
+ "background_sha256": "919c6653b93ef62f5a111f5050490ef0ca31ba5df75af9467c527c43a167e425",
+ "derived_from": {
+  "gear_box_xyxy": [
+   242,
+   360,
+   358,
+   960
+  ],
+  "region_xyxy": [
+   133,
+   300,
+   467,
+   1020
+  ],
+  "scene_mean_rgb": [
+   178.3,
+   175.5,
+   171.4
+  ],
+  "key_light_rgb_top3pct": [
+   241.8,
+   241.9,
+   242.7
+  ],
+  "side_luma_left_right": [
+   155.6,
+   194.9
+  ],
+  "luma_above_below": [
+   206.8,
+   118.6
+  ],
+  "key_light_warmth_index": -0.004
+ },
+ "levels": {
+  "scene_black": 23.86,
+  "scene_white": 242.0,
+  "strength": 0.5,
+  "max_shift": 22.0,
+  "note": "gear 1st/99th pct luminance (measured at apply time) moved halfway toward the scene black/white, max 22 levels; applied to luminance only (RGB offsets added), so chroma and hue are kept"
+ },
+ "tint": {
+  "light": "neutral white",
+  "gains": [
+   1.0001,
+   0.9999,
+   1.0009
+  ],
+  "cap": 0.05,
+  "note": "per-channel gains = 0.5 x key-light chroma + local wall chroma (0.12 if the key light is warm, else 0.03), luminance-neutral, capped +/-5%"
+ },
+ "gradient": {
+  "amp_x": 0.0672,
+  "amp_y": -0.035,
+  "brighter_side": "right",
+  "cap": 0.07,
+  "note": "multiplicative 1+amp_x*x+amp_y*y across the gear box, x,y in [-1,1]"
+ },
+ "grain": {
+  "sigma": 2.328,
+  "blur": 0.6,
+  "seed": 3680656447,
+  "cap": 3.0
+ }
+}

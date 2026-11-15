@@ -1,0 +1,69 @@
+{
+ "scene": "B10",
+ "description": "apres lounge, wood panel between snow windows",
+ "background": "/workspace/v7-backgrounds/board/board-bg-10.png",
+ "background_sha256": "cd361e73fbd99e4ebca5c0da5ce17deffb26d8211ca798053a9b0bb028f93916",
+ "derived_from": {
+  "gear_box_xyxy": [
+   297,
+   310,
+   432,
+   1010
+  ],
+  "region_xyxy": [
+   176,
+   240,
+   553,
+   1080
+  ],
+  "scene_mean_rgb": [
+   119.1,
+   69.9,
+   31.9
+  ],
+  "key_light_rgb_top3pct": [
+   245.3,
+   232.4,
+   211.9
+  ],
+  "side_luma_left_right": [
+   80.8,
+   74.0
+  ],
+  "luma_above_below": [
+   75.4,
+   52.3
+  ],
+  "key_light_warmth_index": 0.145
+ },
+ "levels": {
+  "scene_black": 14.91,
+  "scene_white": 124.5,
+  "strength": 0.5,
+  "max_shift": 22.0,
+  "note": "gear 1st/99th pct luminance (measured at apply time) moved halfway toward the scene black/white, max 22 levels; applied to luminance only (RGB offsets added), so chroma and hue are kept"
+ },
+ "tint": {
+  "light": "warm (lodge/fire)",
+  "gains": [
+   1.0432,
+   0.9928,
+   0.9438
+  ],
+  "cap": 0.05,
+  "note": "per-channel gains = 0.5 x key-light chroma + local wall chroma (0.12 if the key light is warm, else 0.03), luminance-neutral, capped +/-5%"
+ },
+ "gradient": {
+  "amp_x": -0.0262,
+  "amp_y": -0.035,
+  "brighter_side": "left",
+  "cap": 0.07,
+  "note": "multiplicative 1+amp_x*x+amp_y*y across the gear box, x,y in [-1,1]"
+ },
+ "grain": {
+  "sigma": 2.986,
+  "blur": 0.6,
+  "seed": 1421799884,
+  "cap": 3.0
+ }
+}

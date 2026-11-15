@@ -1,0 +1,69 @@
+{
+ "scene": "S10",
+ "description": "wood panel between snow windows",
+ "background": "/workspace/v7-backgrounds/ski/ski-bg-10.png",
+ "background_sha256": "45cfd5a3d70c9ca485c6454362b2b8359f2c22aa8ec1c104219c6029c6046a3a",
+ "derived_from": {
+  "gear_box_xyxy": [
+   288,
+   310,
+   442,
+   1010
+  ],
+  "region_xyxy": [
+   156,
+   240,
+   574,
+   1080
+  ],
+  "scene_mean_rgb": [
+   103.6,
+   73.1,
+   50.1
+  ],
+  "key_light_rgb_top3pct": [
+   244.4,
+   244.4,
+   243.1
+  ],
+  "side_luma_left_right": [
+   80.5,
+   90.2
+  ],
+  "luma_above_below": [
+   74.4,
+   67.5
+  ],
+  "key_light_warmth_index": 0.005
+ },
+ "levels": {
+  "scene_black": 15.48,
+  "scene_white": 240.0,
+  "strength": 0.5,
+  "max_shift": 22.0,
+  "note": "gear 1st/99th pct luminance (measured at apply time) moved halfway toward the scene black/white, max 22 levels; applied to luminance only (RGB offsets added), so chroma and hue are kept"
+ },
+ "tint": {
+  "light": "neutral white",
+  "gains": [
+   1.0103,
+   0.9983,
+   0.9865
+  ],
+  "cap": 0.05,
+  "note": "per-channel gains = 0.5 x key-light chroma + local wall chroma (0.12 if the key light is warm, else 0.03), luminance-neutral, capped +/-5%"
+ },
+ "gradient": {
+  "amp_x": 0.0342,
+  "amp_y": -0.0146,
+  "brighter_side": "right",
+  "cap": 0.07,
+  "note": "multiplicative 1+amp_x*x+amp_y*y across the gear box, x,y in [-1,1]"
+ },
+ "grain": {
+  "sigma": 2.155,
+  "blur": 0.6,
+  "seed": 1024911617,
+  "cap": 3.0
+ }
+}

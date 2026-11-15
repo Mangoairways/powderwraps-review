@@ -1,0 +1,69 @@
+{
+ "scene": "B09",
+ "description": "outdoor rack in snow",
+ "background": "/workspace/v7-backgrounds/board/board-bg-09.png",
+ "background_sha256": "f037afdcb81227814fb9fdb32219d761b1ab9b2f14e9039c11543cfcd8e1a33b",
+ "derived_from": {
+  "gear_box_xyxy": [
+   286,
+   390,
+   433,
+   1150
+  ],
+  "region_xyxy": [
+   158,
+   314,
+   561,
+   1226
+  ],
+  "scene_mean_rgb": [
+   152.1,
+   150.0,
+   148.8
+  ],
+  "key_light_rgb_top3pct": [
+   236.1,
+   236.4,
+   240.0
+  ],
+  "side_luma_left_right": [
+   157.9,
+   140.7
+  ],
+  "luma_above_below": [
+   143.1,
+   185.2
+  ],
+  "key_light_warmth_index": -0.017
+ },
+ "levels": {
+  "scene_black": 7.95,
+  "scene_white": 234.14,
+  "strength": 0.5,
+  "max_shift": 22.0,
+  "note": "gear 1st/99th pct luminance (measured at apply time) moved halfway toward the scene black/white, max 22 levels; applied to luminance only (RGB offsets added), so chroma and hue are kept"
+ },
+ "tint": {
+  "light": "cool (snow/window daylight)",
+  "gains": [
+   0.9992,
+   0.9995,
+   1.007
+  ],
+  "cap": 0.05,
+  "note": "per-channel gains = 0.5 x key-light chroma + local wall chroma (0.12 if the key light is warm, else 0.03), luminance-neutral, capped +/-5%"
+ },
+ "gradient": {
+  "amp_x": -0.0344,
+  "amp_y": 0.035,
+  "brighter_side": "left",
+  "cap": 0.07,
+  "note": "multiplicative 1+amp_x*x+amp_y*y across the gear box, x,y in [-1,1]"
+ },
+ "grain": {
+  "sigma": 2.197,
+  "blur": 0.6,
+  "seed": 3077708985,
+  "cap": 3.0
+ }
+}

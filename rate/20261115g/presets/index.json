@@ -1,0 +1,27 @@
+{
+ "scenes": [
+  "S01",
+  "S02",
+  "S03",
+  "S04",
+  "S05",
+  "S06",
+  "S07",
+  "S08",
+  "S09",
+  "S10",
+  "B01",
+  "B02",
+  "B03",
+  "B04",
+  "B05",
+  "B06",
+  "B07",
+  "B09",
+  "B10"
+ ],
+ "dropped": {
+  "B08": "angled 3/4 porch background (Nov 15 9:39 AM MT); files kept"
+ },
+ "apply": "python3 apply_preset.py <scene>.json <V7 composite.png> <gear alpha mask.png> <out.png>"
+}

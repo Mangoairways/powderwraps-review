@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PowderWraps Rate Designs — 20261115g</title>
+<style>
+  :root { --bg:#f4f4f2; --card:#fff; --ink:#111; --muted:#555; --line:#ddd; --keep:#0a7a3e; --maybe:#a15c00; --bad:#9b1c1c; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+  header { position:sticky; top:0; z-index:10; background:#111; color:#fff; padding:14px 18px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; }
+  header h1 { margin:0; font-size:16px; font-weight:700; }
+  header p { margin:0; font-size:12px; opacity:.85; max-width:620px; }
+  .actions { display:flex; gap:8px; flex-wrap:wrap; }
+  button { cursor:pointer; border:none; border-radius:8px; padding:10px 16px; font-weight:700; font-size:14px; }
+  #submitBtn { background:#fff; color:#111; }
+  #submitBtn:hover { background:#e8e8e8; }
+  #copyBtn { background:#333; color:#fff; }
+  main { max-width:880px; margin:0 auto; padding:16px; }
+  .legend { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:14px; font-size:13px; color:var(--muted); }
+  .legend strong { color:var(--ink); }
+  .section-h { margin:18px 0 10px; font-size:14px; font-weight:700; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:12px; display:grid; grid-template-columns: 88px 1fr; gap:14px; }
+  .card img { width:72px; height:auto; max-height:300px; object-fit:contain; background:#f0f0f0; border-radius:6px; }
+  .meta h2 { margin:0 0 4px; font-size:15px; }
+  .meta .motif { margin:0 0 6px; font-size:12px; color:var(--muted); }
+  .meta .hint { margin:0 0 10px; font-size:11px; color:#7a4a10; }
+  .rates { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .rates label { display:flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:13px; cursor:pointer; user-select:none; }
+  .rates input { accent-color:#111; }
+  .rates label.sel-0 { border-color:var(--bad); background:#fdecec; }
+  .rates label.sel-1 { border-color:var(--maybe); background:#fff4e5; }
+  .rates label.sel-2 { border-color:var(--keep); background:#e8f7ee; }
+  textarea { width:100%; min-height:64px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:inherit; font-size:13px; resize:vertical; }
+  #toast { display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#111; color:#fff; padding:12px 18px; border-radius:10px; font-size:13px; max-width:90vw; z-index:20; }
+  footer { text-align:center; color:var(--muted); font-size:12px; padding:20px; }
+
+  main { max-width:1100px; margin:0 auto; padding:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:16px; display:grid; grid-template-columns: minmax(220px, 320px) 1fr; gap:18px; align-items:start; }
+  .card .thumb-wrap { cursor:zoom-in; }
+  .card img { width:100%; height:auto; max-height:720px; object-fit:contain; background:#111; border-radius:8px; display:block; }
+  @media (max-width:720px){ .card { grid-template-columns: 1fr; } .card img { max-height:520px; } }
+  #lightbox { display:none; position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.92); align-items:center; justify-content:center; padding:24px; cursor:zoom-out; }
+  #lightbox.open { display:flex; }
+  #lightbox img { max-width:min(96vw, 900px); max-height:94vh; object-fit:contain; border-radius:8px; }
+  #lightbox .hint { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); color:#ccc; font-size:12px; }
+
+
+  /* 20261115g: one card = Graphic + Board + Spread pair + Matching pair (layout base from 20261013) — ski pair + board thumbs side by side above the meta */
+  main { max-width:1300px; }
+  .card { display:block; padding:16px; }
+  .card .pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+  .card .thumb-wrap { cursor:zoom-in; }
+  .card .thumb-wrap .cap { font-size:12px; color:var(--muted); margin:0 0 4px; }
+  .card img { width:100%; height:auto; max-height:none; object-fit:contain; background:#151515; border-radius:8px; display:block; }
+  @media (max-width:720px){ .card .pair { grid-template-columns:1fr; } }
+  #lightbox { padding:12px; }
+  #lightbox img { max-width:98vw; max-height:96vh; width:auto; height:auto; }
+  .card .quad { margin-bottom:14px; max-width:760px; }
+  .pwinfo { margin-top:8px; background:#f6f8fb; border:1px solid #ddd; border-radius:8px; padding:8px 10px; font-size:12px; line-height:1.5; text-align:left; }
+  .pwinfo summary { cursor:pointer; font-weight:700; margin-top:4px; }
+  .pwprompt { margin:4px 0 0; white-space:pre-wrap; word-break:break-word; }
+  .pwmis summary { color:#a3470a; }
+  .pwhint { color:#777; margin-top:4px; }
+  .card .quad img { background:#fff; }
+</style>
+</head>
+<body>
+<a href="../../" style="position:fixed;left:10px;bottom:10px;z-index:30;background:#111;color:#fff;padding:8px 12px;border-radius:999px;font:600 12px -apple-system,Segoe UI,Arial,sans-serif;text-decoration:none;opacity:.85">← All packs</a>
+<header>
+  <div>
+    <h1>PowderWraps — Rate designs (20261115g)</h1>
+    <p>GEAR GRADING TEST — REVIEW ONLY. One light per-scene preset (levels toward the scene's black/white, small tint toward the scene light, soft brightness gradient toward the window/fire side, light grain) applied to the GEAR LAYER ONLY on 19 V7 backgrounds (B08 dropped). Backgrounds, V7 geometry, bindings' shape and print masters unchanged. Two designs: C-04 Brushed Tech (locked) and C-03 Ink Range (seeded random pick, seed 20261115). Each card: BEFORE unfiltered (left) · AFTER graded (right) — tap to enlarge. Rate the AFTER: 2 Keep · 1 Maybe · 0 Bad.</p>
+  </div>
+  <div class="actions">
+    <button type="button" id="copyBtn">Copy payload</button>
+    <button type="button" id="submitBtn">Submit ratings</button>
+  </div>
+</header>
+<main>
+  <div class="legend">
+    <strong>How Submit works:</strong> click <strong>Submit ratings</strong> → ratings are sent straight to PowderWraps and a big green "Ratings received ✓" banner confirms it.
+    Only if sending fails: red banner with Retry + backup copy / download (<code>PowderWraps-ratings-20261115g.json</code>).
+  </div>
+  <div id="list"></div>
+</main>
+<footer>PowderWraps · single-file rater · 20261115g · 38 cards (C-04 + C-03 × S01–S10, B01–B07, B09, B10; B08 dropped) · V7 only, gear layer graded, bindings geometry unchanged · <a href="presets/">presets + apply script</a> · <a href="verification.json">verification.json</a></footer>
+<div id="lightbox" onclick="this.classList.remove('open')"><img id="lightboxImg" alt=""/><div class="hint">Click anywhere to close</div></div>
+<div id="toast"></div>
+<script>
+const BATCH = "20261115g";
+const WEBHOOK_URL = "";
+const DESIGNS = [{"id": "PWKD261115G-C04-S01", "name": "S01 \u00b7 C-04 Brushed Tech \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Lodge wood wall: skis stand on the rug at the wall base, clear of the window and bench. Works.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-01.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S01.json: levels toward scene black 37 / white 193 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R1.003 G1.000 B0.993 \u00b7 gradient brighter even (x -0.000, y +0.019) \u00b7 grain sigma 3.0. Result: levels gap 52.4 -> 24.9, mean |dL| 9.51, hue shift 0.14 deg (p95 0.5), chroma -0.13%, background px changed 0. Safety orange mean RGB [240.1, 90.5, 26.6] -> [242.1, 92.8, 29.1].", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-S01.jpg", "full": "img/c04-S01_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-S02", "name": "S02 \u00b7 C-04 Brushed Tech \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Fireplace corner: skis on the plaster wall between the armchair and the fireplace, no overlap. Works.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-02.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S02.json: levels toward scene black 19 / white 208 (strength 0.5, max 22 levels) \u00b7 tint warm (lodge/fire) gains R1.022 G0.998 B0.960 \u00b7 gradient brighter even (x -0.003, y -0.024) \u00b7 grain sigma 2.779. Result: levels gap 19.4 -> 14.5, mean |dL| 5.16, hue shift 0.37 deg (p95 0.94), chroma +3.52%, background px changed 0. Safety orange mean RGB [240.4, 90.5, 26.5] -> [249.9, 94.1, 28.7].", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-S02.jpg", "full": "img/c04-S02_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-S03", "name": "S03 \u00b7 C-04 Brushed Tech \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Jenni flag (wall sits back past an aisle): skis placed at the far back wall between the benches, scaled down (h 520 px) to match the depth. Works, but the skis read small and far away; a nearer wall would sell the product better.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-03.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S03.json: levels toward scene black 19 / white 214 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R0.999 G1.000 B1.000 \u00b7 gradient brighter right (x +0.009, y -0.035) \u00b7 grain sigma 1.586. Result: levels gap 20.8 -> 11.8, mean |dL| 6.5, hue shift 0.14 deg (p95 0.46), chroma +0.63%, background px changed 0. Safety orange mean RGB [240.6, 90.3, 26.2] -> [247.3, 96.2, 31.3].", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-S03.jpg", "full": "img/c04-S03_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-S04", "name": "S04 \u00b7 C-04 Brushed Tech \u00b7 V7 Spread Pair (split L/R) \u00b7 before / after", "motif": "Jenni flag (outdoor rack): skis stand in the snow in front of the lower crossbar. Because only placement is allowed (no occlusion, no tilt), nothing passes behind a bar, so the frame reads more like a sign frame/gateway than a ski rack. Does NOT read as a rack.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-04.png \u00b7 V7 Spread Pair (split L/R) \u00b7 same placement as 20261115f. Preset S04.json: levels toward scene black 10 / white 237 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R1.000 G1.000 B1.005 \u00b7 gradient brighter right (x +0.070, y +0.019) \u00b7 grain sigma 2.366. Result: levels gap 28.6 -> 4.5, mean |dL| 7.11, hue shift 0.2 deg (p95 0.79), chroma -0.37%, background px changed 0. Safety orange mean RGB [240.0, 90.5, 26.7] -> [246.9, 98.4, 34.4].", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-S04.jpg", "full": "img/c04-S04_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-S05", "name": "S05 \u00b7 C-04 Brushed Tech \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Jenni flag (furniture overlap): moved left onto the open panelled wall between the cubbies and the bench, so no overlap. Works.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-05.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S05.json: levels toward scene black 6 / white 207 (strength 0.5, max 22 levels) \u00b7 tint neutral white gains R1.009 G0.999 B0.984 \u00b7 gradient brighter right (x +0.070, y -0.035) \u00b7 grain sigma 1.606. Result: levels gap 7.7 -> 10.2, mean |dL| 4.08, hue shift 0.21 deg (p95 0.68), chroma +1.5%, background px changed 0. Safety orange mean RGB [240.3, 90.3, 26.2] -> [243.2, 90.9, 26.0].", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-S05.jpg", "full": "img/c04-S05_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-S06", "name": "S06 \u00b7 C-04 Brushed Tech \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Timber apr\u00e8s bar: skis on the log wall between the bar stools and the table. Works; dark scene, gear is the brightest thing in frame.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-06.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S06.json: levels toward scene black 2 / white 68 (strength 0.5, max 22 levels) \u00b7 tint warm (lodge/fire) gains R1.050 G0.990 B0.950 \u00b7 gradient brighter left (x -0.051, y +0.032) \u00b7 grain sigma 2.48. Result: levels gap 142.2 -> 121.4, mean |dL| 10.64, hue shift 1.02 deg (p95 1.24), chroma +4.95%, background px changed 0. Safety orange mean RGB [240.4, 90.5, 26.5] -> [237.5, 76.9, 13.5].", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-S06.jpg", "full": "img/c04-S06_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-S07", "name": "S07 \u00b7 C-04 Brushed Tech \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Jenni flag (wall sits back past an aisle): skis on the back wall between the shelving and the workbench, behind the mats, scaled for depth (h 560 px). Works, a little small.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-07.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S07.json: levels toward scene black 37 / white 218 (strength 0.5, max 22 levels) \u00b7 tint neutral white gains R0.999 G1.000 B0.999 \u00b7 gradient brighter right (x +0.058, y -0.035) \u00b7 grain sigma 1.473. Result: levels gap 41.6 -> 19.4, mean |dL| 11.58, hue shift 0.33 deg (p95 1.03), chroma -0.81%, background px changed 0. Safety orange mean RGB [240.5, 90.5, 26.4] -> [248.6, 101.0, 36.4].", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-S07.jpg", "full": "img/c04-S07_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-S08", "name": "S08 \u00b7 C-04 Brushed Tech \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Cabin porch: skis against the log wall left of the broom and chair. Works.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-08.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S08.json: levels toward scene black 1 / white 169 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R0.996 G1.000 B1.012 \u00b7 gradient brighter right (x +0.070, y +0.035) \u00b7 grain sigma 3.0. Result: levels gap 43.8 -> 17.4, mean |dL| 11.83, hue shift 0.16 deg (p95 0.47), chroma -1.69%, background px changed 0. Safety orange mean RGB [239.8, 90.3, 26.5] -> [224.0, 77.3, 14.4].", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-S08.jpg", "full": "img/c04-S08_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-S09", "name": "S09 \u00b7 C-04 Brushed Tech \u00b7 V7 Spread Pair (split L/R) \u00b7 before / after", "motif": "Jenni flag (outdoor rack): skis stand in the snow between the posts, in front of the lower bar. Reads as a gateway/sign frame, NOT as a rack.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-09.png \u00b7 V7 Spread Pair (split L/R) \u00b7 same placement as 20261115f. Preset S09.json: levels toward scene black 4 / white 239 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R1.000 G1.000 B1.005 \u00b7 gradient brighter right (x +0.008, y -0.025) \u00b7 grain sigma 2.153. Result: levels gap 25.0 -> 6.1, mean |dL| 6.65, hue shift 0.13 deg (p95 0.38), chroma +0.34%, background px changed 0. Safety orange mean RGB [240.5, 90.5, 26.4] -> [248.5, 97.9, 33.6].", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-S09.jpg", "full": "img/c04-S09_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-S10", "name": "S10 \u00b7 C-04 Brushed Tech \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Window/snow view: skis on the centre wood panel between the two windows. Works; strongest of the ski set.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-10.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S10.json: levels toward scene black 15 / white 240 (strength 0.5, max 22 levels) \u00b7 tint neutral white gains R1.010 G0.998 B0.987 \u00b7 gradient brighter right (x +0.034, y -0.015) \u00b7 grain sigma 2.155. Result: levels gap 42.1 -> 19.2, mean |dL| 10.33, hue shift 0.28 deg (p95 0.75), chroma +0.63%, background px changed 0. Safety orange mean RGB [239.8, 90.3, 26.5] -> [251.6, 101.5, 37.1].", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-S10.jpg", "full": "img/c04-S10_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-B01", "name": "B01 \u00b7 C-04 Brushed Tech \u00b7 V7 Board \u00b7 before / after", "motif": "Jenni flag (furniture overlap): board placed on the open barn-wood wall left of the bench, no overlap. Works.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-01.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B01.json: levels toward scene black 12 / white 134 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R1.001 G1.000 B1.001 \u00b7 gradient brighter right (x +0.030, y +0.031) \u00b7 grain sigma 3.0. Result: levels gap 91.3 -> 64.8, mean |dL| 8.87, hue shift 0.12 deg (p95 0.31), chroma -0.41%, background px changed 0. Safety orange mean RGB [240.3, 90.0, 25.8] -> [229.8, 80.0, 16.3].", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-B01.jpg", "full": "img/c04-B01_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-B02", "name": "B02 \u00b7 C-04 Brushed Tech \u00b7 V7 Board \u00b7 before / after", "motif": "Fireplace wall: board on the plaster wall between the stone chimney and the cabinet. Works.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-02.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B02.json: levels toward scene black 18 / white 172 (strength 0.5, max 22 levels) \u00b7 tint warm (lodge/fire) gains R1.038 G0.995 B0.940 \u00b7 gradient brighter left (x -0.024, y -0.035) \u00b7 grain sigma 3.0. Result: levels gap 59.1 -> 33.7, mean |dL| 6.55, hue shift 0.76 deg (p95 1.03), chroma +5.56%, background px changed 0. Safety orange mean RGB [239.9, 90.2, 26.4] -> [243.0, 82.9, 17.9].", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-B02.jpg", "full": "img/c04-B02_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-B03", "name": "B03 \u00b7 C-04 Brushed Tech \u00b7 V7 Board \u00b7 before / after", "motif": "Jenni flag (furniture overlap): board on the back wall between the bench/boot rack and the right bench, scaled for depth, no overlap. Works but reads small.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-03.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B03.json: levels toward scene black 11 / white 145 (strength 0.5, max 22 levels) \u00b7 tint neutral white gains R1.004 G1.000 B0.991 \u00b7 gradient brighter right (x +0.028, y -0.035) \u00b7 grain sigma 2.069. Result: levels gap 80.2 -> 62.1, mean |dL| 6.63, hue shift 0.15 deg (p95 0.46), chroma +1.97%, background px changed 0. Safety orange mean RGB [240.2, 90.0, 25.8] -> [234.9, 81.4, 16.3].", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-B03.jpg", "full": "img/c04-B03_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-B04", "name": "B04 \u00b7 C-04 Brushed Tech \u00b7 V7 Board \u00b7 before / after", "motif": "Jenni flag (outdoor rack): board stands in front of the lower crossbar. Reads as a sign frame, NOT as a rack.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-04.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B04.json: levels toward scene black 15 / white 242 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R0.999 G1.000 B1.005 \u00b7 gradient brighter right (x +0.059, y +0.020) \u00b7 grain sigma 2.353. Result: levels gap 40.9 -> 13.7, mean |dL| 9.42, hue shift 0.18 deg (p95 0.69), chroma -0.53%, background px changed 0. Safety orange mean RGB [240.3, 90.0, 25.8] -> [249.6, 100.5, 36.5].", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-B04.jpg", "full": "img/c04-B04_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-B05", "name": "B05 \u00b7 C-04 Brushed Tech \u00b7 V7 Board \u00b7 before / after", "motif": "Dark mudroom: board on the back wall between the shoe shelves and the bench. Works.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-05.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B05.json: levels toward scene black 2 / white 111 (strength 0.5, max 22 levels) \u00b7 tint warm (lodge/fire) gains R1.028 G0.995 B0.966 \u00b7 gradient brighter right (x +0.062, y -0.035) \u00b7 grain sigma 3.0. Result: levels gap 105.6 -> 97.9, mean |dL| 7.94, hue shift 0.59 deg (p95 0.81), chroma +5.1%, background px changed 0. Safety orange mean RGB [239.9, 90.2, 26.4] -> [238.7, 79.7, 14.5].", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-B05.jpg", "full": "img/c04-B05_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-B06", "name": "B06 \u00b7 C-04 Brushed Tech \u00b7 V7 Board \u00b7 before / after", "motif": "Apr\u00e8s bar: board on the plank wall between the patrons. Works; busy scene with people close on the right.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-06.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B06.json: levels toward scene black 8 / white 104 (strength 0.5, max 22 levels) \u00b7 tint warm (lodge/fire) gains R1.047 G0.991 B0.948 \u00b7 gradient brighter right (x +0.015, y -0.035) \u00b7 grain sigma 3.0. Result: levels gap 117.6 -> 99.8, mean |dL| 7.13, hue shift 0.98 deg (p95 1.21), chroma +6.86%, background px changed 0. Safety orange mean RGB [239.9, 90.2, 26.4] -> [243.3, 80.2, 15.4].", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-B06.jpg", "full": "img/c04-B06_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-B07", "name": "B07 \u00b7 C-04 Brushed Tech \u00b7 V7 Board \u00b7 before / after", "motif": "Repair shop: board against the white block wall between the boot shelves and the workbench. Works.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-07.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B07.json: levels toward scene black 24 / white 242 (strength 0.5, max 22 levels) \u00b7 tint neutral white gains R1.000 G1.000 B1.001 \u00b7 gradient brighter right (x +0.067, y -0.035) \u00b7 grain sigma 2.328. Result: levels gap 50.7 -> 16.1, mean |dL| 13.55, hue shift 0.45 deg (p95 1.3), chroma -0.55%, background px changed 0. Safety orange mean RGB [239.5, 90.2, 26.5] -> [251.8, 105.0, 40.2].", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-B07.jpg", "full": "img/c04-B07_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-B09", "name": "B09 \u00b7 C-04 Brushed Tech \u00b7 V7 Board \u00b7 before / after", "motif": "Jenni flag (outdoor rack): board stands in the snow in front of the lower bar between the posts. Reads as a gateway/sign frame, NOT as a rack.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-09.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B09.json: levels toward scene black 8 / white 234 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R0.999 G1.000 B1.007 \u00b7 gradient brighter left (x -0.034, y +0.035) \u00b7 grain sigma 2.197. Result: levels gap 26.3 -> 23.7, mean |dL| 5.29, hue shift 0.16 deg (p95 0.58), chroma -1.86%, background px changed 0. Safety orange mean RGB [240.1, 90.1, 26.1] -> [242.6, 95.5, 32.7].", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-B09.jpg", "full": "img/c04-B09_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C04-B10", "name": "B10 \u00b7 C-04 Brushed Tech \u00b7 V7 Board \u00b7 before / after", "motif": "Apr\u00e8s window lounge: board on the centre wood panel between the windows. Works; strongest of the board set.", "ctx": {"group": "C-04 Brushed Tech (locked masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-10.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B10.json: levels toward scene black 15 / white 124 (strength 0.5, max 22 levels) \u00b7 tint warm (lodge/fire) gains R1.043 G0.993 B0.944 \u00b7 gradient brighter left (x -0.026, y -0.035) \u00b7 grain sigma 2.986. Result: levels gap 104.3 -> 79.2, mean |dL| 6.88, hue shift 0.88 deg (p95 1.2), chroma +5.94%, background px changed 0. Safety orange mean RGB [240.0, 90.1, 26.2] -> [243.0, 81.4, 16.6].", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "0 Kittl tokens", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c04-B10.jpg", "full": "img/c04-B10_full.jpg", "rate": "", "note": "", "section": "kittl", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-S01", "name": "S01 \u00b7 C-03 Ink Range \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Lodge wood wall: skis stand on the rug at the wall base, clear of the window and bench. Works.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-01.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S01.json: levels toward scene black 37 / white 193 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R1.003 G1.000 B0.993 \u00b7 gradient brighter even (x -0.000, y +0.019) \u00b7 grain sigma 3.0. Result: levels gap 95.5 -> 60.8, mean |dL| 13.78, hue shift 0.34 deg (p95 1.1), chroma -1.04%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-S01.jpg", "full": "img/c03-S01_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-S02", "name": "S02 \u00b7 C-03 Ink Range \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Fireplace corner: skis on the plaster wall between the armchair and the fireplace, no overlap. Works.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-02.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S02.json: levels toward scene black 19 / white 208 (strength 0.5, max 22 levels) \u00b7 tint warm (lodge/fire) gains R1.022 G0.998 B0.960 \u00b7 gradient brighter even (x -0.003, y -0.024) \u00b7 grain sigma 2.779. Result: levels gap 63.4 -> 34.1, mean |dL| 12.99, hue shift 1.21 deg (p95 3.89), chroma -5.57%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-S02.jpg", "full": "img/c03-S02_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-S03", "name": "S03 \u00b7 C-03 Ink Range \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Jenni flag (wall sits back past an aisle): skis placed at the far back wall between the benches, scaled down (h 520 px) to match the depth. Works, but the skis read small and far away; a nearer wall would sell the product better.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-03.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S03.json: levels toward scene black 19 / white 214 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R0.999 G1.000 B1.000 \u00b7 gradient brighter right (x +0.009, y -0.035) \u00b7 grain sigma 1.586. Result: levels gap 57.2 -> 29.7, mean |dL| 11.9, hue shift 0.24 deg (p95 0.66), chroma +0.0%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-S03.jpg", "full": "img/c03-S03_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-S04", "name": "S04 \u00b7 C-03 Ink Range \u00b7 V7 Spread Pair (split L/R) \u00b7 before / after", "motif": "Jenni flag (outdoor rack): skis stand in the snow in front of the lower crossbar. Because only placement is allowed (no occlusion, no tilt), nothing passes behind a bar, so the frame reads more like a sign frame/gateway than a ski rack. Does NOT read as a rack.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-04.png \u00b7 V7 Spread Pair (split L/R) \u00b7 same placement as 20261115f. Preset S04.json: levels toward scene black 10 / white 237 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R1.000 G1.000 B1.005 \u00b7 gradient brighter right (x +0.070, y +0.019) \u00b7 grain sigma 2.366. Result: levels gap 23.9 -> 22.4, mean |dL| 7.35, hue shift 0.43 deg (p95 1.28), chroma +0.92%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-S04.jpg", "full": "img/c03-S04_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-S05", "name": "S05 \u00b7 C-03 Ink Range \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Jenni flag (furniture overlap): moved left onto the open panelled wall between the cubbies and the bench, so no overlap. Works.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-05.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S05.json: levels toward scene black 6 / white 207 (strength 0.5, max 22 levels) \u00b7 tint neutral white gains R1.009 G0.999 B0.984 \u00b7 gradient brighter right (x +0.070, y -0.035) \u00b7 grain sigma 1.606. Result: levels gap 52.2 -> 35.0, mean |dL| 14.1, hue shift 0.54 deg (p95 1.77), chroma -2.42%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-S05.jpg", "full": "img/c03-S05_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-S06", "name": "S06 \u00b7 C-03 Ink Range \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Timber apr\u00e8s bar: skis on the log wall between the bar stools and the table. Works; dark scene, gear is the brightest thing in frame.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-06.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S06.json: levels toward scene black 2 / white 68 (strength 0.5, max 22 levels) \u00b7 tint warm (lodge/fire) gains R1.050 G0.990 B0.950 \u00b7 gradient brighter left (x -0.051, y +0.032) \u00b7 grain sigma 2.48. Result: levels gap 186.3 -> 175.2, mean |dL| 13.64, hue shift 0.78 deg (p95 2.59), chroma -6.83%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-S06.jpg", "full": "img/c03-S06_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-S07", "name": "S07 \u00b7 C-03 Ink Range \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Jenni flag (wall sits back past an aisle): skis on the back wall between the shelving and the workbench, behind the mats, scaled for depth (h 560 px). Works, a little small.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-07.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S07.json: levels toward scene black 37 / white 218 (strength 0.5, max 22 levels) \u00b7 tint neutral white gains R0.999 G1.000 B0.999 \u00b7 gradient brighter right (x +0.058, y -0.035) \u00b7 grain sigma 1.473. Result: levels gap 70.4 -> 41.5, mean |dL| 12.29, hue shift 0.26 deg (p95 0.75), chroma -0.15%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-S07.jpg", "full": "img/c03-S07_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-S08", "name": "S08 \u00b7 C-03 Ink Range \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Cabin porch: skis against the log wall left of the broom and chair. Works.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-08.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S08.json: levels toward scene black 1 / white 169 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R0.996 G1.000 B1.012 \u00b7 gradient brighter right (x +0.070, y +0.035) \u00b7 grain sigma 3.0. Result: levels gap 85.6 -> 77.1, mean |dL| 15.36, hue shift 0.55 deg (p95 1.7), chroma +1.63%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-S08.jpg", "full": "img/c03-S08_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-S09", "name": "S09 \u00b7 C-03 Ink Range \u00b7 V7 Spread Pair (split L/R) \u00b7 before / after", "motif": "Jenni flag (outdoor rack): skis stand in the snow between the posts, in front of the lower bar. Reads as a gateway/sign frame, NOT as a rack.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-09.png \u00b7 V7 Spread Pair (split L/R) \u00b7 same placement as 20261115f. Preset S09.json: levels toward scene black 4 / white 239 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R1.000 G1.000 B1.005 \u00b7 gradient brighter right (x +0.008, y -0.025) \u00b7 grain sigma 2.153. Result: levels gap 15.3 -> 9.1, mean |dL| 4.56, hue shift 0.46 deg (p95 1.17), chroma +0.77%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-S09.jpg", "full": "img/c03-S09_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-S10", "name": "S10 \u00b7 C-03 Ink Range \u00b7 V7 Matching Pair \u00b7 before / after", "motif": "Window/snow view: skis on the centre wood panel between the two windows. Works; strongest of the ski set.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: ski/ski-bg-10.png \u00b7 V7 Matching Pair \u00b7 same placement as 20261115f. Preset S10.json: levels toward scene black 15 / white 240 (strength 0.5, max 22 levels) \u00b7 tint neutral white gains R1.010 G0.998 B0.987 \u00b7 gradient brighter right (x +0.034, y -0.015) \u00b7 grain sigma 2.155. Result: levels gap 26.2 -> 15.8, mean |dL| 5.37, hue shift 0.36 deg (p95 1.24), chroma -2.16%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Skis", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-S10.jpg", "full": "img/c03-S10_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-B01", "name": "B01 \u00b7 C-03 Ink Range \u00b7 V7 Board \u00b7 before / after", "motif": "Jenni flag (furniture overlap): board placed on the open barn-wood wall left of the bench, no overlap. Works.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-01.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B01.json: levels toward scene black 12 / white 134 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R1.001 G1.000 B1.001 \u00b7 gradient brighter right (x +0.030, y +0.031) \u00b7 grain sigma 3.0. Result: levels gap 128.4 -> 112.0, mean |dL| 14.26, hue shift 0.3 deg (p95 0.76), chroma +0.44%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-B01.jpg", "full": "img/c03-B01_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-B02", "name": "B02 \u00b7 C-03 Ink Range \u00b7 V7 Board \u00b7 before / after", "motif": "Fireplace wall: board on the plaster wall between the stone chimney and the cabinet. Works.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-02.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B02.json: levels toward scene black 18 / white 172 (strength 0.5, max 22 levels) \u00b7 tint warm (lodge/fire) gains R1.038 G0.995 B0.940 \u00b7 gradient brighter left (x -0.024, y -0.035) \u00b7 grain sigma 3.0. Result: levels gap 96.2 -> 69.3, mean |dL| 14.57, hue shift 1.92 deg (p95 5.69), chroma -2.74%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-B02.jpg", "full": "img/c03-B02_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-B03", "name": "B03 \u00b7 C-03 Ink Range \u00b7 V7 Board \u00b7 before / after", "motif": "Jenni flag (furniture overlap): board on the back wall between the bench/boot rack and the right bench, scaled for depth, no overlap. Works but reads small.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-03.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B03.json: levels toward scene black 11 / white 145 (strength 0.5, max 22 levels) \u00b7 tint neutral white gains R1.004 G1.000 B0.991 \u00b7 gradient brighter right (x +0.028, y -0.035) \u00b7 grain sigma 2.069. Result: levels gap 117.5 -> 93.6, mean |dL| 14.6, hue shift 0.51 deg (p95 1.46), chroma -0.54%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-B03.jpg", "full": "img/c03-B03_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-B04", "name": "B04 \u00b7 C-03 Ink Range \u00b7 V7 Board \u00b7 before / after", "motif": "Jenni flag (outdoor rack): board stands in front of the lower crossbar. Reads as a sign frame, NOT as a rack.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-04.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B04.json: levels toward scene black 15 / white 242 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R0.999 G1.000 B1.005 \u00b7 gradient brighter right (x +0.059, y +0.020) \u00b7 grain sigma 2.353. Result: levels gap 24.1 -> 21.0, mean |dL| 5.83, hue shift 0.43 deg (p95 1.43), chroma +0.43%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-B04.jpg", "full": "img/c03-B04_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-B05", "name": "B05 \u00b7 C-03 Ink Range \u00b7 V7 Board \u00b7 before / after", "motif": "Dark mudroom: board on the back wall between the shoe shelves and the bench. Works.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-05.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B05.json: levels toward scene black 2 / white 111 (strength 0.5, max 22 levels) \u00b7 tint warm (lodge/fire) gains R1.028 G0.995 B0.966 \u00b7 gradient brighter right (x +0.062, y -0.035) \u00b7 grain sigma 3.0. Result: levels gap 142.7 -> 128.0, mean |dL| 15.11, hue shift 0.89 deg (p95 3.13), chroma -0.97%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-B05.jpg", "full": "img/c03-B05_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-B06", "name": "B06 \u00b7 C-03 Ink Range \u00b7 V7 Board \u00b7 before / after", "motif": "Apr\u00e8s bar: board on the plank wall between the patrons. Works; busy scene with people close on the right.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-06.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B06.json: levels toward scene black 8 / white 104 (strength 0.5, max 22 levels) \u00b7 tint warm (lodge/fire) gains R1.047 G0.991 B0.948 \u00b7 gradient brighter right (x +0.015, y -0.035) \u00b7 grain sigma 3.0. Result: levels gap 154.7 -> 132.5, mean |dL| 14.82, hue shift 0.99 deg (p95 3.55), chroma -1.47%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-B06.jpg", "full": "img/c03-B06_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-B07", "name": "B07 \u00b7 C-03 Ink Range \u00b7 V7 Board \u00b7 before / after", "motif": "Repair shop: board against the white block wall between the boot shelves and the workbench. Works.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-07.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B07.json: levels toward scene black 24 / white 242 (strength 0.5, max 22 levels) \u00b7 tint neutral white gains R1.000 G1.000 B1.001 \u00b7 gradient brighter right (x +0.067, y -0.035) \u00b7 grain sigma 2.328. Result: levels gap 32.4 -> 24.1, mean |dL| 7.7, hue shift 0.4 deg (p95 0.81), chroma -0.17%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-B07.jpg", "full": "img/c03-B07_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-B09", "name": "B09 \u00b7 C-03 Ink Range \u00b7 V7 Board \u00b7 before / after", "motif": "Jenni flag (outdoor rack): board stands in the snow in front of the lower bar between the posts. Reads as a gateway/sign frame, NOT as a rack.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-09.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B09.json: levels toward scene black 8 / white 234 (strength 0.5, max 22 levels) \u00b7 tint cool (snow/window daylight) gains R0.999 G1.000 B1.007 \u00b7 gradient brighter left (x -0.034, y +0.035) \u00b7 grain sigma 2.197. Result: levels gap 25.1 -> 22.5, mean |dL| 6.39, hue shift 0.59 deg (p95 1.7), chroma +0.53%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-B09.jpg", "full": "img/c03-B09_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}, {"id": "PWKD261115G-C03-B10", "name": "B10 \u00b7 C-03 Ink Range \u00b7 V7 Board \u00b7 before / after", "motif": "Apr\u00e8s window lounge: board on the centre wood panel between the windows. Works; strongest of the board set.", "ctx": {"group": "C-03 Ink Range (seeded pick, seed 20261115; new per-template masters)", "trend": "gear grading test (gear layer only)", "model": "no AI render on this card: deterministic per-scene preset (/presets)", "prompt": "Background: board/board-bg-10.png \u00b7 V7 Board \u00b7 same placement as 20261115f. Preset B10.json: levels toward scene black 15 / white 124 (strength 0.5, max 22 levels) \u00b7 tint warm (lodge/fire) gains R1.043 G0.993 B0.944 \u00b7 gradient brighter left (x -0.026, y -0.035) \u00b7 grain sigma 2.986. Result: levels gap 141.8 -> 116.3, mean |dL| 14.63, hue shift 1.3 deg (p95 4.58), chroma -2.13%, background px changed 0.", "prompt_source": "summary", "tier": "Season", "product": "Snowboard", "intent": "Rate the AFTER (graded) image. Does the gear sit in the room better than BEFORE without losing its true colours?", "sidecar": true, "cost": "shared: 1 Kittl render (40 tokens) for the C-03 board/split width", "size": "720\u00d71280 each side", "flags": "rate the FILTER (left = unfiltered, right = filtered)"}, "kind": "mockup", "img": "img/c03-B10.jpg", "full": "img/c03-B10_full.jpg", "rate": "", "note": "", "section": "redesign", "suggestion_applied": ""}];
+;
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 4500);
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function sectionTitle(sec) {
+  if (sec === 'current') return 'Current style — galaxy, blended color, famous art, jeeps, Colorado topo';
+  if (sec === 'men') return 'Men 18–50';
+  if (sec === 'women') return 'Women 25–40';
+  if (sec === 'kids') return 'Kids under 13';
+  if (sec === 'kittl') return 'C-04 Brushed Tech (locked) — 19 scenes, before / after';
+  if (sec === 'redesign') return 'C-03 Ink Range (seeded pick, seed 20261115) — 19 scenes, before / after';
+  return 'Designs';
+}
+
+
+function openLb(src) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  lb.classList.add('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'); });
+
+function render() {
+  const root = document.getElementById('list');
+  root.innerHTML = '';
+  let lastSection = '';
+  DESIGNS.forEach((d, i) => {
+    if (d.section !== lastSection) {
+      lastSection = d.section;
+      const h = document.createElement('div');
+      h.className = 'section-h';
+      h.textContent = sectionTitle(d.section);
+      root.appendChild(h);
+    }
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.id = d.id;
+    const rates = [0,1,2].map(v => {
+      const labels = {0:'0 Bad', 1:'1 Maybe', 2:'2 Keep'};
+      return `<label class="rate"><input type="radio" name="rate_${d.id}" value="${v}"/> ${labels[v]}</label>`;
+    }).join('');
+    const hint = d.suggestion_applied ? `<p class="hint">Applied: ${escapeHtml(d.suggestion_applied)}</p>` : '';
+    card.innerHTML = `
+      <div class="quad"><div class="thumb-wrap" onclick="openLb(DESIGNS[${i}].full || DESIGNS[${i}].img)"><p class="cap">BEFORE unfiltered · AFTER gear graded — tap to enlarge</p><img src="${d.img}" alt="${d.id} before and after"/></div>${d.ctx ? `<div class="pwinfo"><div><b>${d.id}</b>${['tier','product'].filter(k => d.ctx[k]).map(k => ` · <b>${k[0].toUpperCase()+k.slice(1)}:</b> ${escapeHtml(d.ctx[k])}`).join('')}</div><div><b>Group:</b> ${escapeHtml(d.ctx.group)} · <b>Trend:</b> ${escapeHtml(d.ctx.trend)} · <b>Model:</b> ${escapeHtml(d.ctx.model)}</div>${d.ctx.intent ? `<div><b>Intent:</b> ${escapeHtml(d.ctx.intent)}</div>` : ''}${!d.ctx.sidecar ? `<div><b>Cost / Size / Flags:</b> no Bob Ross sidecar for this design</div>` : ''}${d.ctx.sidecar ? `<div><b>Cost:</b> ${escapeHtml(d.ctx.cost || 'not recorded')} · <b>Size:</b> ${escapeHtml(d.ctx.size || 'not recorded')} · <b>Flags:</b> ${escapeHtml(d.ctx.flags || 'none')}${d.ctx.sidecar_error ? ' · ' + escapeHtml(d.ctx.sidecar_error) : ''}</div>` : ''}<details open><summary>Exact prompt${d.ctx.prompt_source === 'sidecar' ? ' (as used, from Bob Ross sidecar)' : ''}</summary><p class="pwprompt">${escapeHtml(d.ctx.prompt)}</p></details>${d.ctx.prompt_mismatch ? `<details class="pwmis"><summary>⚠ Prompt used differs from the brief</summary><p class="pwprompt">${escapeHtml(d.ctx.prompt_brief)}</p></details>` : ''}<div class="pwhint">Rate it for its target group.</div></div>` : ''}</div>
+      <div class="meta">
+        <h2>${d.id} · ${escapeHtml(d.name)}</h2>
+        <p class="motif">${escapeHtml(d.motif)}</p>
+        ${hint}
+        <div class="rates" data-id="${d.id}">${rates}</div>
+        <textarea placeholder="Suggestion (optional)" data-suggestion="${d.id}"></textarea>
+      </div>`;
+    root.appendChild(card);
+    card.querySelectorAll('input[type=radio]').forEach(inp => {
+      inp.addEventListener('change', () => {
+        card.querySelectorAll('.rates label').forEach(l => l.className = 'rate');
+        inp.closest('label').classList.add('rate', 'sel-' + inp.value);
+      });
+    });
+  });
+}
+
+function collect() {
+  const items = [];
+  DESIGNS.forEach(d => {
+    const checked = document.querySelector(`input[name="rate_${d.id}"]:checked`);
+    const noteEl = document.querySelector(`textarea[data-suggestion="${d.id}"]`);
+    items.push({
+      id: d.id,
+      kind: d.kind,
+      name: d.name,
+      rating: checked ? Number(checked.value) : null,
+      suggestion: noteEl ? noteEl.value.trim() : ''
+    });
+  });
+  return {
+    type: 'POWDERWRAPS_RATINGS',
+    version: '0-1-2',
+    batch: BATCH,
+    submitted_at: new Date().toISOString(),
+    items
+  };
+}
+
+function payloadText(data) {
+  const lines = [`POWDERWRAPS_RATINGS version=0-1-2 date=${data.batch}`];
+  data.items.forEach(it => {
+    const v = it.rating === null ? '' : String(it.rating);
+    const note = (it.suggestion || '').replace(/\r?\n/g, ' ').replace(/\|/g, '/');
+    lines.push(`${it.id}|${v}|${note}`);
+  });
+  return lines.join('\n');
+}
+
+async function doSubmit() {
+  const data = collect();
+  const missing = data.items.filter(i => i.rating === null);
+  if (missing.length) {
+    if (!confirm(`${missing.length} designs still unrated. Submit anyway?`)) return;
+  }
+  const text = payloadText(data);
+  const jsonStr = JSON.stringify(data, null, 2);
+  const blob = new Blob([jsonStr], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `PowderWraps-ratings-${BATCH}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  try { await navigator.clipboard.writeText(text); } catch (e) {}
+
+  let webhookMsg = '';
+  if (WEBHOOK_URL) {
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: jsonStr,
+        mode: 'cors'
+      });
+      webhookMsg = res.ok ? ' Webhook delivered.' : ` Webhook status ${res.status}.`;
+    } catch (e) {
+      webhookMsg = ' Webhook blocked by browser — attach the downloaded JSON in chat.';
+    }
+  } else {
+    webhookMsg = ' Attach the downloaded JSON in PowderWraps Intel chat (webhook URL not set yet).';
+  }
+  toast('Downloaded ratings file.' + webhookMsg);
+}
+
+document.getElementById('submitBtn').addEventListener('click', doSubmit);
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const text = payloadText(collect());
+  try {
+    await navigator.clipboard.writeText(text);
+    toast('Payload copied — paste into PowderWraps Intel chat.');
+  } catch (e) {
+    prompt('Copy this payload:', text);
+  }
+});
+
+render();
+</script>
+<!-- PW_SUBMIT_V2 BEGIN -->
+<script>var PW_PACK_ID = "20261115g";</script>
+<style>
+  /* PW_SUBMIT_V2: sends ratings to PowderWraps (public ntfy mailbox, no keys) + big on-page confirmation */
+  #copyBtn, #payloadBox { display:none !important; }
+  #pwNameWrap { display:flex; align-items:center; gap:6px; color:#fff; font-size:13px; font-weight:600; }
+  #pwName { border:1px solid #666; border-radius:8px; padding:9px 10px; font:inherit; font-size:14px; width:150px; background:#222; color:#fff; }
+  #pwName::placeholder { color:#aaa; }
+  #submitBtn { background:#0a7a3e !important; color:#fff !important; min-width:150px; }
+  #submitBtn:hover { background:#086632 !important; }
+  #submitBtn[disabled] { opacity:.85; cursor:default; }
+  #pwOverallWrap { background:#fff; border:1px solid #ddd; border-radius:12px; padding:12px 14px; margin:8px 0 16px; }
+  #pwOverallWrap h3 { margin:0 0 8px; font-size:14px; }
+  #pwBottomBar { display:flex; justify-content:center; margin:6px 0 60px; }
+  #pwBottomBar button { background:#0a7a3e; color:#fff; font-size:16px; padding:14px 26px; border-radius:10px; }
+  #pwBottomBar button[disabled] { opacity:.85; cursor:default; }
+  #pwBanner { display:none; position:fixed; left:50%; top:12px; transform:translateX(-50%); z-index:60; width:min(700px,94vw);
+              border-radius:14px; padding:18px 48px 18px 20px; box-shadow:0 12px 34px rgba(0,0,0,.4); font-size:14px; line-height:1.45; }
+  #pwBanner.show { display:block; }
+  #pwBanner.ok { background:#0a7a3e; color:#fff; }
+  #pwBanner.err { background:#b3261e; color:#fff; }
+  #pwBanner.busy { background:#1f2a44; color:#fff; }
+  #pwBanner.warn { background:#a15c00; color:#fff; }
+  #pwBanner .pw-big { display:block; font-size:22px; font-weight:800; margin-bottom:4px; }
+  #pwBanner .pw-x { position:absolute; right:10px; top:8px; background:transparent; color:#fff; font-size:22px; padding:4px 10px; }
+  #pwBanner .pw-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  #pwBanner .pw-row button { background:#fff; color:#111; }
+  #pwBanner .pw-row button.pw-retry { background:#111; color:#fff; font-size:16px; }
+  #pwBanner pre { white-space:pre-wrap; word-break:break-word; background:rgba(255,255,255,.95); color:#111; border-radius:8px; padding:8px 10px; max-height:30vh; overflow:auto; font-size:12px; user-select:all; margin:10px 0 0; }
+  .pw-spin { display:inline-block; width:15px; height:15px; border:3px solid currentColor; border-right-color:transparent; border-radius:50%; animation:pwspin .7s linear infinite; vertical-align:-2px; margin-right:8px; }
+  @keyframes pwspin { to { transform:rotate(360deg); } }
+</style>
+<script>
+(function () {
+  'use strict';
+  var CFG = { topic: "pw-ratings-71692fd9368a4505f5b6d095", endpoints: ["https://ntfy.sh", "https://ntfy.envs.net"] };
+  var PACK = (typeof PW_PACK_ID !== 'undefined' && PW_PACK_ID) ? PW_PACK_ID : (typeof BATCH !== 'undefined' ? BATCH : 'unknown');
+  var BOT = /[?&]pwbot=1\b/.test(location.search);
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  // ---- UI wiring (replaces the old download-only Submit) ----
+  var old = $('submitBtn');
+  var btn = old.cloneNode(true);           // clone drops the legacy click listener
+  old.parentNode.replaceChild(btn, old);
+  btn.textContent = 'Submit ratings';
+  var nameWrap = document.createElement('label');
+  nameWrap.id = 'pwNameWrap';
+  nameWrap.innerHTML = 'Your name <input id="pwName" type="text" placeholder="Dan" autocomplete="name" maxlength="40"/>';
+  btn.parentNode.insertBefore(nameWrap, btn);
+  try { $('pwName').value = localStorage.getItem('pw_reviewer_name') || ''; } catch (e) {}
+  var list = $('list');
+  var overall = document.createElement('div');
+  overall.id = 'pwOverallWrap';
+  overall.innerHTML = '<h3>Overall notes (optional)</h3><textarea id="pwOverall" placeholder="Anything about this pack as a whole"></textarea>';
+  var bottom = document.createElement('div');
+  bottom.id = 'pwBottomBar';
+  bottom.innerHTML = '<button type="button" id="pwSubmitBottom">Submit ratings</button>';
+  if (list && list.parentNode) { list.parentNode.insertBefore(bottom, list.nextSibling); list.parentNode.insertBefore(overall, bottom); }
+  var banner = document.createElement('div');
+  banner.id = 'pwBanner'; banner.setAttribute('role', 'status'); banner.setAttribute('aria-live', 'assertive');
+  document.body.appendChild(banner);
+  var legend = document.querySelector('.legend');
+  if (legend && /How Submit works/.test(legend.textContent)) {
+    legend.innerHTML = '<strong>How Submit works:</strong> rate the designs, type your name if you are not Dan (blank = Dan), then click <strong>Submit ratings</strong>. ' +
+      'Your ratings go straight to PowderWraps and a big green <strong>&ldquo;Ratings received &check;&rdquo;</strong> banner confirms it. ' +
+      'If sending ever fails you get a red banner with <strong>Retry</strong> plus a backup copy / download.';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('header p'), function (p) {
+    p.innerHTML = p.innerHTML.replace('Submit downloads ratings JSON.', 'Submit sends your ratings to PowderWraps.');
+  });
+  function buttons() { return [btn, $('pwSubmitBottom')].filter(Boolean); }
+  function setButtons(html, disabled) { buttons().forEach(function (b) { b.innerHTML = html; b.disabled = !!disabled; }); }
+
+  function showBanner(kind, html) {
+    banner.className = 'show ' + kind;
+    banner.innerHTML = html + (kind === 'busy' ? '' : '<button type="button" class="pw-x" aria-label="Close">&times;</button>');
+    var x = banner.querySelector('.pw-x'); if (x) x.onclick = function () { banner.className = ''; };
+  }
+
+  // ---- data ----
+  function newSid() {
+    var a = new Uint8Array(8); (window.crypto || window.msCrypto).getRandomValues(a);
+    return Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+  }
+  function gather() {
+    var data = (typeof collect === 'function') ? collect() : { batch: PACK, items: [] };
+    var text = (typeof payloadText === 'function') ? payloadText(data) : '';
+    var entered = (($('pwName') || {}).value || '').trim();
+    var reviewer = entered || 'Dan';
+    var perDesign = {};
+    data.items.forEach(function (i) { if (i.suggestion) perDesign[i.id] = i.suggestion; });
+    return {
+      type: 'POWDERWRAPS_SUBMISSION', schema: 1, sid: newSid(),
+      pack: PACK, batch: data.batch, reviewer: reviewer, reviewer_entered: entered,
+      bot_test: BOT || /^bot-?test$/i.test(entered),
+      submitted_at: new Date().toISOString(),
+      page: location.origin + location.pathname,
+      rated: data.items.filter(function (i) { return i.rating !== null; }).length,
+      total: data.items.length,
+      ratings: data.items.map(function (i) { return { id: i.id, name: i.name, kind: i.kind, rating: i.rating, note: i.suggestion || '' }; }),
+      notes: { overall: (($('pwOverall') || {}).value || '').trim(), per_design: perDesign },
+      payload: text
+    };
+  }
+  function b64utf8(s) {
+    var bytes = new TextEncoder().encode(s), bin = '';
+    for (var i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  function messages(sub) {   // ntfy keeps messages <= 4096 bytes as text; split bigger ones
+    var s = JSON.stringify(sub);
+    if (new TextEncoder().encode(s).length <= 3800) return [s];
+    var b = b64utf8(s), size = 3000, n = Math.ceil(b.length / size), out = [];
+    for (var i = 0; i < n; i++) out.push('PWCHUNK ' + sub.sid + ' ' + (i + 1) + '/' + n + ' ' + b.slice(i * size, (i + 1) * size));
+    return out;
+  }
+  async function postOne(base, msgs, tags) {
+    var last = null;
+    for (var i = 0; i < msgs.length; i++) {
+      var ctl = new AbortController(), t = setTimeout(function () { ctl.abort(); }, 15000);
+      try {
+        var r = await fetch(base + '/' + CFG.topic + '?tags=' + encodeURIComponent(tags), { method: 'POST', body: msgs[i], cache: 'no-store', signal: ctl.signal });
+        if (!r.ok) throw new Error(base.replace('https://', '') + ' answered HTTP ' + r.status);
+        var j = await r.json().catch(function () { return {}; });
+        if (!j.id) throw new Error(base.replace('https://', '') + ' gave no receipt');
+        last = j.id;
+      } catch (e) {
+        var host = base.replace('https://', '');
+        if (e && e.name === 'AbortError') throw new Error(host + ' timed out');
+        if (e && e.name === 'TypeError') throw new Error('could not reach ' + host);
+        throw e;
+      } finally { clearTimeout(t); }
+    }
+    return { base: base, id: last };
+  }
+  function anySuccess(promises) {   // like Promise.any, works on older Safari
+    return new Promise(function (resolve, reject) {
+      var errs = [], left = promises.length;
+      promises.forEach(function (p) { p.then(resolve, function (e) { errs.push(e && e.message ? e.message : String(e)); if (--left === 0) reject(errs); }); });
+    });
+  }
+
+  // ---- backup actions (only offered after a failure) ----
+  function copyText(s) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(s);
+    return new Promise(function (res, rej) {
+      var ta = document.createElement('textarea'); ta.value = s; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy') ? res() : rej(); } catch (e) { rej(e); } ta.remove();
+    });
+  }
+  function download(sub) {
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(sub, null, 2)], { type: 'application/json' }));
+    a.download = 'PowderWraps-ratings-' + sub.pack + '-' + sub.reviewer.replace(/[^A-Za-z0-9_-]+/g, '_') + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  // ---- submit ----
+  var sending = false;
+  async function send(sub) {
+    if (sending) return;
+    sending = true;
+    setButtons('<span class="pw-spin"></span>Sending&hellip;', true);
+    showBanner('busy', '<span class="pw-big"><span class="pw-spin"></span>Sending your ratings&hellip;</span>Please keep this page open for a moment.');
+    var msgs = messages(sub), tags = 'pwratings' + (sub.bot_test ? ',bot-test' : '');
+    try {
+      var res = await anySuccess(CFG.endpoints.map(function (b) { return postOne(b, msgs, tags); }));
+      try { localStorage.setItem('pw_reviewer_name', sub.reviewer_entered); } catch (e) {}
+      var when = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      showBanner('ok', '<span class="pw-big">Ratings received &check; (' + sub.rated + ' design' + (sub.rated === 1 ? '' : 's') + ') &mdash; thank you</span>' +
+        'From <b>' + esc(sub.reviewer) + '</b> &middot; pack ' + esc(sub.pack) + ' &middot; ' + when + ' &middot; receipt ' + esc(res.id) +
+        (sub.total - sub.rated > 0 ? '<br/>' + (sub.total - sub.rated) + ' design(s) left blank.' : '') +
+        '<br/>Nothing else to do. Change anything and you can submit again.');
+      setButtons('Sent &check;', true);
+      document.body.setAttribute('data-pw-submit', 'ok');
+    } catch (errs) {
+      showBanner('err', '<span class="pw-big">Ratings NOT sent &#10007;</span>' +
+        'Your ratings did not reach PowderWraps (' + esc([].concat(errs).join('; ')) + '). Check your connection and tap Retry.' +
+        '<div class="pw-row"><button type="button" class="pw-retry">Retry</button><button type="button" class="pw-copy">Copy ratings (backup)</button><button type="button" class="pw-dl">Download file (backup)</button></div>' +
+        '<pre>' + esc(sub.payload) + '</pre>');
+      banner.querySelector('.pw-retry').onclick = function () { send(sub); };   // same sid -> no duplicates
+      banner.querySelector('.pw-copy').onclick = function (ev) { copyText(sub.payload).then(function () { ev.target.textContent = 'Copied ✓ — paste it to PowderWraps'; }, function () { ev.target.textContent = 'Select the text below and copy it'; }); };
+      banner.querySelector('.pw-dl').onclick = function () { download(sub); };
+      setButtons('Submit ratings', false);
+      document.body.setAttribute('data-pw-submit', 'error');
+    } finally { sending = false; }
+  }
+  function onSubmit() {
+    var sub = gather();
+    if (sub.rated === 0 && !sub.notes.overall && !Object.keys(sub.notes.per_design).length) {
+      showBanner('warn', '<span class="pw-big">Nothing to send yet</span>Pick 0 / 1 / 2 on at least one design, then tap Submit.');
+      return;
+    }
+    send(sub);
+  }
+  buttons().forEach(function (b) { b.addEventListener('click', onSubmit); });
+  window.doSubmit = onSubmit;
+  function rearm() { if (!sending && btn.disabled) setButtons('Submit updated ratings', false); }
+  document.addEventListener('change', rearm, true);
+  document.addEventListener('input', rearm, true);
+})();
+</script>
+<!-- PW_SUBMIT_V2 END -->
+
+<!-- PW_MAILTO BEGIN: durable record = the email Dan sends -->
+<script>
+(function () {
+  'use strict';
+  var TO = "dan@powderwraps.com";
+  function $(id) { return document.getElementById(id); }
+  function mailBody() {
+    var data = collect();
+    var who = (($('pwName') || {}).value || '').trim() || 'Dan';
+    var groups = {2: [], 1: [], 0: []};
+    data.items.forEach(function (i) { if (i.rating !== null) groups[i.rating].push(i.id.split('-').pop()); });
+    var lines = ['PowderWraps ratings - pack ' + BATCH + ' - from ' + who, '',
+      '2 Approve: ' + (groups[2].join(' ') || '-'),
+      '1 Maybe: ' + (groups[1].join(' ') || '-'),
+      '0 Bad: ' + (groups[0].join(' ') || '-'), '',
+      'Just tap Send. This email is the saved record of your ratings.', '',
+      '--- machine copy (do not edit) ---'];
+    var pt = payloadText(data).split('\n');
+    pt[0] += ' pack=' + BATCH + ' reviewer=' + who.replace(/\s+/g, '_');
+    lines.push(pt.join('\n'));
+    var ov = (($('pwOverall') || {}).value || '').trim().replace(/\r?\n/g, ' ');
+    if (ov) lines.push('OVERALL|' + ov.replace(/\|/g, '/'));
+    lines.push('--- end ---');
+    var rated = data.items.filter(function (i) { return i.rating !== null; }).length;
+    return { subject: 'PowderWraps ratings ' + BATCH + ' (' + rated + ' rated)', body: lines.join('\n'), rated: rated };
+  }
+  function href() {
+    var m = mailBody();
+    return 'mailto:' + TO + '?subject=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(m.body);
+  }
+  window.pwMailHref = href;
+  function openMail() {
+    var a = document.createElement('a'); a.href = href(); a.style.display = 'none';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  // capture phase: runs on the same tap, before the ntfy send, so the browser allows the mail app to open
+  document.addEventListener('click', function (ev) {
+    var t = ev.target && ev.target.closest ? ev.target.closest('#submitBtn, #pwSubmitBottom') : null;
+    if (!t || t.disabled) return;
+    if (mailBody().rated === 0) return;
+    openMail();
+  }, true);
+  // add a permanent "Email my ratings" button + note
+  var bar = $('pwBottomBar');
+  if (bar) {
+    var b = document.createElement('button'); b.type = 'button'; b.id = 'pwMailBtn';
+    b.textContent = 'Email my ratings again'; b.style.cssText = 'margin-left:10px;background:#111;color:#fff';
+    b.onclick = openMail; bar.appendChild(b);
+  }
+  var legend = document.querySelector('.legend');
+  if (legend) legend.innerHTML += '<br/><strong>Saved by email:</strong> Submit also opens an email to ' + TO +
+    ' with your ratings filled in. <strong>Tap Send</strong> &mdash; that email is the permanent record and is what files the designs into Approved / Maybe / Backup.';
+})();
+</script>
+<!-- PW_MAILTO END -->
+</body>
+</html>
